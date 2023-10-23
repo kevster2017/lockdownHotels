@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 100px;
+}
+
+
+/* Navbar Logo */
+
+.navbar-brand {
+    position: relative;
+    top: 15px;
+    left: 0px;
+}
+
+.logo {
+    height: 80px;
+    padding: 2px 10px;
+}
+
+
+/* Style the breadcrumb list */
+
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: white;
+}
+
+
+/* Display breadcrumb list items side by side */
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+
+/* Add a slash symbol (/) before/behind each list item */
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+
+/* Add a color to all links inside the list */
+
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+
+/* Add a color on mouse-over */
+
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+html,
+body {
+    background-image: url("Images/HotelsOpaque.PNG");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li a {
+    color: black;
+}
+
+
+/* Button Features */
+
+button {
+    border-radius: 5px;
+}
+
+button:hover {
+    color: black;
+    box-shadow: 5px 5px 10px 5px #999;
+    transition: 0.3s;
+}
+
+.big-text {
+    font-size: 52px;
+    margin: 20px 0;
+    color: blue;
+}
+
+a.btn {
+    margin: 30px 10px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+a.btn-first {
+    background-color: red;
+    color: white;
+}
+
+a.btn-second {
+    background-color: green;
+    opacity: 0.5;
+    color: white;
+}
+
+a.btn-first:hover {
+    background: red;
+    border: none;
+    color: black;
+    box-shadow: 5px 5px 10px #999;
+    transition: 0.3s;
+}
+
+a.btn-second:hover {
+    background: green;
+    border: none;
+    color: black;
+    box-shadow: 5px 5px 10px #999;
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+/* Banner Settings */
+
+.banner-info,
+.banner-image {
+    margin: 300px 0;
+}
+
+div {
+    text-align: center;
+}
+
+footer {
+    position: bottom;
+    width: 100%;
+    bottom: 0;
+}
+
+.main-container {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+
+/* Payment Complete Text */
+
+.payment-complete {
+    text-align: center;
+}
+
+
+/* Background colour for About Us page */
+
+.who-are-we {
+    background-color: rgb(245, 240, 240);
+}
+
+.our-aim {
+    background-color: rgb(239, 247, 247);
+}
+
+.our-purpose {
+    background-color: rgb(255, 255, 255);
+}
+
+.our-mission {
+    background-color: rgb(238, 252, 238);
+}
+
+#small {
+    text-align: left;
+}
+
+
+/* Remove bullets from unordered list items */
+
+ul {
+    list-style-type: none;
+}
+
+
+/*Site Map Page Styling */
+
+.booking {
+    border-style: ridge;
+    background-color: rgb(241, 247, 247);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.listing {
+    border-style: ridge;
+    background-color: rgb(248, 248, 248);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.about {
+    border-style: ridge;
+    background-color: rgb(241, 247, 247);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.contact {
+    border-style: ridge;
+    background-color: rgb(248, 248, 248);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.message{
+    border-style: ridge;
+    background-color: rgb(226, 231, 235);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.siteMap {
+    border-style: ridge;
+    background-color: rgb(241, 247, 247);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.terms {
+    border-style: ridge;
+    background-color: rgb(248, 248, 248);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.privacyPolicy {
+    border-style: ridge;
+    background-color: rgb(241, 247, 247);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/*Social Media icons*/
+
+.social{
+    border-style: ridge;
+    background-color: rgb(223, 237, 248);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.holiday-type {
+    border-color: #004aad !important;
+    border-width: 2px !important;
+}
+
+.roomUpgrade:hover {
+    box-shadow: 5px 5px 10px 5px rgb(73, 73, 73);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.package:hover {
+    box-shadow: 5px 5px 10px 5px rgb(73, 73, 73);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #bc9c22 !important;
+}
+
+.footerLink {
+    color: #737373;
+}
+
+.footerLink:hover {
+    color: #bc9c22;
+}
+.rq{
+    color: red;
+    font-size: 12px;
+
+}
+
+.submit{
+    padding:5px 15px; 
+    background-color:#004aad; 
+    color: white;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.addon1{
+    padding:4px 7px; 
+    background-color:#004aad; 
+    color: white;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 50%; 
+}
+
+.addon2{
+    padding:4px 7px; 
+    background-color:#004aad; 
+    color: white;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 50%; 
+}
