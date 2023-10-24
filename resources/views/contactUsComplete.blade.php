@@ -23,7 +23,7 @@
             <p>Thank you for your message. We will be in touch as soon as possible.</p>
             <br>
 
-            <button class="w-40 btn btn-success btn-md" type="submit" onclick="document.location='HomePage.html'">Return to Home Page</button>
+            <a class="w-40 btn btn-success btn-md" type="btn btn-primary" href="{{ url('/') }}">Return to Home Page</a>
             <br><br>
         </div>
     </div>
