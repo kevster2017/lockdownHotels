@@ -82,7 +82,7 @@
                 </div><br>
             </div>
         </form>
-        <button id="send" class="w-40 btn btn-primary btn-sm" type="submit" onclick="document.location='ContactUsComplete.html'" disabled="disabled">Submit</button>
+        <a id="send" class="w-40 btn btn-primary btn-sm" type="btn btn-primary" href="{{ url('/contactUsComplete') }}" disabled="disabled">Submit</a>
         <br><br>
 
     </div>

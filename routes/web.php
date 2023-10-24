@@ -62,6 +62,10 @@ Route::get('/contactUs', function () {
     return view('contactUs');
 });
 
+Route::get('/contactUsComplete', function () {
+    return view('contactUsComplete');
+});
+
 Route::get('/siteMap', function () {
     return view('siteMap');
 });
