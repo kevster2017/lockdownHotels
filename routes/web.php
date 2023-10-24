@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,18 @@ Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
 
+/* Booking routes */
+Route::get("/bookings", [BookingController::class, 'index']);
+Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create');
+Route::post("/bookings", [BookingController::class, 'store'])->name('bookings.store');
 
+Route::get("/bookings/{id}/edit", [BookingController::class, 'edit'])->name('bookings.edit');
+Route::put("/bookings/{id}", [BookingController::class, 'update'])->name('bookings.update');
+Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy')->middleware('auth');
+
+Route::get("/bookings/show/{id}", [BookingController::class, 'show'])->name('bookings.show');
+
+Route::get("/bookings/review", [BookingController::class, 'review'])->name('bookings.review');
 
 /* Footer Routes */
 Route::get('/aboutUs', function () {

@@ -71,7 +71,7 @@
                     <p>Explore the depths of this historical city</p>
                     <br></br>
                     <p>"We had the best time - Mary & Gav P."</p>
-                    <p><a class="btn btn-primary" href="{{ route('hotels.create') }}" onclick="storeCity()">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeCity()">View details &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
 
                 <div class="col-lg-4">
@@ -81,7 +81,7 @@
                     <p>Feel the Breeze</p>
                     <br></br>
                     <p>"Tranquility at its finest - John G."</p>
-                    <p><a class="btn btn-primary" href="{{ route('hotels.create') }}" onclick="storeSeaside()">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeSeaside()">View details &raquo;</a></p>
 
                 </div><!-- /.col-lg-4 -->
 
@@ -92,7 +92,7 @@
                     <p>Come on down</p>
                     <br></br>
                     <p>"Excellent, would recommend to anyone! - Jackie D."</p>
-                    <p><a class="btn btn-primary" href="{{ route('hotels.create') }}" onclick="storeCountry()">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeCountry()">View details &raquo;</a></p>
 
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->

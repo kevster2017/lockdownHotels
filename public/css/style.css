@@ -68,7 +68,7 @@ ul.breadcrumb li a:hover {
 
 html,
 body {
-    background-image: url("Images/HotelsOpaque.PNG");
+    background-image: url("/images/HotelsOpaque.PNG");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;

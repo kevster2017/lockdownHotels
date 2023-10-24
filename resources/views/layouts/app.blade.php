@@ -18,6 +18,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
 
+    <!--Scripts and stylesheet for date picker-->
+    <!--Reference: https://code-boxx.com/simple-datepicker-pure-javascript-css/-->
+    <link href="/js/datepicker/dp-light.css" rel="stylesheet">
+    <script src="/js/datepicker/datepicker.js"></script>
+    <script src="/js/js.js"></script>
+
 
 
 </head>
@@ -27,7 +33,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <div class="logo">
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         <img src="/images/LockdownHotels.png" alt="logo-image" width="60" height="48" class="d-flex justify-content-center mx-auto">
                     </a>
                 </div>
@@ -40,16 +46,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="url('/')">Home</a>
+                            <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hotels.create') }}">Book Now</a>
+                            <a class="nav-link" href="{{ route('bookings.create') }}">Book Now</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="BookingReview.html">Review Booking</a>
+                            <a class="nav-link" href="{{ route('bookings.review') }}">Review Booking</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ListYourProperty.html">List Your Property</a>
+                            <a class="nav-link" href="{{ route('hotels.create') }}">List Your Property</a>
                         </li>
                     </ul>
 
