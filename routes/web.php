@@ -48,6 +48,10 @@ Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('bo
 Route::get("/bookings/show/{id}", [BookingController::class, 'show'])->name('bookings.show');
 
 Route::get("/bookings/review", [BookingController::class, 'review'])->name('bookings.review');
+Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bookings.payment');
+Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment');
+Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete');
+
 
 /* Footer Routes */
 Route::get('/aboutUs', function () {

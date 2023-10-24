@@ -28,6 +28,22 @@ class BookingController extends Controller
         return view('bookings.review');
     }
 
+    public function payment()
+    {
+        return view('bookings.payment');
+    }
+
+    public function addonPayment()
+    {
+        return view('bookings.addonPayment');
+    }
+
+    public function paymentComplete()
+    {
+        return view('bookings.paymentComplete');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */
