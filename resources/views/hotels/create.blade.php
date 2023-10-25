@@ -9,6 +9,19 @@
     </ul>
 </div>
 
+@if(count($errors) > 0 )
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+
+    </button>
+    <ul class="p-0 m-0" style="list-style: none;">
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="container">
     <br>
     <h1>List Your Property</h1>
@@ -16,12 +29,13 @@
 
 
 <!-- Form input -->
-<form action="#" id="form" class="was-validated" onkeyup="manage()" novalidate>
+<form action="POST" action="{{ route('hotels.store') }}" id="form" class="was-validated" onkeyup="manage()" enctype="multipart/form-data" novalidate>
+    @csrf
+    <input type="hidden" name="userId" id="userId" value="{{ 1 }}" />
 
-    <br>
 
     <!--Property Name-->
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-4 offset-md-4 mt-3">
         <label for="PropertyName" class="form-label">Property Name</label>
         <div class="localStorage">
             <input type="text" class="form-control" id="propertyName" placeholder="Property Name" minlength="3" maxlength="40" onkeyup="createProperty()" required>
@@ -29,33 +43,53 @@
         </div>
     </div>
 
-    <!--Select Postcode-->
-    <div class="col-md-4 offset-md-4">
-        <label for="SelectPostcode" class="form-label">Enter Postcode</label>
-        <input type="text" class="form-control" id="selectPostcode" placeholder="Postcode" minlength="6" maxlength="8" required>
-        <div class="invalid-feedback">Enter the postcode of your property</div><br>
+    <!--Upload Photo-->
+    <label for="image" class="form-label">Add Photo</label>
+    <div class="input-group mb-3">
+        <div class="col-md-4 offset-md-4">
+            <input type="file" class="form-control" name="image" id="image" required>
+            @error('image')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span> @enderror
+            <div class="invalid-feedback">Upload hotel photo
+            </div><br>
+        </div>
     </div>
 
     <!--Select Address-->
     <div class="col-md-4 offset-md-4">
-        <label for="SelectAddress" class="form-label">Enter Address</label>
-        <input type="text" class="form-control" id="selectAddress" placeholder="Address" minlength="6" maxlength="100" required>
+        <label for="address" class="form-label">Enter Address</label>
+        <input type="text" class="form-control" name="address" id="address" placeholder="Address" minlength="6" maxlength="100" required>
+        @error('address')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span> @enderror
         <div class="invalid-feedback">Enter the address of your property</div><br>
     </div>
 
+    <!--Select Postcode-->
+    <div class="col-md-4 offset-md-4">
+        <label for="postcode" class="form-label">Enter Postcode</label>
+        <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" minlength="6" maxlength="8" required>
+        <div class="invalid-feedback">Enter the postcode of your property</div><br>
+    </div>
+
+
+
     <!--Property Type-->
     <div class="Accomodation Type">
-        <label for="AccomodationType" class="form-label">Accomodation Type</label>
+        <label for="accomType" class="form-label">Accomodation Type</label>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="accomodationTypeOptions" id="hotel" value="hotel" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+            <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio1">Hotel</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="accomodationTypeOptions" id="apartment" value="apartment" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+            <input class="form-check-input" type="radio" name="accomType" id="apartment" value="Apartment" onclick='checkBoxCheck("accomodationTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio2">Apartment</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="accomodationTypeOptions" id="villa" value="villa" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+            <input class="form-check-input" type="radio" name="accomType" id="villa" value="Villa" onclick='checkBoxCheck("accomodationTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio3">Villa</label>
         </div>
     </div>
@@ -63,19 +97,28 @@
 
     <!--Room Type-->
     <div class="Room Type">
-        <label for="RoomType" class="form-label">Room Type</label>
+        <label for="roomType" class="form-label">Room Type</label>
         <div class="form-check form-check-inline">
-            <input class="form-check-input room-type" type="radio" name="roomTypeOptions" id="single" value="single" onclick='checkBoxCheck("roomTypeOptions")' required>
+            <input class="form-check-input room-type" type="radio" name="roomType" id="single" value="Single" onclick='checkBoxCheck("roomTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio4">Single</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input room-type" type="radio" name="roomTypeOptions" id="double" value="double" onclick='checkBoxCheck("roomTypeOptions")' required>
+            <input class="form-check-input room-type" type="radio" name="roomType" id="double" value="Double" onclick='checkBoxCheck("roomTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio5">Double</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="roomTypeOptions" id="twin" value="twin" onclick='checkBoxCheck("roomTypeOptions")' required>
+            <input class="form-check-input" type="radio" name="roomType" id="twin" value="Twin" onclick='checkBoxCheck("roomTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio6">Twin</label>
         </div>
+    </div>
+
+    <br>
+
+    <!--Price per night-->
+    <label for="numRooms" class="form-label">Number of rooms</label>
+    <div class="col-md-2 offset-md-5">
+        <input type="text" class="form-control" name="numRooms" id="rooms" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
+        <div class="invalid-feedback">Enter the number of rooms</div><br>
     </div>
 
     <br>
@@ -84,11 +127,11 @@
     <div class="currency">
         <label for="Currency" class="form-label">Currency</label>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="currencyOptions" id="sterling" value="sterling" onclick='checkBoxCheck("currencyOptions")' required>
+            <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' required>
             <label class="form-check-label" for="inlineRadio7">Sterling</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="currencyOptions" id="euro" value="euro" onclick='checkBoxCheck("currencyOptions")' required>
+            <input class="form-check-input" type="radio" name="currency" id="euro" value="Euro" onclick='checkBoxCheck("currencyOptions")' required>
             <label class="form-check-label" for="inlineRadio8">Euro</label>
         </div>
     </div>
@@ -96,25 +139,17 @@
     <!--Price per night-->
     <label for="PricePerNight" class="form-label">Price Per Night</label>
     <div class="col-md-2 offset-md-5">
-        <input type="text" class="form-control" id="single" placeholder="Room price per night" pattern="[0-9]+" minlength="2" maxlength="7" required>
+        <input type="text" class="form-control" name="price" id="price" placeholder="Room price per night" pattern="[0-9]+" minlength="2" maxlength="7" required>
         <div class="invalid-feedback">Enter the room price per night</div><br>
     </div>
 
 
-    <!--Upload Photos-->
-    <label for="addPhoto" class="form-label">Add Photos</label>
-    <div class="input-group mb-3">
-        <div class="col-md-4 offset-md-4">
-            <input type="file" class="form-control" id="addPhoto" required>
-            <div class="invalid-feedback">Upload at least one photo
-            </div><br>
-        </div>
-    </div>
+
 
     <!--Description-->
     <div class="col-md-4 offset-md-4">
-        <label for="messageInput" class="form-label">Description</label><br>
-        <textarea class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required></textarea>
+        <label for="description" class="form-label">Description</label><br>
+        <textarea class="form-control" id="description" name="description" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required></textarea>
         <div class="invalid-feedback">Enter your room description
         </div><br>
     </div>
@@ -123,31 +158,30 @@
     <label for="paymentOptions" class="form-label">Payment Options</label><br>
     <div class="form-check form-check-inline">
 
-        <input class="form-check-input" type="checkbox" name="paymentOptions" id="creditCard" value="creditCard" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="payOpts" id="creditCard" value="Credit Card" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="creditCard">Credit Card</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="paymentOptions" id="debitCard" value="debitCard" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="payOpts" id="debitCard" value="Debit Card" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="debitCard">Debit Card</label>
     </div>
     <br>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="paymentOptions" id="paypal" value="paypal" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="payOpts" id="paypal" value="Paypal" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="cash">PayPal</label>
     </div>
     <br><br>
 
     <!--Terms and Conditions-->
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="terms" id="terms" value="terms" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
+        <input class="form-check-input" type="checkbox" name="agreeTerms" id="agreeTerms" value="{{ 1 }}" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
         <label class="form-check-label" for="cash">I accept the terms and conditions</label>
     </div>
-
+    <!--List property button-->
+    <button id="listProperty" class="w-40 btn btn-success btn-md mt-3" type="submit" disabled="disabled">List Property</button>
 </form>
-<br><br>
 
-<!--List property button-->
-<button id="listProperty" class="w-40 btn btn-success btn-md" type="submit" onclick="document.location='propertyListingComplete.html'" disabled="disabled">List Property</button>
+
 <!--Script to enable List Property button after validating form-->
 <script>
     function disableSubmit() {

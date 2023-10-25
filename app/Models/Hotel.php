@@ -8,4 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Hotel extends Model
 {
     use HasFactory;
+
+    // Fillable fields
+    protected $fillable = [
+        'userId',
+        'name',
+        'image',
+        'address',
+        'postCode',
+        'accomType',
+        'roomType',
+        'currency',
+        'price',
+        'numRooms',
+        'description',
+        'payopts',
+        'agreeTerms'
+    ];
+    // Hotel belongs to a user relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

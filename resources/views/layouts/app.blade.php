@@ -98,6 +98,7 @@
         </nav>
 
         <main class="py-4 min-vh-100">
+            @include('flashMessage')
             @yield('content')
         </main>
         <!-- Footer Navigation Bar -->
