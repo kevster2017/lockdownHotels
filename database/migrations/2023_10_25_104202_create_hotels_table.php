@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('address');
+            $table->string('town');
+            $table->string('country');
             $table->string('postCode');
             $table->string('accomType');
             $table->string('roomType');

@@ -23,6 +23,8 @@ class HotelController extends Controller
             'name' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png,gif',
             'address' => 'required',
+            'town' => 'required',
+            'country' => 'required',
             'postCode' => 'required', 'min:3', 'max:4',
             'accomType' => 'required',
             'roomType' => 'required',
@@ -52,12 +54,15 @@ class HotelController extends Controller
         $hotel->name = $request->name;
         $hotel->image = $imagePath;
         $hotel->address = $request->address;
+        $hotel->town = $request->town;
+        $hotel->country = $request->country;
         $hotel->postCode = $request->postCode;
         $hotel->accomType = $request->accomType;
         $hotel->roomType = $request->roomType;
         $hotel->currency = $request->currency;
         $hotel->price = $request->price;
         $hotel->numRooms = $request->numRooms;
+        $hotel->hotelOptions = $request->hotelOptions;
         $hotel->description = $request->description;
         $hotel->payOpts = $request->payOpts;
         $hotel->agreeTerms = $request->agreeTerms;

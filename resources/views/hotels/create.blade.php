@@ -68,6 +68,26 @@
         <div class="invalid-feedback">Enter the address of your property</div><br>
     </div>
 
+    <div class="col-md-4 offset-md-4">
+        <label for="town" class="form-label">Enter Town</label>
+        <input type="text" class="form-control" name="town" id="town" placeholder="Town" minlength="3" maxlength="100" required>
+        @error('town')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span> @enderror
+        <div class="invalid-feedback">Enter Town</div><br>
+    </div>
+
+    <div class="col-md-4 offset-md-4">
+        <label for="country" class="form-label">Enter Country</label>
+        <input type="text" class="form-control" name="country" id="country" placeholder="Country" minlength="6" maxlength="100" required>
+        @error('country')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span> @enderror
+        <div class="invalid-feedback">Enter Country</div><br>
+    </div>
+
     <!--Select Postcode-->
     <div class="col-md-4 offset-md-4">
         <label for="postcode" class="form-label">Enter Postcode</label>
@@ -147,16 +167,16 @@
     <label for="hotelOptions" class="form-label">Hotel Options</label><br>
     <div class="form-check form-check-inline">
 
-        <input class="form-check-input" type="checkbox" name="bAndB" id="bAndB" value="Bed and Breakfast" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="hotelOptions" id="bAndB" value="Bed and Breakfast" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="bAndB">Breakfast</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="payOpts" id="threeCourse" value="Three Course Dinner" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="hotelOptions" id="threeCourse" value="Three Course Dinner" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="threeCourse">Three Course Meal</label>
     </div>
     <br>
     <div class="form-check form-check-inline mb-3">
-        <input class="form-check-input" type="checkbox" name="spa" id="spa" value="Spa" onclick='checkBoxCheck("paymentOptions")' required>
+        <input class="form-check-input" type="checkbox" name="hotelOptions" id="spa" value="Spa" onclick='checkBoxCheck("paymentOptions")' required>
         <label class="form-check-label" for="spa">Spa Break</label>
     </div>
 

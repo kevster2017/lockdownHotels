@@ -15,15 +15,18 @@ class Hotel extends Model
         'name',
         'image',
         'address',
+        'town',
+        'country',
         'postCode',
         'accomType',
         'roomType',
         'holidayType',
+        'hotelOptions',
         'currency',
         'price',
         'numRooms',
         'description',
-        'payopts',
+        'payOpts',
         'agreeTerms'
     ];
     // Hotel belongs to a user relationship
