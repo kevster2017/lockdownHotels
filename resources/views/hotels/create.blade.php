@@ -117,14 +117,53 @@
     <!--Price per night-->
     <label for="numRooms" class="form-label">Number of rooms</label>
     <div class="col-md-2 offset-md-5">
-        <input type="text" class="form-control" name="numRooms" id="rooms" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
+        <input type="text" class="form-control" name="numRooms" id="numRooms" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
         <div class="invalid-feedback">Enter the number of rooms</div><br>
     </div>
 
     <br>
 
+    <!--Price per night-->
+    <label for="holidayType" class="form-label">Select Holiday Type</label>
+    <div class="col-md-2 offset-md-5">
+        <div class="col">
+            <select class="form-select @error('holidayType') is-invalid @enderror" name="holidayType" aria-label="Default select example" required>
+
+                <option selected="City">City Break</option>
+                <option value="Seaside">Seaside Resort</option>
+                <option value="Country">Country Escape</option>
+
+            </select> @error('holidayType')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span> @enderror
+        </div>
+    </div>
+
+    <br>
+
+
+    <!--Payment Options-->
+    <label for="hotelOptions" class="form-label">Hotel Options</label><br>
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="checkbox" name="bAndB" id="bAndB" value="Bed and Breakfast" onclick='checkBoxCheck("paymentOptions")' required>
+        <label class="form-check-label" for="bAndB">Breakfast</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="payOpts" id="threeCourse" value="Three Course Dinner" onclick='checkBoxCheck("paymentOptions")' required>
+        <label class="form-check-label" for="threeCourse">Three Course Meal</label>
+    </div>
+    <br>
+    <div class="form-check form-check-inline mb-3">
+        <input class="form-check-input" type="checkbox" name="spa" id="spa" value="Spa" onclick='checkBoxCheck("paymentOptions")' required>
+        <label class="form-check-label" for="spa">Spa Break</label>
+    </div>
+
+
+
     <!--Currency Type-->
-    <div class="currency">
+    <div class="currency mb-3">
         <label for="Currency" class="form-label">Currency</label>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' required>

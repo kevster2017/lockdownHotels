@@ -26,6 +26,7 @@ class HotelController extends Controller
             'postCode' => 'required', 'min:3', 'max:4',
             'accomType' => 'required',
             'roomType' => 'required',
+            'holidayType' => 'required',
             'currency' => 'required',
             'price' => 'required',
             'numRooms' => 'required',

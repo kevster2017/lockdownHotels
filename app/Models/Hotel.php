@@ -18,6 +18,7 @@ class Hotel extends Model
         'postCode',
         'accomType',
         'roomType',
+        'holidayType',
         'currency',
         'price',
         'numRooms',

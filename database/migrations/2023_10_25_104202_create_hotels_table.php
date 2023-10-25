@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('postCode');
             $table->string('accomType');
             $table->string('roomType');
+            $table->string('holidayType');
             $table->string('currency');
             $table->integer('price');
             $table->integer('numRooms');
