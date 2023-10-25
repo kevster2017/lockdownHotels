@@ -14,6 +14,17 @@ return new class extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->string('address');
+            $table->string('postCode');
+            $table->string('accomType');
+            $table->string('roomType');
+            $table->string('currency');
+            $table->integer('price');
+            $table->integer('numRooms');
+            $table->string('description');
+            $table->string('payOpts');
+            $table->boolean('agreeTerms')->default(0);
         });
     }
 
