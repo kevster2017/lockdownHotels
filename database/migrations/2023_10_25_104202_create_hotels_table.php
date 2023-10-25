@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string('image');
             $table->string('address');
             $table->string('postCode');
             $table->string('accomType');
