@@ -28,6 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* Hotel routes */
 Route::get("/hotels", [HotelController::class, 'index']);
 Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create');
+
 Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store');
 
 Route::get("/hotels/{id}/edit", [HotelController::class, 'edit'])->name('hotels.edit');
@@ -36,10 +37,15 @@ Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
 
+
+
+//Route::resource('/hotels', HotelController::class);
+
+
 /* Booking routes */
 Route::get("/bookings", [BookingController::class, 'index']);
 Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create');
-Route::post("/bookings", [BookingController::class, 'store'])->name('bookings.store');
+Route::post("/bookings/store", [BookingController::class, 'store'])->name('bookings.store');
 
 Route::get("/bookings/{id}/edit", [BookingController::class, 'edit'])->name('bookings.edit');
 Route::put("/bookings/{id}", [BookingController::class, 'update'])->name('bookings.update');

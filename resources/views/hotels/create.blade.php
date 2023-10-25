@@ -29,7 +29,7 @@
 
 
 <!-- Form input -->
-<form action="POST" action="{{ route('hotels.store') }}" id="form" class="was-validated" onkeyup="manage()" enctype="multipart/form-data" novalidate>
+<form method="POST" action="{{ route('hotels.store') }}" id="form" class="was-validated" onkeyup="manage()" enctype="multipart/form-data" novalidate>
     @csrf
     <input type="hidden" name="userId" id="userId" value="{{ 1 }}" />
 
@@ -38,7 +38,7 @@
     <div class="col-md-4 offset-md-4 mt-3">
         <label for="PropertyName" class="form-label">Property Name</label>
         <div class="localStorage">
-            <input type="text" class="form-control" id="propertyName" placeholder="Property Name" minlength="3" maxlength="40" onkeyup="createProperty()" required>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Property Name" minlength="3" maxlength="40" onkeyup="createProperty()" required>
             <div class="invalid-feedback">Enter the name of your property</div><br>
         </div>
     </div>
@@ -71,7 +71,7 @@
     <!--Select Postcode-->
     <div class="col-md-4 offset-md-4">
         <label for="postcode" class="form-label">Enter Postcode</label>
-        <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" minlength="6" maxlength="8" required>
+        <input type="text" class="form-control" name="postCode" id="postCode" placeholder="Postcode" minlength="6" maxlength="8" required>
         <div class="invalid-feedback">Enter the postcode of your property</div><br>
     </div>
 
@@ -177,8 +177,13 @@
         <input class="form-check-input" type="checkbox" name="agreeTerms" id="agreeTerms" value="{{ 1 }}" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
         <label class="form-check-label" for="cash">I accept the terms and conditions</label>
     </div>
+
+    <br>
     <!--List property button-->
-    <button id="listProperty" class="w-40 btn btn-success btn-md mt-3" type="submit" disabled="disabled">List Property</button>
+    <div class="form-check form-check-inline">
+        <button id="listProperty" class="w-40 btn btn-success btn-md mt-3" type="submit" disabled="disabled">List Property</button>
+    </div>
+
 </form>
 
 

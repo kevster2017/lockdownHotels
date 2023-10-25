@@ -16,7 +16,7 @@ class HotelController extends Controller
 
     public function store(Request $request, Hotel $hotel)
     {
-        // dd($request);
+        //dd($request);
         $validatedData = $request->validate([
 
             'userId' => 'required',
@@ -47,7 +47,7 @@ class HotelController extends Controller
             $image->save();
         }
 
-        $hotel->userId = auth()->user()->id;
+        $hotel->userId = $request->userId;
         $hotel->name = $request->name;
         $hotel->image = $imagePath;
         $hotel->address = $request->address;
@@ -61,8 +61,9 @@ class HotelController extends Controller
         $hotel->payOpts = $request->payOpts;
         $hotel->agreeTerms = $request->agreeTerms;
 
+        $hotel->save();
 
 
-        return redirect()->url('/')->with('success', 'Hotel Successfully Uploaded!!');
+        return redirect()->back()->with('success', 'Hotel Successfully Uploaded!!');
     }
 }
