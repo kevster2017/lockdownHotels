@@ -950,16 +950,18 @@
     }
 </script>
 
-</head>
 
-<!--Importing the header component-->
-<header-component></header-component>
+
 
 <!--Main body of page-->
 
-<body style="background-image: none">
 
-    <!--Modal for displaying the carendar picker for the check in date-->
+
+<!--Modal for displaying the calendar picker for the check in date-->
+<form method="POST" action="{{ route('bookings.store') }}">
+    @csrf
+
+
     <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -1376,11 +1378,13 @@
 
             </div>
 
-            <button class="btn btn-primary holiday-type" onclick="bookHoliday()" id="countryEscape" style="margin-top: 0; border-radius: 10px; width: 230px; height: 70px; background-color: #004aad; font-weight: bold; font-size: 200%;">Book Now</button>
+            <button type="submit" class="btn btn-primary holiday-type" onclick="bookHoliday()" id="countryEscape" style="margin-top: 0; border-radius: 10px; width: 230px; height: 70px; background-color: #004aad; font-weight: bold; font-size: 200%;">Book Now</button>
 
-        </div>
+</form>
 
-    </div>
+</div>
+
+</div>
 
 
-    @endsection
+@endsection

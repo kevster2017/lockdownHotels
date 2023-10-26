@@ -163,7 +163,7 @@
     <br>
 
 
-    <!--Payment Options-->
+    <!--Hotel Options-->
     <label for="hotelOptions" class="form-label">Hotel Options</label><br>
     <div class="form-check form-check-inline">
 
