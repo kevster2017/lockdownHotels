@@ -102,7 +102,6 @@ class HotelController extends Controller
         $hotel->price = $request->price;
         $hotel->numRooms = $request->numRooms;
         $hotel->holidayType = $request->holidayType;
-
         $hotel->description = $request->description;
         $hotel->agreeTerms = $request->agreeTerms;
 
