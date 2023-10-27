@@ -61,9 +61,9 @@
 
 
         <div class="row">
-            <!-- Three columns of text below the carousel -->
-            <div class="row" style="padding-top: 25px;">
-                <div class="col-lg-4">
+            <!-- Options below carousel -->
+            <div class="row pt-3">
+                <div class="col-sm-6">
 
                     <img src="Images/Titanic_Circle.png" alt="Titanic" style="width:250px; height:250px; padding-top:25px">
                     <h2>City Break</h2>
@@ -71,31 +71,47 @@
                     <p>Explore the depths of this historical city</p>
                     <br></br>
                     <p>"We had the best time - Mary & Gav P."</p>
-                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeCity()">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{{ route('hotels.city') }}" onclick="storeCity()">View details &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
 
-                <div class="col-lg-4">
+                <div class="col-sm-6">
                     <img src="Images/Causeway_Circle.png" alt="Causeway" style="width:250px; height:250px; padding-top:25px">
                     <h2>Seaside Resort</h2>
                     <br></br>
                     <p>Feel the Breeze</p>
                     <br></br>
                     <p>"Tranquility at its finest - John G."</p>
-                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeSeaside()">View details &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{{ route('hotels.seaside') }}" onclick="storeSeaside()">View details &raquo;</a></p>
 
                 </div><!-- /.col-lg-4 -->
 
-                <div class="col-lg-4">
-                    <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
-                    <h2>Country Escape</h2>
-                    <br></br>
-                    <p>Come on down</p>
-                    <br></br>
-                    <p>"Excellent, would recommend to anyone! - Jackie D."</p>
-                    <p><a class="btn btn-primary" href="{{ route('bookings.create') }}" onclick="storeCountry()">View details &raquo;</a></p>
 
-                </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-sm-6">
+                <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
+                <h2>Country Escape</h2>
+                <br></br>
+                <p>Come on down</p>
+                <br></br>
+                <p>"Excellent, would recommend to anyone! - Jackie D."</p>
+                <p><a class="btn btn-primary" href="{{ route('hotels.country') }}" onclick="storeCountry()">View details &raquo;</a></p>
+
+            </div><!-- /.col-lg-4 -->
+
+            <div class="col-sm-6">
+                <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
+                <h2>All Hotels</h2>
+                <br></br>
+                <p>Come on down</p>
+                <br></br>
+                <p>"Excellent, would recommend to anyone! - Jackie D."</p>
+                <p><a class="btn btn-primary" href="{{ route('hotels.index') }}" onclick="storeCountry()">View details &raquo;</a></p>
+
+            </div><!-- /.col-lg-4 -->
 
         </div>
 

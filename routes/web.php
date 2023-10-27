@@ -25,8 +25,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+
 /* Hotel routes */
-Route::get("/hotels", [HotelController::class, 'index']);
+Route::get("/hotels", [HotelController::class, 'index'])->name('index');
 Route::get("/hotels", [HotelController::class, 'type'])->name('hotels.type');
 Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create');
 
@@ -38,7 +41,9 @@ Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
 
-
+Route::get('/hotels/city', [HotelController::class, 'cityIndex'])->name('hotels.city');
+Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('hotels.seaside');
+Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('hotels.country');
 
 //Route::resource('/hotels', HotelController::class);
 

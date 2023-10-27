@@ -9,6 +9,67 @@ use Intervention\Image\Facades\Image;
 
 class HotelController extends Controller
 {
+
+    public function index()
+    {
+
+        $hotels = Hotel::where('id', '>', 0)
+            ->orderBy('created_at', 'DESC')
+            ->all();
+
+        return view('hotels.index', [
+            'hotels' => $hotels
+        ]);
+    }
+
+    public function cityIndex()
+    {
+
+        $hotels = Hotel::where('holidayType', 'City')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('hotels.index', [
+            'hotels' => $hotels
+        ]);
+    }
+
+    public function seasideIndex()
+    {
+
+        $hotels = Hotel::where('holidayType', 'Seaside')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+
+
+        return view('hotels.index', [
+            'hotels' => $hotels
+
+        ]);
+    }
+
+    public function countryIndex()
+    {
+
+        $hotels = Hotel::where('holidayType', 'Country')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('hotels.index', [
+            'hotels' => $hotels
+        ]);
+    }
+
+    public function show($id)
+    {
+        $hotel = Hotel::findOrfail($id);
+
+        return view('hotels.show', [
+            'hotel' => $hotel
+        ]);
+    }
+
     public function create()
     {
         return view('hotels.create');
