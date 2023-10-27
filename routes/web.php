@@ -27,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* Hotel routes */
 Route::get("/hotels", [HotelController::class, 'index']);
+Route::get("/hotels", [HotelController::class, 'type'])->name('hotels.type');
 Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create');
 
 Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store');

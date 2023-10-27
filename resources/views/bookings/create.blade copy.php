@@ -933,7 +933,7 @@
         localStorage.setItem("hotelName", document.getElementById('hotelName').innerHTML);
         localStorage.setItem("totalPrice", totalPrice);
 
-        window.location.href = "{{ route('bookings.store') }}";
+        window.location.href = "PaymentPage.html";
     }
 
     // Reference: https://dev.to/ara225/how-to-use-bootstrap-modals-without-jquery-3475
@@ -957,45 +957,6 @@
 
 
 
-
-<!--Hotel types section-->
-<div class="container-fluid">
-    <div class="container">
-
-        <div class="row">
-            <h2 style="color:#737373; text-align: left; padding-top: 10px; padding-bottom: 5px;">Select your holiday type...</h2>
-        </div>
-
-        <div class="row" style="text-align: right;">
-            <div class="card-group" style="align-self: center;">
-
-                <div class="card" style="border:none; margin-right: 30px;">
-                    <img src="/images/booking-page/cityBreak.png" width=100% height=100%>
-                    <div class="card-body" style="align-self: center;">
-                        <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="cityBreak" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">City Break</button>
-                    </div>
-                </div>
-
-                <div class="card" style="border:none; margin-right: 30px;">
-                    <img src="/images/booking-page/seasideResort.png" width=100% height=100%>
-                    <div class="card-body" style="align-self: center;">
-                        <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="seasideResort" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">Seaside Resort</button>
-                    </div>
-                </div>
-
-                <div class="card" style="border:none;">
-                    <img src="/images/booking-page/countryEscape.png" width=100% height=100%>
-                    <div class="card-body" style="align-self: center;">
-                        <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="countryEscape" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">Country Escape</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <!--Modal for displaying the calendar picker for the check in date-->
 <form method="POST" action="{{ route('bookings.store') }}">
     @csrf
@@ -1015,45 +976,82 @@
     </div>
     <div class="modal-backdrop fade show" id="checkInDateModalBackdrop" style="display: none"></div>
 
+    <!--Hotel types section-->
+    <div class="container-fluid">
+        <div class="container">
+
+            <div class="row">
+                <h2 style="color:#737373; text-align: left; padding-top: 10px; padding-bottom: 5px;">Select your holiday type...</h2>
+            </div>
+
+            <div class="row" style="text-align: right;">
+                <div class="card-group" style="align-self: center;">
+
+                    <div class="card" style="border:none; margin-right: 30px;">
+                        <img src="/images/booking-page/cityBreak.png" width=100% height=100%>
+                        <div class="card-body" style="align-self: center;">
+                            <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="cityBreak" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">City Break</button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="border:none; margin-right: 30px;">
+                        <img src="/images/booking-page/seasideResort.png" width=100% height=100%>
+                        <div class="card-body" style="align-self: center;">
+                            <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="seasideResort" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">Seaside Resort</button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="border:none;">
+                        <img src="/images/booking-page/countryEscape.png" width=100% height=100%>
+                        <div class="card-body" style="align-self: center;">
+                            <button class="btn btn-primary holiday-type" onclick="selectHotelType(id)" id="countryEscape" style="margin-top: 0; border-radius: 10px; width: 190px; height: 45px; background-color: #004aad; font-weight: bold; font-size: 110%;">Country Escape</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!--Location selection section-->
     <!--Includes the check in date and no. of nights fields-->
     <div class="container-fluid" id="locationSelectionSection" style="padding-top: 10px; background-image: linear-gradient(to right, #B3B3B3, #737373, #B3B3B3); align-self: center; display: none;  padding-bottom: 15px;">
         <div class="container">
+            <form class="row g-3" style="color: white;">
 
+                <div class="col" style="text-align: left;">
 
-            <div class="col" style="text-align: left;">
+                    <label class="form-label" for="locationDropdown" style="font-weight: bold">Location:</label>
+                    <select class="form-select" id="locationDropdown" onchange="selectLocation(value)" aria-label="Select location" style="margin-top: 0px; vertical-align: top;">
 
-                <label class="form-label" for="locationDropdown" style="font-weight: bold">Location:</label>
-                <select class="form-select" id="locationDropdown" onchange="selectLocation(value)" aria-label="Select location" style="margin-top: 0px; vertical-align: top;">
+                    </select>
 
-                </select>
+                    <div id="noLocationSelectedErrorMessage" style="color: rgb(161, 15, 15); padding-top: 10px; display: none;">
+                        * Please select a location.
+                    </div>
 
-                <div id="noLocationSelectedErrorMessage" style="color: rgb(161, 15, 15); padding-top: 10px; display: none;">
-                    * Please select a location.
                 </div>
 
-            </div>
+                <div class="col" style="text-align: left;">
 
-            <div class="col" style="text-align: left;">
+                    <label style="font-weight: bold; padding-bottom: 8px;">Check In:</label>
+                    <input type="text" class="form-control" id="checkInDate" placeholder="dd/mm/yyyy" style=" background-color: white !important;" onclick="openModal()" readonly>
 
-                <label style="font-weight: bold; padding-bottom: 8px;">Check In:</label>
-                <input type="text" class="form-control" id="checkInDate" placeholder="dd/mm/yyyy" style=" background-color: white !important;" onclick="openModal()" readonly>
+                    <div id="noCheckInDateEnteredErrorMessage" style="color: rgb(161, 15, 15); padding-top: 10px; display: none;">
+                        * Please select a check in date.
+                    </div>
 
-                <div id="noCheckInDateEnteredErrorMessage" style="color: rgb(161, 15, 15); padding-top: 10px; display: none;">
-                    * Please select a check in date.
                 </div>
 
-            </div>
+                <div class="col" style="text-align: left;">
 
-            <div class="col" style="text-align: left;">
+                    <label class="align-left" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
+                    <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1">
 
-                <label class="align-left" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
-                <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1">
+                </div>
 
-            </div>
-
-
+            </form>
         </div>
     </div>
 
