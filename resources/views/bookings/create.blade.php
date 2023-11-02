@@ -15,6 +15,22 @@
     });
 </script>
 
+
+<script>
+    function fetchData() {
+        // AJAX call
+        axios.get('/fetch-data')
+            .then(function(response) {
+                console.log(response.hotels);
+                // Handle the response data here
+            })
+            .catch(function(error) {
+                console.error(error);
+                // Handle any errors
+            });
+    }
+</script>
+
 <script>
     // Reference: https://flaviocopes.com/how-to-format-number-as-currency-javascript/
     const formatter2DecimalPlaces = new Intl.NumberFormat('en-UK', {
@@ -304,9 +320,12 @@
             document.getElementById('seasideResort').style.color = 'white';
             document.getElementById('countryEscape').style.color = 'white';
 
+
             for (i = 0; i < 3; i++) {
-                createLocationOption(document.getElementById('locationDropdown'), hotels[i].location, hotels[i].location);
+                createLocationOption(document.getElementById('locationDropdown'), fetchData());
             }
+
+
         } else if (hotelType == "seasideResort") {
             document.getElementById('cityBreak').style.backgroundColor = '#004aad';
             document.getElementById('seasideResort').style.backgroundColor = 'white';

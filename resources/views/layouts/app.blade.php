@@ -24,6 +24,10 @@
     <script src="/js/datepicker/datepicker.js"></script>
     <script src="/js/js.js"></script>
 
+    <!-- Include Axios for AJAX calls -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 
 
 </head>

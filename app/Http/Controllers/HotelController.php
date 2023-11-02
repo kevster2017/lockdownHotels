@@ -22,10 +22,23 @@ class HotelController extends Controller
         ]);
     }
 
+    public function fetchData(Request $request)
+    {
+        // Your PHP logic here - interact with the database, process data, etc.
+        // For example, fetching some data from a database
+
+        $hotels = Hotel::where('holidayType', 'City Break')
+            ->orderBy('town', 'ASC')
+            ->get();
+
+        dd($hotels);
+        return response()->json($hotels); // Return the data as a JSON response
+    }
+
     public function cityIndex()
     {
 
-        $hotels = Hotel::where('holidayType', 'City')
+        $hotels = Hotel::where('holidayType', 'City Break')
             ->orderBy('created_at', 'DESC')
             ->get();
 

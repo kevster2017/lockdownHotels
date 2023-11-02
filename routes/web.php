@@ -41,6 +41,10 @@ Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
 
+
+
+Route::get('/fetch-data', [HotelController::class, 'fetchData']);
+
 Route::get('/hotels/city', [HotelController::class, 'cityIndex'])->name('hotels.city');
 Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('hotels.seaside');
 Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('hotels.country');
