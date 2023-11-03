@@ -151,6 +151,11 @@ div {
     text-align: center;
 }
 
+#divLeft {
+    text-align:left;
+    padding-left: 5%;
+}
+
 footer {
     position: bottom;
     width: 100%;
