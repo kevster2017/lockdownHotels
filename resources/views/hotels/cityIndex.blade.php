@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">All hotels</li>
+            <li class="breadcrumb-item active" aria-current="page">City Break hotels</li>
         </ol>
     </nav>
 </div>
@@ -14,7 +14,7 @@
 <div class="container py-3">
 
 
-    <h1 class="text-center py-3">All hotels</h1>
+    <h1 class="text-center py-3">City Break hotels</h1>
 
 
     @foreach($hotels as $hotel)

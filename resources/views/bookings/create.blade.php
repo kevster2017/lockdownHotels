@@ -338,9 +338,7 @@
             document.getElementById('countryEscape').style.color = 'white';
 
 
-            for (i = 0; i < 3; i++) {
-                createLocationOption(document.getElementById('locationDropdown'), fetchData());
-            }
+            fetchData();
 
 
         } else if (hotelType == "seasideResort") {
@@ -1060,9 +1058,9 @@
 
             <div class="col" id="selectContainer" style="text-align: left;">
 
-                <label class="form-label" for="locationDropdown" style="font-weight: bold">Location:</label>
+                <label class="form-label" for="selectLocation" style="font-weight: bold">Location:</label>
 
-                <select class="form-select" id="locationDropdown" onchange="selectLocation(value)" aria-label="Select location" style="margin-top: 0px; vertical-align: top;">
+                <select class="form-select" id="selectLoction" onchange="selectLocation(value)" aria-label="Select location" style="margin-top: 0px; vertical-align: top;">
 
 
 

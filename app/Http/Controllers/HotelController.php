@@ -31,8 +31,8 @@ class HotelController extends Controller
             ->orderBy('town', 'ASC')
             ->get();
 
-        // dd($data);
-        return response()->json(['data' => $hotels]); // Return the data as a JSON response
+        //  dd($hotels);
+        return response()->json(['hotels' => $hotels]); // Return the data as a JSON response
     }
 
     public function cityIndex()
@@ -42,7 +42,8 @@ class HotelController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        return view('hotels.index', [
+        // dd($hotels);
+        return view('hotels.cityIndex', [
             'hotels' => $hotels
         ]);
     }
@@ -50,13 +51,13 @@ class HotelController extends Controller
     public function seasideIndex()
     {
 
-        $hotels = Hotel::where('holidayType', 'Seaside')
+        $hotels = Hotel::where('holidayType', 'Seaside Resort')
             ->orderBy('created_at', 'DESC')
             ->get();
 
 
 
-        return view('hotels.index', [
+        return view('hotels.seasideIndex', [
             'hotels' => $hotels
 
         ]);
@@ -65,11 +66,11 @@ class HotelController extends Controller
     public function countryIndex()
     {
 
-        $hotels = Hotel::where('holidayType', 'Country')
+        $hotels = Hotel::where('holidayType', 'Country Escape')
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        return view('hotels.index', [
+        return view('hotels.countryIndex', [
             'hotels' => $hotels
         ]);
     }
