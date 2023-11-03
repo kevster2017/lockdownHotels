@@ -31,8 +31,8 @@ class HotelController extends Controller
             ->orderBy('town', 'ASC')
             ->get();
 
-        dd($hotels);
-        return response()->json($hotels); // Return the data as a JSON response
+        // dd($data);
+        return response()->json(['data' => $hotels]); // Return the data as a JSON response
     }
 
     public function cityIndex()

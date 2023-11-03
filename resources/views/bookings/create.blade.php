@@ -21,8 +21,25 @@
         // AJAX call
         axios.get('/fetch-data')
             .then(function(response) {
-                console.log(response.hotels);
+                // console.log(response.hotels);
                 // Handle the response data here
+                const hotels = response.data.hotels;
+                const selectContainer = document.getElementById('selectContainer');
+
+                hotels.forEach(function(hotel) {
+                    const select = document.createElement('select');
+                    select.ClassName = 'form-select';
+                    select.id = 'locationDropdown';
+                    select.setAttribute('onChange', 'selectLocation(value)');
+                    select.setAttribute('aria-label', 'Select location');
+                    select.setAttribute('style', 'margin-top: 0px; vertical-align: top;');
+                    selectContainer.appendChild(select);
+
+                    const option = document.createElement('option');
+                    option.value = hotel.id;
+                    option.text = hotel.name;
+                    select.appendChild('option');
+                })
             })
             .catch(function(error) {
                 console.error(error);
@@ -1041,10 +1058,13 @@
         <div class="container">
 
 
-            <div class="col" style="text-align: left;">
+            <div class="col" id="selectContainer" style="text-align: left;">
 
                 <label class="form-label" for="locationDropdown" style="font-weight: bold">Location:</label>
+
                 <select class="form-select" id="locationDropdown" onchange="selectLocation(value)" aria-label="Select location" style="margin-top: 0px; vertical-align: top;">
+
+
 
                 </select>
 
