@@ -147,6 +147,10 @@ a.btn-second:hover {
     margin: 300px 0;
 }
 
+.form-check-input {
+align: left;
+}
+
 div {
     text-align: center;
 }
