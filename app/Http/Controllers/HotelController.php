@@ -15,7 +15,7 @@ class HotelController extends Controller
 
         $hotels = Hotel::where('id', '>', 0)
             ->orderBy('created_at', 'DESC')
-            ->all();
+            ->get();
 
         return view('hotels.index', [
             'hotels' => $hotels

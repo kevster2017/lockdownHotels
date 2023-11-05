@@ -29,8 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 /* Hotel routes */
-Route::get("/hotels", [HotelController::class, 'index'])->name('index');
-Route::get("/hotels", [HotelController::class, 'type'])->name('hotels.type');
+Route::get("/hotels", [HotelController::class, 'index'])->name('hotels.index');
+
 Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create');
 
 Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store');
@@ -40,8 +40,6 @@ Route::put("/hotels/{id}", [HotelController::class, 'update'])->name('hotels.upd
 Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels.destroy')->middleware('auth');
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
-
-
 
 Route::get('/fetch-data', [HotelController::class, 'fetchData']);
 

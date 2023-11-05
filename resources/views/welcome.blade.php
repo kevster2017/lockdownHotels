@@ -109,7 +109,7 @@
                 <p>Come on down</p>
                 <br></br>
                 <p>"Excellent, would recommend to anyone! - Jackie D."</p>
-                <p><a class="btn btn-primary" href="{{ route('hotels.country') }}" onclick="storeCountry()">View details &raquo;</a></p>
+                <p><a class="btn btn-primary" href="{{ route('hotels.index') }}" onclick="storeCountry()">View details &raquo;</a></p>
 
             </div><!-- /.col-lg-4 -->
 
