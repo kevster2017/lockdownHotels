@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -11,7 +12,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::where('id', '>', 0)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('contact.index', [
+            'contacts' => $contacts
+        ]);
     }
 
     /**
@@ -19,7 +26,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
