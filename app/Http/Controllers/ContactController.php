@@ -32,9 +32,23 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Contact $contact)
     {
-        //
+        $validatedData = $request->validate([
+            'userID' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required'
+        ]);
+
+        $contact->userID = $request->userID;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+
+        $contact->save();
+
+        return redirect()->back()->with('Success', 'Message successfully sent');
     }
 
     /**
