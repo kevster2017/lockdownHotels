@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,12 +71,18 @@ Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
 
+/* Contact Routes */
+
 Route::get('/contactUs', function () {
     return view('contactUs');
 });
 
-Route::get('/contactUsComplete', function () {
-    return view('contactUsComplete');
+Route::get("/contact", [ContactController::class, 'index'])->middleware('auth');
+Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
+Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
+
+Route::get('/contactComplete', function () {
+    return view('contactComplete');
 });
 
 Route::get('/siteMap', function () {
