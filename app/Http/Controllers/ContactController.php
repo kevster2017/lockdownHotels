@@ -48,7 +48,7 @@ class ContactController extends Controller
 
         $contact->save();
 
-        return view('contactComplete')->with('Success', 'Message successfully sent');
+        return redirect()->back()->with('success', 'Message successfully sent');
     }
 
     /**

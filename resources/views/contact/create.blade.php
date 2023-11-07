@@ -59,7 +59,7 @@
         <form action="{{ route('contact.store') }}" method="POST" id="form" class="was-validated" onkeyup="manage()" novalidate>
             @csrf
             <br>
-            <input type="hidden" name="userID" value="auth()->user()->id">
+            <input type="hidden" name="userID" value="{{ Auth::user()->id }}">
             <p>Alternatively, you can send us a message and we will endeavour to reply as soon as possible
             </p>
             <div class="col-md-6 offset-md-3">

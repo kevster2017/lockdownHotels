@@ -81,9 +81,10 @@ Route::get("/contact", [ContactController::class, 'index'])->middleware('auth');
 Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
 Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
 
-Route::get('/contactComplete', function () {
+Route::get('/contact/contactComplete', function () {
     return view('contactComplete');
-});
+})->name('contactComplete');
+
 
 Route::get('/siteMap', function () {
     return view('siteMap');
