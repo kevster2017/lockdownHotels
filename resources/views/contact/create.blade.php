@@ -56,33 +56,35 @@
 <!--Contact Us form-->
 <div class="container">
     <div class="message">
-        <form action="#" id="form" class="was-validated" onkeyup="manage()" novalidate>
+        <form action="{{ route('contact.store') }}" method="POST" id="form" class="was-validated" onkeyup="manage()" novalidate>
+            @csrf
             <br>
-
+            <input type="hidden" name="userID" value="auth()->user()->id">
             <p>Alternatively, you can send us a message and we will endeavour to reply as soon as possible
             </p>
             <div class="col-md-6 offset-md-3">
                 <label for="nameInput" class="form-label">Name</label><br>
-                <input type="text" class="form-control" id="nameInput" placeholder="Enter Name" minlength="3" maxlength="40" required>
+                <input type="text" class="form-control" id="nameInput" placeholder="Enter Name" minlength="3" maxlength="40" name="name" required>
                 <div class="invalid-feedback">Enter your name
                 </div><br>
             </div>
 
             <div class="col-md-6 offset-md-3">
                 <label for="emailInput" class="form-label">Email</label><br>
-                <input type="email" class="form-control" id="emailInput" placeholder="Enter Email Address" minlength="10" maxlength="50" required>
+                <input type="email" class="form-control" id="emailInput" placeholder="Enter Email Address" minlength="10" maxlength="50" name="email" required>
                 <div class="invalid-feedback">Enter your email address
                 </div><br>
             </div>
 
             <div class="col-md-6 offset-md-3">
-                <label for="messageInput" class="form-label">Message</label><br>
-                <textarea id="message" class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="5" maxlength="500" required></textarea>
+                <label for="message" class="form-label">Message</label><br>
+                <textarea id="message" class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="5" maxlength="500" name="message" required></textarea>
                 <div class="invalid-feedback">Enter your message
                 </div><br>
             </div>
+            <button id="send" class="btn btn-primary" type="submit" disabled="disabled">Submit</button>
         </form>
-        <a id="send" class="w-40 btn btn-primary btn-sm" type="btn btn-primary" href="{{ url('/contactUsComplete') }}" disabled="disabled">Submit</a>
+
         <br><br>
 
     </div>
@@ -90,13 +92,13 @@
     <!--Social Media Icons-->
     <div class="container">
         <div class="social">
-            <h2><label for="socialMedia" class="form-label">Follow Us</label></h2>
+            <h2>Follow Us</h2>
 
-            <button data-toggle="tooltip" title="Click here to follow us on Instagram"><a href="https://www.instagram.com/" target="_blank"><img src="Images/Instagram.png" alt="Instagram button"></a></button>
-            <button data-toggle="tooltip" title="Click here to follow us on YouTube"><a href="https://www.youtube.com/" target="_blank"><img src="Images/YouTube.png" alt="YouTube button"></a></button>
-            <button data-toggle="tooltip" title="Click here to follow us on Facebook"><a href="https://www.facebook.com/" target="_blank"><img src="Images/Facebook.png" alt="Facebook button"></a></button>
-            <button data-toggle="tooltip" title="Click here to follow us on Twitter"><a href="https://twitter.com/?lang=en-gb" target="_blank"><img src="Images/Twitter.png" alt="Twitter button"></a></button>
-            <button data-toggle="tooltip" title="Click here to follow us on LinkedIn"><a href="https://uk.linkedin.com/" target="_blank"><img src="Images/LinkedIn.png" alt="LinkedIn button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on Instagram"><a href="https://www.instagram.com/" target="_blank"><img src="/images/Instagram.png" alt="Instagram button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on YouTube"><a href="https://www.youtube.com/" target="_blank"><img src="/images/YouTube.png" alt="YouTube button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on Facebook"><a href="https://www.facebook.com/" target="_blank"><img src="/images/Facebook.png" alt="Facebook button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on Twitter"><a href="https://twitter.com/?lang=en-gb" target="_blank"><img src="/images/Twitter.png" alt="Twitter button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on LinkedIn"><a href="https://uk.linkedin.com/" target="_blank"><img src="/images/LinkedIn.png" alt="LinkedIn button"></a></button>
 
         </div>
     </div>
