@@ -113,7 +113,7 @@
 
                     <!--Footer Links-->
                     <a class="footerLink" href="{{ url('aboutUs') }}">About Us</a> |
-                    <a class="footerLink" href="{{ route('contactUs.create') }}">Contact Us</a> |
+                    <a class="footerLink" href="{{ route('contact.create') }}">Contact Us</a> |
                     <a class="footerLink" href="{{ url('siteMap') }}">Site Map</a> |
                     <a class="footerLink" href="{{ url('tsAndCs') }}">Terms and Conditions</a> |
                     <a class="footerLink" href="{{ url('privacyPolicy') }}">Privacy Policy</a>
