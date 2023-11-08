@@ -65,6 +65,10 @@ Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bo
 Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment');
 Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete');
 
+/* Cart routes */
+Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->middleware('auth');
+Route::get("/bookings/cartList", [BookingController::class, 'cartList'])->middleware('auth');
+Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
 
 /* Footer Routes */
 Route::get('/aboutUs', function () {
