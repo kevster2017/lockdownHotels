@@ -55,7 +55,7 @@ class BookingController extends Controller
         $cart->user_id = auth()->user()->id;
         $cart->product_id = $request->product_id;
         $cart->save();
-        return redirect('/products')->with('success', 'Item added to cart');
+        return redirect('/bookings')->with('success', 'Continue to payment');
     }
 
     static function cartItem()
@@ -63,7 +63,7 @@ class BookingController extends Controller
 
         $user_id = optional(Auth::user())->id;
 
-        return Cart::where('user_id', $user_id)->count();
+        return Cart::where('userId', $user_id)->count();
     }
 
     function cartList()
