@@ -84,7 +84,7 @@ class BookingController extends Controller
     {
         Cart::destroy($id);
 
-        return redirect()->back()->with('success', 'Item successfully removed from cart');
+        return redirect()->back()->with('success', 'Item successfully removed from bookings');
     }
 
     function bookNow()
