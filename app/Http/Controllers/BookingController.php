@@ -52,18 +52,18 @@ class BookingController extends Controller
 
 
         $cart = new Cart;
-        $cart->user_id = auth()->user()->id;
-        $cart->product_id = $request->product_id;
+        $cart->userId = auth()->user()->id;
+        $cart->hotel_Id = $request->hotel_Id;
         $cart->save();
-        return redirect('/bookings')->with('success', 'Continue to payment');
+        return redirect('/bookings')->with('success', 'Booking updated');
     }
 
     static function cartItem()
     {
 
-        $user_id = optional(Auth::user())->id;
+        $userId = optional(Auth::user())->id;
 
-        return Cart::where('userId', $user_id)->count();
+        return Cart::where('userId', $userId)->count();
     }
 
     function cartList()
@@ -71,13 +71,13 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
-        $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'products.id')
-            ->where('cart.user_id', $userId)
-            ->select('products.*', 'cart.id as cart_id')
+        $hotels = DB::table('cart')
+            ->join('hotels', 'cart.hotel_Id', '=', 'hotels.id')
+            ->where('cart.userId', $userId)
+            ->select('hotels.*', 'cart.id as cart_id')
             ->get();
 
-        return view('orders.cartList', ['products' => $products]);
+        return view('bookings.cartList', ['hotels' => $hotels]);
     }
 
     function removeCart($id)
