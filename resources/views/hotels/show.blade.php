@@ -52,6 +52,8 @@
 
                 <form action="/add_to_cart" method="POST">
                     @csrf
+                    <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
+                    <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
                     <tbody>
                         <tr>
                             <td>{{ $hotel->roomType }}</td>
@@ -107,7 +109,7 @@
                             </td>
                             <td>{{ $hotel->price }}</td>
                             <td>{{ $hotel->numRooms }}</td>
-                            <td><a href="{{ route('bookings.create') }}" class="btn btn-primary">Book Now</a></td>
+                            <td><a href="{{ route('addToCart') }}" class="btn btn-primary">Book Now</a></td>
                         </tr>
                     </tbody>
                 </form>
