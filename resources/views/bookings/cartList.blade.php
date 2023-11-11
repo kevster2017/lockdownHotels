@@ -7,24 +7,24 @@
     <div class="trending-wrapper">
       <h3>Your Cart</h3>
 
-      @foreach($products as $product)
+      @foreach($bookings as $booking)
       <div class="row searched-item cart-list-divider">
         <div class="col-sm-3">
-          <a href="/orders/show/{{ $product->id }}">
-            <img class="img-fluid" src="/storage/{{ $product->image }}">
+          <a href="/bookings/show/{{ $booking->id }}">
+            <img class="img-fluid" src="/storage/{{ $booking->image }}">
 
           </a>
         </div>
         <div class="col-sm-6">
           <div class="">
-            <h2>{{ $product->name }}</h2>
-            <h5>{{ $product->description }}</h5>
+            <h2>{{ $booking->name }}</h2>
+            <h5>{{ $booking->description }}</h5>
 
           </div>
           </a>
         </div>
         <div class="col-sm-3">
-          <a href="/removeCart/{{ $product->cart_id}}" class="btn btn-warning mt-4">Remove from Cart</a>
+          <a href="/removeCart/{{ $booking->cart_id}}" class="btn btn-warning mt-4">Cancel Booking</a>
 
         </div>
 

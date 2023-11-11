@@ -55,7 +55,7 @@ class BookingController extends Controller
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;
         $cart->save();
-        return redirect('/bookings')->with('success', 'Booking updated');
+        return redirect('/bookings.cartList')->with('success', 'Booking updated');
     }
 
     static function cartItem()
