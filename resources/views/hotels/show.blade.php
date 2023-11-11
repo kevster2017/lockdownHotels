@@ -109,7 +109,7 @@
                             </td>
                             <td>{{ $hotel->price }}</td>
                             <td>{{ $hotel->numRooms }}</td>
-                            <td><a href="{{ route('addToCart') }}" class="btn btn-primary">Book Now</a></td>
+                            <td><button href="{{ route('addToCart') }}" class="btn btn-primary" type="submit">Book Now</button></td>
                         </tr>
                     </tbody>
                 </form>
