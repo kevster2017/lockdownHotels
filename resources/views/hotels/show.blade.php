@@ -3,7 +3,6 @@
 @section('content')
 
 
-
 <div class="container mt-3">
     <div class="card mb-3">
         <div class="row g-0">
@@ -54,6 +53,20 @@
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
+
+
+
+
+
+
+
+                    <div class="col" style="text-align: left;">
+                        <label class="align-left" style="font-weight: bold; padding-bottom: 15px;">Check in date:</label>
+                        <input class="date form-control" id="checkInDate" type="text">
+                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
+                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1">
+
+                    </div>
                     <tbody>
                         <tr>
                             <td>{{ $hotel->roomType }}</td>
@@ -122,4 +135,37 @@
         </div>
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+    $('.date').datepicker({
+        format: 'dd-mm-yyyy'
+    });
+</script>
+
+<script>
+    function updateNoOfNights(value) {
+        document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
+        noOfNights = value;
+        var valid = true;
+
+
+        if (!hasCheckInDateBeenSelected()) {
+            document.getElementById('noCheckInDateEnteredErrorMessage').style.display = "block";
+            valid = false;
+        }
+
+    }
+
+
+    function hasCheckInDateBeenSelected() {
+        if (document.getElementById('checkInDate').value == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+
 @endsection
