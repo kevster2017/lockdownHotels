@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -91,20 +93,20 @@ class BookingController extends Controller
     function bookNow()
     {
 
-        $user_id = auth()->user()->id;
+        $userId = auth()->user()->id;
         $total = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'products.id')
-            ->where('cart.user_id', $user_id)
-            ->sum('products.price');
+            ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
+            ->where('cart.userId', $userId)
+            ->sum('hotels.price');
 
 
-        return view('orders.orderNow', ['total' => $total]);
+        return view('bookings.review', ['total' => $total]);
     }
 
     function placeBooking(Request $req)
     {
-        $user_id = auth()->user()->id;
-        $fullCart = Cart::where('user_id', $user_id)
+        $userId = auth()->user()->id;
+        $fullCart = Cart::where('userId', $userId)
             ->get();
 
         $req->validate([
@@ -113,9 +115,9 @@ class BookingController extends Controller
         ]);
 
         foreach ($fullCart as $cart) {
-            $order = new Order;
-            $order->product_id = $cart->product_id;
-            $order->user_id = $cart->user_id;
+            $order = new Booking;
+            $order->hotelId = $cart->hotelId;
+            $order->userId = $cart->userId;
             $order->name = $req->name;
             $order->status = "Pending";
             $order->address = $req->address;
@@ -132,13 +134,13 @@ class BookingController extends Controller
 
         if ($order->payment_method == 'PayPal') {
             $total = DB::table('cart')
-                ->join('products', 'cart.product_id', '=', 'products.id')
-                ->where('cart.user_id', $user_id)
-                ->sum('products.price');
+                ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
+                ->where('cart.user_id', $userId)
+                ->sum('hotels.price');
 
-            return view('/orders/paypal', ['total' => $total]);
+            return view('/bookings/paypal', ['total' => $total]);
         } else {
-            return redirect('/orders/stripe');
+            return redirect('/bookings/stripe');
         }
     }
 
