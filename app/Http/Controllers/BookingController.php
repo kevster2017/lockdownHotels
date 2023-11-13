@@ -147,19 +147,19 @@ class BookingController extends Controller
     function myBookings()
     {
 
-        $user_id = auth()->user()->id;
+        $userId = auth()->user()->id;
 
-        $ids = DB::table('orders')
-            ->where('user_id', $user_id)
+        $ids = DB::table('bookings')
+            ->where('userId', $userId)
             ->get();
 
-        $orders = DB::table('orders')
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('orders.user_id', $user_id)
-            ->select('*', 'orders.id as order_id') // Selects the original order ID
+        $bookings = DB::table('bookings')
+            ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
+            ->where('bookings.userId', $userId)
+            ->select('*', 'bookings.id as booking_id') // Selects the original order ID
             ->paginate(5);
 
-        return view('orders.myOrders', ['orders' => $orders, 'ids' => $ids]);
+        return view('bookings.myBookings', ['bookings' => $bookings, 'ids' => $ids]);
     }
 
     /**
