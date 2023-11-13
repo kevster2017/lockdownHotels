@@ -49,14 +49,10 @@
                     </tr>
                 </thead>
 
-                <form action="/add_to_cart" method="POST">
+                <form action="{{ route('addToCart') }}" method="POST">
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
-
-
-
-
 
 
 
@@ -122,7 +118,9 @@
                             </td>
                             <td>{{ $hotel->price }}</td>
                             <td>{{ $hotel->numRooms }}</td>
-                            <td><button href="{{ route('addToCart') }}" class="btn btn-primary" type="submit">Book Now</button></td>
+                            <td>
+                                <button" class="btn btn-primary" type="submit">Book Now</button>
+                            </td>
                         </tr>
                     </tbody>
                 </form>
