@@ -73,7 +73,14 @@
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat2Price }}" id="feat2">{{ $hotel->feat2 }} +£{{ $hotel->feat2Price }}</li>
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat3Price }}" id="feat3">{{ $hotel->feat3 }} +£{{ $hotel->feat3Price }}</li>
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat4Price }}" id="feat4">{{ $hotel->feat4 }} +£{{ $hotel->feat4Price }}</li>
+
                                     <label><strong>Package Options</strong></label>
+                                    <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="noPackage" name="package" value="0" checked>
+                                        <label class="form-check-label" for="noPackage">
+                                            None
+                                        </label>
+                                    </div>
                                     <div class="form-check" id="divLeft">
                                         <input class="form-check-input" type="radio" id="package1" name="package" value="{{ $hotel->package1Price }}">
                                         <label class="form-check-label" for="package1">
@@ -96,6 +103,12 @@
 
 
                                     <label><strong>Upgrade Options</strong></label>
+                                    <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgrade" value="0" checked>
+                                        <label class="form-check-label" for="noUpgrade">
+                                            None
+                                        </label>
+                                    </div>
                                     <div class="form-check" id="divLeft">
                                         <input class="form-check-input" type="radio" id="upgrade1" name="upgrade" value="{{ $hotel->upgrade1Price }}">
                                         <label class="form-check-label" for="upgrade1">
@@ -143,54 +156,89 @@
 </script>
 
 <script>
+    let hotelCost = parseFloat('{{ $hotel->price }}');
+    let extrasCost = 0;
+
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
         const noOfNights = value;
-        var valid = true;
-
-
+        let valid = true;
 
         if (!hasCheckInDateBeenSelected()) {
             document.getElementById('noCheckInDateEnteredErrorMessage').style.display = "block";
             valid = false;
         }
 
-        let extrasCost = 0;
-        const hotelCost = parseFloat(' {{ $hotel->price }}') * noOfNights;
+        let customCosts = 0;
+        let packageCosts = 0;
+        let upgradeCosts = 0;
+        let extrasCost = packageCosts + upgradeCosts;
+        const hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
         let totalCost = hotelCost + extrasCost;
 
         // Update HTML with dynamic values
-        document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
-        document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
-        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+        updateCostsInHTML(hotelCost, extrasCost, totalCost);
+
+        // Add event listeners to checkboxes
+        document.getElementById('feat1').addEventListener('change', function() {
+            updateCheckboxValue(this, 1);
+        });
+
+        document.getElementById('feat2').addEventListener('change', function() {
+            updateCheckboxValue(this, 2);
+        });
+
+        document.getElementById('feat3').addEventListener('change', function() {
+            updateCheckboxValue(this, 3);
+        });
+
+        document.getElementById('feat4').addEventListener('change', function() {
+            updateCheckboxValue(this, 4);
+        });
 
         let upgradeRadioButtons = document.querySelectorAll('input[name="upgrade"]');
+        let packageRadioButtons = document.querySelectorAll('input[name="package"]');
 
         upgradeRadioButtons.forEach(function(radioButton) {
             radioButton.addEventListener('change', function() {
-                extrasCost = parseFloat(this.value);
-
+                upgradeCosts = parseFloat(this.value);
+                extrasCost = upgradeCosts + packageCosts;
                 totalCost = hotelCost + extrasCost;
-
-                document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
-                document.getElementById('totalCost').innerText = totalCost.toFixed(2);
-
+                updateCostsInHTML(hotelCost, extrasCost, totalCost);
             });
         });
 
-
-
-
+        packageRadioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
+                packageCosts = parseFloat(this.value);
+                extrasCost = upgradeCosts + packageCosts;
+                totalCost = hotelCost + extrasCost;
+                updateCostsInHTML(hotelCost, extrasCost, totalCost);
+            });
+        });
     }
 
+    function updateCheckboxValue(checkbox, featNumber) {
+        const featPrice = parseFloat(checkbox.value);
+        extrasCost += checkbox.checked ? featPrice : -featPrice;
+        totalCost = calculateTotalCost();
+        updateCostsInHTML(hotelCost, extrasCost, totalCost);
+    }
+
+    function calculateTotalCost() {
+        return hotelCost + extrasCost;
+    }
+
+    function updateCostsInHTML(hotelCost, extrasCost, totalCost) {
+        document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
+        document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
+        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+    }
 
     function hasCheckInDateBeenSelected() {
-        if (document.getElementById('checkInDate').value == "") {
-            return false;
-        } else {
-            return true;
-        }
+        return document.getElementById('checkInDate').value !== "";
     }
 </script>
+
 
 @endsection
