@@ -127,9 +127,9 @@
             </table>
         </div>
         <div class="mt-3">
-            <h2>Your hotel room cost: £{{ $hotel->price }}</h2>
-            <h2>Your total extras cost: £(cost in here)</h2>
-            <h2>Your total costs: £(cost in here)</h2>
+            <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
+            <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
+            <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
         </div>
     </div>
 </div>
@@ -145,14 +145,24 @@
 <script>
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
-        noOfNights = value;
+        const noOfNights = value;
         var valid = true;
+
 
 
         if (!hasCheckInDateBeenSelected()) {
             document.getElementById('noCheckInDateEnteredErrorMessage').style.display = "block";
             valid = false;
         }
+
+        const extrasCost = parseFloat(50);
+        const hotelCost = parseFloat(' {{ $hotel->price }}') * noOfNights;
+        const totalCost = hotelCost + extrasCost;
+
+        document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
+        document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
+        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+
 
     }
 
