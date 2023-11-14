@@ -69,7 +69,7 @@
                             <td>
                                 <ul id="divLeft">
                                     <label><strong>Custom Options</strong></label>
-                                    <li id="feat1"><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat1Price }}" id="feat1">{{ $hotel->feat1 }} +£{{ $hotel->feat1Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat1Price }}" id="feat1">{{ $hotel->feat1 }} +£{{ $hotel->feat1Price }}</li>
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat2Price }}" id="feat2">{{ $hotel->feat2 }} +£{{ $hotel->feat2Price }}</li>
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat3Price }}" id="feat3">{{ $hotel->feat3 }} +£{{ $hotel->feat3Price }}</li>
                                     <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat4Price }}" id="feat4">{{ $hotel->feat4 }} +£{{ $hotel->feat4Price }}</li>
@@ -161,7 +161,7 @@
     let customCosts = 0;
     let packageCosts = 0;
     let upgradeCosts = 0;
-    extrasCost = packageCosts + upgradeCosts;
+    extrasCost = customCosts + packageCosts + upgradeCosts;
 
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
@@ -174,7 +174,7 @@
         }
 
 
-        const hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
+        hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
         let totalCost = hotelCost + extrasCost;
 
         // Update HTML with dynamic values
