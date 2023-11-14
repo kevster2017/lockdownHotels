@@ -155,13 +155,30 @@
             valid = false;
         }
 
-        const extrasCost = parseFloat(50);
+        let extrasCost = 0;
         const hotelCost = parseFloat(' {{ $hotel->price }}') * noOfNights;
-        const totalCost = hotelCost + extrasCost;
+        let totalCost = hotelCost + extrasCost;
 
+        // Update HTML with dynamic values
         document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
         document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
         document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+
+        let upgradeRadioButtons = document.querySelectorAll('input[name="upgrade"]');
+
+        upgradeRadioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
+                extrasCost = parseFloat(this.value);
+
+                totalCost = hotelCost + extrasCost;
+
+                document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
+                document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+
+            });
+        });
+
+
 
 
     }
