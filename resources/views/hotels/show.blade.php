@@ -158,6 +158,10 @@
 <script>
     let hotelCost = parseFloat('{{ $hotel->price }}');
     let extrasCost = 0;
+    let customCosts = 0;
+    let packageCosts = 0;
+    let upgradeCosts = 0;
+    extrasCost = packageCosts + upgradeCosts;
 
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
@@ -169,10 +173,7 @@
             valid = false;
         }
 
-        let customCosts = 0;
-        let packageCosts = 0;
-        let upgradeCosts = 0;
-        let extrasCost = packageCosts + upgradeCosts;
+
         const hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
         let totalCost = hotelCost + extrasCost;
 
