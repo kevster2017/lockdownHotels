@@ -252,7 +252,11 @@
 
     function updateCheckboxValue(checkbox, featNumber) {
         const featPrice = parseFloat(checkbox.value) * noOfNights;
-        extrasCost += checkbox.checked ? featPrice : 0;
+        if (checkbox.checked) {
+            extrasCost += featPrice;
+        } else {
+            extrasCost -= featPrice;
+        }
         totalCost = calculateTotalCost();
         updateCostsInHTML(hotelCost, extrasCost, totalCost);
     }
