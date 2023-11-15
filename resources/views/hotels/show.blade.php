@@ -171,11 +171,6 @@
         noOfNights = value;
         let valid = true;
 
-        if (!hasCheckInDateBeenSelected()) {
-            document.getElementById('noCheckInDateEnteredErrorMessage').style.display = "block";
-            valid = false;
-        }
-
         hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
 
 
@@ -266,10 +261,6 @@
         document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
         document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
         document.getElementById('totalCost').innerText = totalCost.toFixed(2);
-    }
-
-    function hasCheckInDateBeenSelected() {
-        return document.getElementById('checkInDate').value !== "";
     }
 </script>
 
