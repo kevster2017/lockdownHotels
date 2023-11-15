@@ -201,7 +201,6 @@
                 packageCosts = parseFloat(radioButton.value) * noOfNights;
                 extrasCost = upgradeCosts + packageCosts;
                 totalCost = hotelCost + extrasCost;
-                console.log(packageCosts);
                 updateCostsInHTML(hotelCost, extrasCost, totalCost);
             });
 
@@ -216,7 +215,6 @@
                 upgradeCosts = parseFloat(this.value) * noOfNights;
                 extrasCost = upgradeCosts + packageCosts;
                 totalCost = hotelCost + extrasCost;
-                console.log(upgradeCosts);
                 updateCostsInHTML(hotelCost, extrasCost, totalCost);
             });
 
