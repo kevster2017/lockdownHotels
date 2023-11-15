@@ -76,7 +76,7 @@
 
                                     <label><strong>Package Options</strong></label>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noPackage" name="package" value="0" checked>
+                                        <input class="form-check-input" type="radio" id="noPackage" name="package" value="{{ 0 }}" checked>
                                         <label class="form-check-label" for="noPackage">
                                             None
                                         </label>
@@ -104,7 +104,7 @@
 
                                     <label><strong>Upgrade Options</strong></label>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgrade" value="0" checked>
+                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgrade" value="{{ 0 }}" checked>
                                         <label class="form-check-label" for="noUpgrade">
                                             None
                                         </label>
@@ -168,7 +168,7 @@
 
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
-        const noOfNights = value;
+        noOfNights = value;
         let valid = true;
 
         if (!hasCheckInDateBeenSelected()) {
@@ -177,13 +177,61 @@
         }
 
         hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
-        let totalCost = hotelCost + extrasCost;
 
 
 
-        packageCost = calculatePackageCost();
-        extrasCost = packageCost;
-        console.log(extrasCost);
+        // Add event listeners to checkboxes
+        document.getElementById('feat1').addEventListener('change', function() {
+            updateCheckboxValue(this, 1);
+        });
+
+        document.getElementById('feat2').addEventListener('change', function() {
+            updateCheckboxValue(this, 2);
+        });
+
+        document.getElementById('feat3').addEventListener('change', function() {
+            updateCheckboxValue(this, 3);
+        });
+
+        document.getElementById('feat4').addEventListener('change', function() {
+            updateCheckboxValue(this, 4);
+        });
+
+
+        packageRadioButtons.forEach(function(radioButton) {
+            if (radioButton.checked) {
+                packageCosts = parseFloat(radioButton.value) * noOfNights;
+            }
+            radioButton.addEventListener('change', function() {
+                packageCosts = parseFloat(radioButton.value) * noOfNights;
+                extrasCost = upgradeCosts + packageCosts;
+                totalCost = hotelCost + extrasCost;
+                console.log(packageCosts);
+                updateCostsInHTML(hotelCost, extrasCost, totalCost);
+            });
+
+        });
+
+
+        upgradeRadioButtons.forEach(function(radioButton) {
+            if (radioButton.checked) {
+                upgradeCosts = parseFloat(radioButton.value) * noOfNights;
+            }
+            radioButton.addEventListener('change', function() {
+                upgradeCosts = parseFloat(this.value) * noOfNights;
+                extrasCost = upgradeCosts + packageCosts;
+                totalCost = hotelCost + extrasCost;
+                console.log(upgradeCosts);
+                updateCostsInHTML(hotelCost, extrasCost, totalCost);
+            });
+
+
+        });
+
+
+
+        extrasCost = upgradeCosts + packageCosts;
+        totalCost = hotelCost + extrasCost;
         // Update HTML with dynamic values
         updateCostsInHTML(hotelCost, extrasCost, totalCost);
 
@@ -197,23 +245,18 @@
         return hotelCost;
     }
 
-    function calculatePackageCost() {
-        packageRadioButtons.forEach(function(radioButton) {
-            radioButton.addEventListener('change', function() {
-                packageCost = parseFloat(this.value) * noOfNights;
-                return packageCost;
-            });
-        });
-
-    }
-
-    function calculateExtrasCost() {
-        return customCosts + packageCosts + upgradeCosts;
-    }
-
     function calculateTotalCost() {
         return hotelCost + extrasCost;
     }
+
+
+    function updateCheckboxValue(checkbox, featNumber) {
+        const featPrice = parseFloat(checkbox.value) * noOfNights;
+        extrasCost += checkbox.checked ? featPrice : 0;
+        totalCost = calculateTotalCost();
+        updateCostsInHTML(hotelCost, extrasCost, totalCost);
+    }
+
 
     function updateCostsInHTML(hotelCost, extrasCost, totalCost) {
         document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
