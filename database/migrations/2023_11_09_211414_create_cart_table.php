@@ -24,14 +24,14 @@ return new class extends Migration
             $table->string('accomType');
             $table->string('roomType');
             $table->string('holidayType');
-            $table->string('feat1');
-            $table->string('feat2');
-            $table->string('feat3');
-            $table->string('feat4');
-            $table->integer('feat1Price');
-            $table->integer('feat2Price');
-            $table->integer('feat3Price');
-            $table->integer('feat4Price');
+            $table->string('feat1')->default("None");
+            $table->string('feat2')->default("None");
+            $table->string('feat3')->default("None");
+            $table->string('feat4')->default("None");
+            $table->integer('feat1Price')->default(0);
+            $table->integer('feat2Price')->default(0);
+            $table->integer('feat3Price')->default(0);
+            $table->integer('feat4Price')->default(0);
             $table->string('upgrade1');
             $table->string('upgrade2');
             $table->string('upgrade3');
@@ -46,7 +46,8 @@ return new class extends Migration
             $table->integer('package3Price');
             $table->string('currency');
             $table->integer('price');
-            $table->integer('numRooms');
+            $table->date('checkInDate');
+            $table->integer('numNights');
 
             $table->timestamps();
         });
