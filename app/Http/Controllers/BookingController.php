@@ -149,7 +149,7 @@ class BookingController extends Controller
 
         $cart->save();
 
-        return redirect('/bookings.cartList')->with('success', 'Booking updated');
+        return redirect('/bookings/cartList')->with('success', 'Booking updated');
     }
 
     static function cartItem()
@@ -165,13 +165,13 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
-        $hotels = DB::table('cart')
+        $bookings = DB::table('cart')
             ->join('hotels', 'cart.hotel_Id', '=', 'hotels.id')
             ->where('cart.userId', $userId)
             ->select('hotels.*', 'cart.id as cart_id')
             ->get();
 
-        return view('bookings.cartList', ['hotels' => $hotels]);
+        return view('bookings.cartList', ['bookings' => $bookings]);
     }
 
     function removeCart($id)
