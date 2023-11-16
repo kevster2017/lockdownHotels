@@ -53,6 +53,7 @@
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
+                    <input type="hidden" name="currency" value="{{ Sterling }}">
 
 
 
