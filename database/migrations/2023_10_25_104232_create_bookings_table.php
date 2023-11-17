@@ -23,8 +23,11 @@ return new class extends Migration
             $table->integer('hotel_Id');
             $table->string('image');
             $table->string('address');
+            $table->string('town');
+            $table->string('country');
             $table->string('postCode');
             $table->string('accomType');
+            $table->string('holidayType');
             $table->string('roomType');
             $table->integer('pricePN');
             $table->string('feat1')->default("None");

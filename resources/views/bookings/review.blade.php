@@ -19,7 +19,7 @@
             <div class="col-md-4">
 
                 <!--
-                <img src="/storage/{{ $booking->image }}" class="img-fluid rounded-start" alt="Hotel Image">
+                <img src="/storage/{{ $image }}" class="img-fluid rounded-start" alt="Hotel Image">
 -->
 
             </div>

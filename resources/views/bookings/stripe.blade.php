@@ -7,7 +7,7 @@
       <div class="col-md-6 col-md-offset-3">
          <div class="panel panel-default credit-card-box">
             <div class="container">
-               <h1>Pay {{ $details->name }} a total of £{{ $details->price }}</h1>
+               <h1>Pay {{ $payment->name }} a total of £{{ $payment->total }}</h1>
             </div>
             <div class="panel-heading">
                <div class="row">

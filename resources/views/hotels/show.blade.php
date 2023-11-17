@@ -52,8 +52,10 @@
                 <form action="{{ route('bookings.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
+                    <input type="hidden" name="hotelName" value="{{ $hotel->name }}">
                     <input type="hidden" name="name" value="{{ $hotel->name }}">
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
+                    <input type="hidden" name="email" value="{{ Auth()->User()->email }}">
                     <input type="hidden" name="price" value="{{ $hotel->price}}">
                     <input type="hidden" name="currency" value="{{ 'Sterling' }}">
                     <input type="hidden" name="image" value="{{ $hotel->image }}">
@@ -75,6 +77,7 @@
                     <input type="hidden" name="package2Price" value="{{ $hotel->package2Price }}">
                     <input type="hidden" name="package3Price" value="{{ $hotel->package3Price }}">
                     <input type="hidden" name="paid" value="{{ 0 }}">
+                    <input type="hidden" name="payment_method" value="Stripe">
 
 
 
