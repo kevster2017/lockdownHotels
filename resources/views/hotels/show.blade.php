@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
 
-                <form action="{{ route('addToCart') }}" method="POST">
+                <form action="{{ route('bookings.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
                     <input type="hidden" name="name" value="{{ $hotel->name }}">
@@ -74,6 +74,7 @@
                     <input type="hidden" name="package1Price" value="{{ $hotel->package1Price }}">
                     <input type="hidden" name="package2Price" value="{{ $hotel->package2Price }}">
                     <input type="hidden" name="package3Price" value="{{ $hotel->package3Price }}">
+                    <input type="hidden" name="paid" value="{{ 0 }}">
 
 
 

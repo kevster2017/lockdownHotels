@@ -46,107 +46,6 @@ class BookingController extends Controller
      * Book Hotel by adding to Cart
      */
 
-    function addToCart(Request $request)
-    {
-
-
-        $cart = new Cart;
-        $cart->userId = auth()->user()->id;
-        $cart->hotel_Id = $request->hotel_Id;
-        $cart->price =  $request->price;
-        $cart->checkInDate =  $request->checkInDate;
-        $cart->name =  $request->name;
-        $cart->image = $request->image;
-        $cart->address = $request->address;
-        $cart->town = $request->town;
-        $cart->country = $request->country;
-        $cart->postCode = $request->postCode;
-        $cart->accomType = $request->accomType;
-        $cart->roomType = $request->roomType;
-        $cart->holidayType = $request->holidayType;
-        if ($request->feat1 == "") {
-            $cart->feat1 = 0;
-        } else {
-            $cart->feat1 = $request->feat1;
-        }
-        if ($request->feat2 == "") {
-            $cart->feat2 = 0;
-        } else {
-
-            $cart->feat2 = $request->feat2;
-        }
-        if ($request->feat3 == "") {
-            $cart->feat3 = 0;
-        } else {
-
-            $cart->feat3 = $request->feat3;
-        }
-        if ($request->feat4 == "") {
-            $cart->feat4 = 0;
-        } else {
-
-            $cart->feat4 = $request->feat4;
-        }
-
-        $cart->feat1Price = $request->feat1Price;
-        $cart->feat2Price = $request->feat2Price;
-        $cart->feat3Price = $request->feat3Price;
-        $cart->feat4Price = $request->feat4Price;
-
-        if ($request->upgrade1 == "") {
-            $cart->upgrade1 = 0;
-        } else {
-            $cart->upgrade1 = $request->upgrade1;
-        }
-        if ($request->upgrade2 == "") {
-            $cart->upgrade2 = 0;
-        } else {
-            $cart->upgrade2 = $request->upgrade2;
-        }
-        if ($request->upgrade3 == "") {
-            $cart->upgrade3 = 0;
-        } else {
-            $cart->upgrade3 = $request->upgrade3;
-        }
-
-
-        $cart->upgrade1Price = $request->upgrade1Price;
-        $cart->upgrade2Price = $request->upgrade2Price;
-        $cart->upgrade3Price = $request->upgrade3Price;
-        if ($request->package1 == "") {
-            $cart->package1 = 0;
-        } else {
-            $cart->package1 = $request->package1;
-        }
-        if ($request->package2 == "") {
-            $cart->package2 = 0;
-        } else {
-            $cart->package2 = $request->package2;
-        }
-        if ($request->package3 == "") {
-            $cart->package3 = 0;
-        } else {
-            $cart->package3 = $request->package3;
-        }
-
-        $cart->package1Price = $request->package1Price;
-        $cart->package2Price = $request->package2Price;
-        $cart->package3Price = $request->package3Price;
-        $cart->currency = $request->currency;
-        $cart->numNights = $request->numNights;
-        $hotelPrice = $cart->price;
-        $featPrice = ($cart->feat1 + $cart->feat2 + $cart->feat3 + $cart->feat4);
-        $upgradePrice = ($cart->upgrade1 + $cart->upgrade2 + $cart->upgrade3);
-        $packagePrice = ($cart->package1 + $cart->package2 + $cart->package3);
-        $price = ($hotelPrice + $featPrice + $upgradePrice + $packagePrice) * $cart->numNights;
-        $cart->price = $price;
-        //dd($featPrice);
-
-
-        $cart->save();
-
-        return redirect('/bookings/cartList')->with('success', 'Booking updated');
-    }
 
     static function cartItem()
     {
@@ -184,12 +83,12 @@ class BookingController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $cart = DB::table('cart')
+        $booking = DB::table('booking')
             ->where('userId', $userId)
             ->first();
 
 
-        return view('bookings.review', ['cart' => $cart]);
+        return view('bookings.review', ['booking' => $booking]);
     }
 
 
@@ -276,7 +175,101 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          
+            $booking->userId = auth()->user()->id;
+            $booking->hotel_Id = $request->hotel_Id;
+            $booking->price =  $request->price;
+            $booking->checkInDate =  $request->checkInDate;
+            $booking->name =  $request->name;
+            $booking->image = $request->image;
+            $booking->address = $request->address;
+            $booking->town = $request->town;
+            $booking->country = $request->country;
+            $booking->postCode = $request->postCode;
+            $booking->accomType = $request->accomType;
+            $booking->roomType = $request->roomType;
+            $booking->holidayType = $request->holidayType;
+            if ($request->feat1 == "") {
+                $booking->feat1 = 0;
+            } else {
+                $booking->feat1 = $request->feat1;
+            }
+            if ($request->feat2 == "") {
+                $booking->feat2 = 0;
+            } else {
+
+                $booking->feat2 = $request->feat2;
+            }
+            if ($request->feat3 == "") {
+                $booking->feat3 = 0;
+            } else {
+
+                $booking->feat3 = $request->feat3;
+            }
+            if ($request->feat4 == "") {
+                $booking->feat4 = 0;
+            } else {
+
+                $booking->feat4 = $request->feat4;
+            }
+
+            $booking->feat1Price = $request->feat1Price;
+            $booking->feat2Price = $request->feat2Price;
+            $booking->feat3Price = $request->feat3Price;
+            $booking->feat4Price = $request->feat4Price;
+
+            if ($request->upgrade1 == "") {
+                $booking->upgrade1 = 0;
+            } else {
+                $booking->upgrade1 = $request->upgrade1;
+            }
+            if ($request->upgrade2 == "") {
+                $booking->upgrade2 = 0;
+            } else {
+                $booking->upgrade2 = $request->upgrade2;
+            }
+            if ($request->upgrade3 == "") {
+                $booking->upgrade3 = 0;
+            } else {
+                $booking->upgrade3 = $request->upgrade3;
+            }
+
+            $booking->upgrade1Price = $request->upgrade1Price;
+            $booking->upgrade2Price = $request->upgrade2Price;
+            $booking->upgrade3Price = $request->upgrade3Price;
+            if ($request->package1 == "") {
+                $booking->package1 = 0;
+            } else {
+                $booking->package1 = $request->package1;
+            }
+            if ($request->package2 == "") {
+                $booking->package2 = 0;
+            } else {
+                $booking->package2 = $request->package2;
+            }
+            if ($request->package3 == "") {
+                $booking->package3 = 0;
+            } else {
+                $booking->package3 = $request->package3;
+            }
+
+            $booking->package1Price = $request->package1Price;
+            $booking->package2Price = $request->package2Price;
+            $booking->package3Price = $request->package3Price;
+            $booking->currency = $request->currency;
+            $booking->numNights = $request->numNights;
+            $hotelPrice = $booking->price;
+            $featPrice = ($booking->feat1 + $booking->feat2 + $booking->feat3 + $booking->feat4);
+            $upgradePrice = ($booking->upgrade1 + $booking->upgrade2 + $booking->upgrade3);
+            $packagePrice = ($booking->package1 + $booking->package2 + $booking->package3);
+            $price = ($hotelPrice + $featPrice + $upgradePrice + $packagePrice) * $booking->numNights;
+            $booking->price = $price;
+            //dd($featPrice);
+
+            $booking->save();
+
+            return redirect('/bookings/cartList')->with('success', 'Booking updated');
+        }
     }
 
     /**
