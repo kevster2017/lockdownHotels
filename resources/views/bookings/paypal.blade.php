@@ -40,14 +40,14 @@
                      </tr>
                      <tr>
                         <td>Total Amount</td>
-                        <td>£{{$total+10}}</td>
+                        <td>£{{$total}}</td>
                      </tr>
 
                   </tbody>
                </table>
                <form action="{{ route('paypal') }}" method="POST">
                   @csrf
-                  <input type="hidden" name="amount" value="{{$total+10}}">
+                  <input type="hidden" name="amount" value="{{$total}}">
 
 
                   <button type="submit" class="btn btn-info my-3">Pay with PayPal</button>
