@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

@@ -26,10 +26,6 @@ class BookingController extends Controller
         return view('bookings.create');
     }
 
-    public function review()
-    {
-        return view('bookings.review');
-    }
 
     public function payment()
     {
@@ -171,6 +167,9 @@ class BookingController extends Controller
             ->select('hotels.*', 'cart.id as cart_id')
             ->get();
 
+        // dd($bookings);
+
+
         return view('bookings.cartList', ['bookings' => $bookings]);
     }
 
@@ -181,17 +180,36 @@ class BookingController extends Controller
         return redirect()->back()->with('success', 'Item successfully removed from bookings');
     }
 
+    public function review()
+    {
+        $userId = auth()->user()->id;
+
+        $cart = DB::table('cart')
+            ->where('userId', $userId)
+            ->first();
+
+
+        return view('bookings.review', ['cart' => $cart]);
+    }
+
+
     function bookNow()
     {
 
         $userId = auth()->user()->id;
+
+        /*
         $total = DB::table('cart')
             ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
             ->where('cart.userId', $userId)
             ->sum('hotels.price');
+*/
+        $cart = DB::table('cart')
+            ->where('user_id', $userId)
+            ->first();
 
 
-        return view('bookings.review', ['total' => $total]);
+        return view('bookings.review', ['cart' => $cart]);
     }
 
     function placeBooking(Request $req)

@@ -15,4 +15,9 @@ class Cart extends Model
     {
         return $this->belongsTo(Hotel::class);
     }
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }
