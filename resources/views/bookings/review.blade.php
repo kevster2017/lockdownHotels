@@ -112,7 +112,7 @@
     </div>
 
     <div class="container">
-        <a href="#" class="btn btn-primary">Book Now for £{{ $cart->price}}</a>
+        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary">Book Now for £{{ $cart->price}}</a>
     </div>
 </div>
 @endsection
