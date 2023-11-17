@@ -284,13 +284,13 @@ class BookingController extends Controller
         $booking->total = $total;
         //dd($featPrice);
 
-        //dd($booking);
+        // dd($booking);
         $booking->save();
-        dd($booking);
-        $payment = Booking::where('id', $booking->id)->first();
-        dd($payment);
 
-        return redirect('bookings/stripe', [
+        $payment = Booking::where('id', $booking->id)->first();
+        // dd($payment);
+
+        return view('bookings/stripe', [
             'payment' => $payment
         ])->with('success', 'Booking updated');
     }

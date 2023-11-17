@@ -29,16 +29,16 @@ class StripeController extends Controller
     public function stripePost(Request $request)
     {
         $user_id = auth()->user()->id;
-        $cart = Cart::where('userId', $user_id)
+        $booking = Booking::where('userId', $user_id)
             ->first();
 
-        if (!$cart) {
+        if (!$booking) {
             // Handle the case where the cart is not found
-            return redirect()->back()->with('error', 'Cart not found');
+            return redirect()->back()->with('error', 'Booking not found');
         }
 
 
-        $hotel = Hotel::find($cart->hotel_Id);
+        $hotel = Hotel::find($booking->hotel_Id);
 
         if (!$hotel) {
             // Handle the case where the hotel is not found
@@ -53,14 +53,15 @@ class StripeController extends Controller
             return redirect()->back()->with('error', 'No available rooms');
         }
 
-        $total = $cart->price;
 
-        $hotel = $cart->name;
+
+        $hotel = $booking->name;
 
 
         // Total is in pence. Multiply by 100 for £1
-        $total = ($total * 100);
+        $total = $booking->price * 100;
 
+        dd($total);
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
@@ -70,10 +71,11 @@ class StripeController extends Controller
             "description" => "This payment is for {{$hotel}}",
         ]);
 
-        // Decrement number of available hotel rooms
 
-        Cart::where('userId', $user_id)->delete();
 
+        //  Cart::where('userId', $user_id)->delete();
+
+        $booking->paid = 1;
         return view('home')->with('success', 'Booking Completed');
     }
 }
