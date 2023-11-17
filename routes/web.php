@@ -70,6 +70,20 @@ Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addT
 Route::get("/bookings/cartList", [BookingController::class, 'cartList'])->middleware('auth')->name("cartList");
 Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
 
+
+/* PayPal routes */
+Route::get('/bookings/paypal', function () {
+    return view('/bookings/paypal');
+});
+Route::post('/pay', [PaypalController::class, 'pay'])->name('paypal');
+Route::get('/success', [PaypalController::class, 'success']);
+Route::get('/error', [PaypalController::class, 'error']);
+
+/* Stripe Payment routes */
+Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe');
+Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('bookings.post');
+
+
 /* Footer Routes */
 Route::get('/aboutUs', function () {
     return view('aboutUs');
