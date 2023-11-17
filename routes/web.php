@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +83,7 @@ Route::get('/error', [PaypalController::class, 'error']);
 
 /* Stripe Payment routes */
 Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe');
-Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('bookings.post');
+Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 
 /* Footer Routes */

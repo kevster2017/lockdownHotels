@@ -6,6 +6,9 @@
       <h3 style="text-align: center;margin-top: 40px;margin-bottom: 40px;">Payment Page</h3>
       <div class="col-md-6 col-md-offset-3">
          <div class="panel panel-default credit-card-box">
+            <div class="container">
+               <h1>Pay {{ $details->name }} a total of £{{ $details->price }}</h1>
+            </div>
             <div class="panel-heading">
                <div class="row">
                   <h3>Payment By Card</h3>
