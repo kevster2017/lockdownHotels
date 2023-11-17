@@ -8,7 +8,7 @@
       <h3>Your Cart</h3>
 
       @foreach($bookings as $booking)
-      <div class="row searched-item cart-list-divider">
+      <div class="row mt-3">
         <div class="col-sm-3">
           <a href="/bookings/show/{{ $booking->id }}">
             <img class="img-fluid" src="/storage/{{ $booking->image }}">

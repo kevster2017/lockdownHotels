@@ -9,4 +9,10 @@ class Cart extends Model
 {
     use HasFactory;
     public $table = "cart";
+
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }
