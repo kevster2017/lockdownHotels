@@ -142,6 +142,7 @@
                                         <label class="form-check-label" for="upgrade1">
                                             {{ $hotel->upgrade1 }} +£{{ $hotel->upgrade1Price }}
                                         </label>
+
                                     </div>
                                     <div class="form-check" id="divLeft">
                                         <input class="form-check-input" type="radio" id="upgrade2" name="upgrade" value="{{ $hotel->upgrade2Price }}">

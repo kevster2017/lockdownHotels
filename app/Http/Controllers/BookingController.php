@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -188,7 +189,7 @@ class BookingController extends Controller
         $booking->hotel_Id = $request->hotel_Id;
         $booking->hotelName = $request->hotelName;
         $booking->pricePN =  $request->price;
-        $booking->checkInDate =  $request->checkInDate;
+        $booking->checkInDate = Carbon::createFromFormat('Y-m-d', $request->checkInDate);
         $booking->name =  $request->name;
         $booking->email =  $request->email;
         $booking->image = $request->image;
@@ -199,11 +200,9 @@ class BookingController extends Controller
         $booking->accomType = $request->accomType;
         $booking->roomType = $request->roomType;
         $booking->holidayType = $request->holidayType;
-        if ($request->feat1 == "") {
-            $booking->feat1 = 0;
-        } else {
-            $booking->feat1 = $request->feat1;
-        }
+
+        $booking->feat1 = $request->feat1 ?? 0;
+
         if ($request->feat2 == "") {
             $booking->feat2 = 0;
         } else {
@@ -275,11 +274,12 @@ class BookingController extends Controller
         $booking->packageTotal = $booking->package1 + $booking->package2 + $booking->package3;
         $booking->currency = $request->currency;
         $booking->numNights = $request->numNights;
-        $hotelPrice = $booking->price;
-        $booking->featuresPrice = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4);
-        $booking->upgradePrice = ($request->upgrade1 + $request->upgrade2 + $request->upgrade3);
-        $booking->packagePrice = ($request->package1 + $request->package2 + $request->package3);
-        $booking->total = ($hotelPrice + $booking->featuresPrice + $booking->upgradePrice + $booking->packagePrice) * $booking->numNights;
+
+        $hotelPrice = $booking->pricePN * $request->numNights;
+        $featuresPrice = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4) * $request->numNights;
+        $booking->upgradePrice = $request->upgrade1 + $request->upgrade2 + $request->upgrade3;
+        $booking->packagePrice = $request->package1 + $request->package2 + $request->package3;
+        $booking->total = $hotelPrice + $featuresPrice;
         $booking->payment_method = $request->payment_method;
 
         //dd($featPrice);
