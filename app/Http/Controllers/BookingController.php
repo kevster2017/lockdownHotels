@@ -276,15 +276,15 @@ class BookingController extends Controller
         $booking->currency = $request->currency;
         $booking->numNights = $request->numNights;
         $hotelPrice = $booking->price;
-        $featuresPrice = ($booking->feat1 + $booking->feat2 + $booking->feat3 + $booking->feat4);
-        $upgradePrice = ($booking->upgrade1 + $booking->upgrade2 + $booking->upgrade3);
-        $packagePrice = ($booking->package1 + $booking->package2 + $booking->package3);
-        $total = ($hotelPrice + $featuresPrice + $upgradePrice + $packagePrice) * $booking->numNights;
+        $booking->featuresPrice = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4);
+        $booking->upgradePrice = ($request->upgrade1 + $request->upgrade2 + $request->upgrade3);
+        $booking->packagePrice = ($request->package1 + $request->package2 + $request->package3);
+        $booking->total = ($hotelPrice + $booking->featuresPrice + $booking->upgradePrice + $booking->packagePrice) * $booking->numNights;
         $booking->payment_method = $request->payment_method;
-        $booking->total = $total;
+
         //dd($featPrice);
 
-        // dd($booking);
+        dd($booking);
         $booking->save();
 
         $payment = Booking::where('id', $booking->id)->first();

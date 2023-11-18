@@ -68,7 +68,7 @@ class StripeController extends Controller
             "amount" => $total,
             "currency" => "GBP",
             "source" => $request->stripeToken,
-            "description" => "This payment is for {{$hotel}}",
+            "description" => "This payment is for {$hotel}",
         ]);
 
 
