@@ -193,8 +193,8 @@
     let upgradeCosts = 0;
     let totalCost = 0;
     let extrasCost = customCosts + packageCosts + upgradeCosts;
-    let upgradeRadioButtons = document.querySelectorAll('input[name="upgrade"]');
-    let packageRadioButtons = document.querySelectorAll('input[name="package"]');
+    let upgradeRadioButtons = document.querySelectorAll('input[name="upgradeTotal"]');
+    let packageRadioButtons = document.querySelectorAll('input[name="packageTotal"]');
 
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
