@@ -304,7 +304,9 @@ class BookingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+
+        return view('/bookings/show', ['booking' => $booking]);
     }
 
     /**

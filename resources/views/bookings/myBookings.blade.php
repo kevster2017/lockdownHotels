@@ -37,7 +37,7 @@
         <th scope="row">{{ $booking->booking_id }}
         </th>
 
-        <td><a href="{{ route('bookings.show', $booking->id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
+        <td><a href="{{ route('bookings.show', $booking->booking_id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
         <td>{{ $booking->hotelName }}</td>
         <td>{{ $booking->country }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->checkInDate));  }}</td>
