@@ -55,7 +55,7 @@
                             <a class="nav-link" href="{{ route('bookings.create') }}">Book Now</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('bookings.review') }}">Review Booking</a>
+                            <a class="nav-link" href="{{ route('myBookings') }}">My Bookings</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('hotels.create') }}">List Your Property</a>
