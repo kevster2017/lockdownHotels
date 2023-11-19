@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section("content")
 
-
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a href="{{ url('/') }}">Home</a></li>
+    <li>My Bookings</li>
+  </ul>
+</div>
 
 
 
@@ -26,20 +31,27 @@
 
 
       @foreach($bookings as $booking)
+
       <tr>
 
-        <th scope="row">{{ $booking->booking_id }}</a></th>
+        <th scope="row">{{ $booking->booking_id }}
+        </th>
 
-        <td><img class="trending-img" src="/storage/{{ $booking->image }}"></td>
+        <td><a href="{{ route('bookings.show', $booking->id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
         <td>{{ $booking->hotelName }}</td>
         <td>{{ $booking->country }}</td>
-        <td>{{ $booking->checkInDate }}</td>
+        <td>{{ date('d-m-Y', strtotime($booking->checkInDate));  }}</td>
         <td>{{ $booking->numNights }}</td>
         <td>{{ $booking->payment_method }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->created_at));  }}</td>
 
 
+
+
       </tr>
+
+
+
 
       @endforeach
 
