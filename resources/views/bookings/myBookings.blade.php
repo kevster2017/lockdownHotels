@@ -12,14 +12,13 @@
     <thead>
       <tr>
         <th scope="col">Booking ID</th>
-        <th scope="col">Product</th>
-        <th scope="col">Title</th>
-        <th scope="col">Address</th>
-        <th scope="col">Payment Method</th>
-        <th scope="col">Payment Status</th>
-        <th scope="col">Status</th>
-        <th scope="col">Booking Placed</th>
-        <th scope="col">Booking Updated</th>
+        <th scope="col">Hotel</th>
+        <th scope="col">Name</th>
+        <th scope="col">Country</th>
+        <th scope="col">Check In</th>
+        <th scope="col">Nights</th>
+        <th scope="col">Method of Payment</th>
+        <th scope="col">Booking Date</th>
 
       </tr>
     </thead>
@@ -37,9 +36,7 @@
         <td>{{ $booking->checkInDate }}</td>
         <td>{{ $booking->numNights }}</td>
         <td>{{ $booking->payment_method }}</td>
-        <td>{{ $booking->paid }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->created_at));  }}</td>
-        <td>{{ date('d-m-Y', strtotime($booking->updated_at)); }}</td>
 
 
       </tr>
