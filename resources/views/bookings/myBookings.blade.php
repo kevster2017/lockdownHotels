@@ -62,7 +62,7 @@
 
 
 </div>
-<div class="pagination justify-content-center">
+<div class="pagination justify-content-center mt-4">
   {{ $bookings->links() }}
 </div>
 
