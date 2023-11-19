@@ -32,11 +32,12 @@
         <th scope="row">{{ $booking->booking_id }}</a></th>
 
         <td><img class="trending-img" src="/storage/{{ $booking->image }}"></td>
-        <td>{{ $booking->name }}</td>
-        <td>{{ $booking->address }}</td>
+        <td>{{ $booking->hotelName }}</td>
+        <td>{{ $booking->country }}</td>
+        <td>{{ $booking->checkInDate }}</td>
+        <td>{{ $booking->numNights }}</td>
         <td>{{ $booking->payment_method }}</td>
-        <td>{{ $booking->payment_status }}</td>
-        <td>{{ $booking->status }}</td>
+        <td>{{ $booking->paid }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->created_at));  }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->updated_at)); }}</td>
 
