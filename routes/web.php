@@ -51,6 +51,8 @@ Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('h
 /* Booking routes */
 Route::get("/bookings", [BookingController::class, 'index']);
 Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create');
+Route::get("/bookings/myBookings", [BookingController::class, 'myBookings'])->name('myBookings');
+
 Route::post("/bookings/store", [BookingController::class, 'store'])->name('bookings.store');
 
 Route::get("/bookings/{id}/edit", [BookingController::class, 'edit'])->name('bookings.edit');
@@ -64,11 +66,11 @@ Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bo
 Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment');
 Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete');
 
-/* Cart routes */
+/* Cart routes 
 Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get("/bookings/cartList", [BookingController::class, 'cartList'])->middleware('auth')->name("cartList");
 Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
-
+*/
 
 /* PayPal routes */
 Route::get('/bookings/paypal', function () {

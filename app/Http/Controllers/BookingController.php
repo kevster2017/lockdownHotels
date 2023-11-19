@@ -175,7 +175,7 @@ class BookingController extends Controller
             ->select('*', 'bookings.id as booking_id') // Selects the original order ID
             ->paginate(5);
 
-        return view('bookings.myBookings', ['bookings' => $bookings, 'ids' => $ids]);
+        return view('/bookings/myBookings', ['bookings' => $bookings, 'ids' => $ids]);
     }
 
     /**
