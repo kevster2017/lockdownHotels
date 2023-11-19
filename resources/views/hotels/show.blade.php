@@ -104,25 +104,25 @@
 
                                     <label><strong>Package Options</strong></label>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noPackage" name="package" value="{{ 0 }}" checked>
+                                        <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" checked>
                                         <label class="form-check-label" for="noPackage">
                                             None
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package1" name="package" value="{{ $hotel->package1Price }}">
+                                        <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $hotel->package1Price }}">
                                         <label class="form-check-label" for="package1">
                                             {{ $hotel->package1 }} +£{{ $hotel->package1Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package2" name="package" value="{{ $hotel->package2Price }}">
+                                        <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $hotel->package2Price }}">
                                         <label class="form-check-label" for="package2">
                                             {{ $hotel->package2 }} +£{{ $hotel->package2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package3" name="package" value="{{ $hotel->package3Price }}">
+                                        <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $hotel->package3Price }}">
                                         <label class="form-check-label" for="package3">
                                             {{ $hotel->package3 }} +£{{ $hotel->package3Price }}
                                         </label>

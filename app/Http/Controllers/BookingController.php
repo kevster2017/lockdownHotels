@@ -271,15 +271,19 @@ class BookingController extends Controller
         $booking->package1Price = $request->package1Price;
         $booking->package2Price = $request->package2Price;
         $booking->package3Price = $request->package3Price;
-        $booking->packageTotal = $booking->package1 + $booking->package2 + $booking->package3;
+
+        $booking->featuresTotal = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4) * $request->numNights;
+        $booking->packageTotal = $request->packageTotal * $request->numNights;
+        $booking->upgradeTotal = $request->upgradeTotal * $request->numNights;
+        $booking->extrasTotal = $booking->featuresTotal + $booking->packageTotal + $booking->upgradeTotal;
         $booking->currency = $request->currency;
         $booking->numNights = $request->numNights;
 
         $hotelPrice = $booking->pricePN * $request->numNights;
-        $featuresPrice = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4) * $request->numNights;
+
         $booking->upgradePrice = $request->upgrade1 + $request->upgrade2 + $request->upgrade3;
         $booking->packagePrice = $request->package1 + $request->package2 + $request->package3;
-        $booking->total = $hotelPrice + $featuresPrice;
+        $booking->total = $hotelPrice + $booking->extrasTotal;
         $booking->payment_method = $request->payment_method;
 
         //dd($featPrice);
