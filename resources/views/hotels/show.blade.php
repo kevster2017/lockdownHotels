@@ -132,26 +132,26 @@
 
                                     <label><strong>Upgrade Options</strong></label>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgrade" value="{{ 0 }}" checked>
+                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgradeTotal" value="{{ 0 }}" checked>
                                         <label class="form-check-label" for="noUpgrade">
                                             None
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgrade" value="{{ $hotel->upgrade1Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ $hotel->upgrade1Price }}">
                                         <label class="form-check-label" for="upgrade1">
                                             {{ $hotel->upgrade1 }} +£{{ $hotel->upgrade1Price }}
                                         </label>
 
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgrade" value="{{ $hotel->upgrade2Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ $hotel->upgrade2Price }}">
                                         <label class="form-check-label" for="upgrade2">
                                             {{ $hotel->upgrade2 }} +£{{ $hotel->upgrade2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgrade" value="{{ $hotel->upgrade3Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ $hotel->upgrade3Price }}">
                                         <label class="form-check-label" for="upgrade3">
                                             {{ $hotel->upgrade3 }} +£{{ $hotel->upgrade3Price }}
                                         </label>
