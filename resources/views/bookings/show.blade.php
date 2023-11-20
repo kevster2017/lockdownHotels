@@ -16,7 +16,7 @@
                     <p class="card-text">{{ $booking->town }}</p>
                     <p class="card-text">{{ $booking->postCode }}</p>
                     <p class="card-text">{{ $booking->country }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $booking->created_at->DiffForHumans() }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">Booking Created: {{ $booking->created_at->DiffForHumans() }}</small></p>
                 </div>
             </div>
         </div>
@@ -27,9 +27,22 @@
 <div class="container mt-3">
 
     <div class="card">
-        <h5 class="card-header" id="divLeft">Description</h5>
+        <h5 class="card-header" id="divLeft">Booking Details</h5>
         <div class="card-body">
-            <p class="card-text" id="divLeft"> {{ $booking->description }}</p>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="card-text" id="divLeft"><strong>Check in date: </strong> {{ date('d-m-Y', strtotime($booking->checkInDate));  }}</p>
+
+                </div>
+                <div class="col-sm-4">
+                    <p class="card-text" id="divLeft"><strong>Room: </strong> {{ $booking->roomType }} room</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="card-text" id="divLeft"><strong>Number of nights: </strong> {{ $booking->numNights }}</p>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </div>
