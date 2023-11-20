@@ -202,25 +202,11 @@ class BookingController extends Controller
         $booking->holidayType = $request->holidayType;
 
         $booking->feat1 = $request->feat1 ?? 0;
+        $booking->feat2 = $request->feat2 ?? 0;
+        $booking->feat3 = $request->feat3 ?? 0;
+        $booking->feat4 = $request->feat4 ?? 0;
 
-        if ($request->feat2 == "") {
-            $booking->feat2 = 0;
-        } else {
 
-            $booking->feat2 = $request->feat2;
-        }
-        if ($request->feat3 == "") {
-            $booking->feat3 = 0;
-        } else {
-
-            $booking->feat3 = $request->feat3;
-        }
-        if ($request->feat4 == "") {
-            $booking->feat4 = 0;
-        } else {
-
-            $booking->feat4 = $request->feat4;
-        }
 
         $booking->feat1Price = $request->feat1Price;
         $booking->feat2Price = $request->feat2Price;
@@ -228,21 +214,10 @@ class BookingController extends Controller
         $booking->feat4Price = $request->feat4Price;
         $booking->featuresTotal = $booking->feat1 + $booking->feat2 + $booking->feat3 + $booking->feat4;
 
-        if ($request->upgrade1 == "") {
-            $booking->upgrade1 = 0;
-        } else {
-            $booking->upgrade1 = $request->upgrade1;
-        }
-        if ($request->upgrade2 == "") {
-            $booking->upgrade2 = 0;
-        } else {
-            $booking->upgrade2 = $request->upgrade2;
-        }
-        if ($request->upgrade3 == "") {
-            $booking->upgrade3 = 0;
-        } else {
-            $booking->upgrade3 = $request->upgrade3;
-        }
+        $booking->upgrade1 = $request->upgrade1 ?? 0;
+        $booking->upgrade2 = $request->upgrade2 ?? 0;
+        $booking->upgrade3 = $request->upgrade3 ?? 0;
+
 
         $booking->upgrade1Price = $request->upgrade1Price;
         $booking->upgrade2Price = $request->upgrade2Price;
@@ -252,21 +227,10 @@ class BookingController extends Controller
         $booking->upgradeTotal = $booking->upgrade1 + $booking->upgrade2 + $booking->upgrade3;
         $booking->extrasTotal = $booking->featuresTotal + $booking->packageTotal + $booking->upgradeTotal;
 
-        if ($request->package1 == "") {
-            $booking->package1 = 0;
-        } else {
-            $booking->package1 = $request->package1;
-        }
-        if ($request->package2 == "") {
-            $booking->package2 = 0;
-        } else {
-            $booking->package2 = $request->package2;
-        }
-        if ($request->package3 == "") {
-            $booking->package3 = 0;
-        } else {
-            $booking->package3 = $request->package3;
-        }
+        $booking->package1 = $request->package1 ?? 0;
+        $booking->package2 = $request->package2 ?? 0;
+        $booking->package3 = $request->package3 ?? 0;
+
 
         $booking->package1Price = $request->package1Price;
         $booking->package2Price = $request->package2Price;
