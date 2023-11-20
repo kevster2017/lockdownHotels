@@ -82,8 +82,11 @@
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-dark">Total Costs</div>
                         <div class="card-body text-dark">
-                            <h5 class="card-title">Success card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">Hotel Costs: £{{ $booking->pricePN * $booking->numNights }}</h5>
+                            <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
+                            <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
+                            <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>
+
                         </div>
                         <div class="card-footer bg-transparent border-dark"><strong>Total Costs:</strong> £{{ $booking->total }}</div>
                     </div>
@@ -94,6 +97,12 @@
 
         </div>
     </div>
+
+    <div class="row d-flex justify-content-center">
+        <a class="btn btn-primary" href="{{ route('bookings.edit', $booking->id) }}">Edit Booking</a>
+        <a class="btn btn-danger" href="{{ route('bookings.destroy', $booking->id) }}">Delete Booking</a>
+    </div>
+
 </div>
 
 
