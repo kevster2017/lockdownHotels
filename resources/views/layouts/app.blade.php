@@ -60,6 +60,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('hotels.create') }}">List Your Property</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('hotels.myHotels') }}">My Properties</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
