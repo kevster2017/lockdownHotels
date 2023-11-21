@@ -22,6 +22,20 @@ class HotelController extends Controller
         ]);
     }
 
+
+    public function myHotels()
+    {
+
+        $userId = auth()->user()->id;
+
+        $hotels = Hotel::where('userId', $userId)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('hotels.myHotels', [
+            'hotels' => $hotels
+        ]);
+    }
     public function fetchData(Request $request)
     {
         // Your PHP logic here - interact with the database, process data, etc.
