@@ -46,6 +46,7 @@ Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('h
 Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('hotels.country');
 
 Route::get('/hotels/myHotels', [HotelController::class, 'myHotels'])->name('hotels.myHotels');
+Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow'])->name('hotels.myHotelsShow');
 
 //Route::resource('/hotels', HotelController::class);
 
