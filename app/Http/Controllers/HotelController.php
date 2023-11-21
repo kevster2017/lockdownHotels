@@ -219,4 +219,122 @@ class HotelController extends Controller
 
         return view('hotels.edit')->with($arr);
     }
+
+    public function update(Request $request, Hotel $hotel)
+    {
+
+        if (!empty($request->input('name'))) {
+            $hotel->name = $request->name;
+        }
+        if (!empty($request->hasFile('image'))) {
+
+            $hotel->image = (request('image')->store('uploads', 'public'));
+            $image = Image::make(public_path("storage/{$hotel->image}"))->orientate()->fit(180, 180); //Save updated image as 180 x 180 px
+            $image->save();
+        }
+        if (!empty($request->input('address'))) {
+            $hotel->address = $request->address;
+        }
+        if (!empty($request->input('town'))) {
+            $hotel->town = $request->town;
+        }
+        if (!empty($request->input('country'))) {
+            $hotel->country = $request->country;
+        }
+        if (!empty($request->input('postCode'))) {
+            $hotel->postCode = $request->postCode;
+        }
+        if (!empty($request->input('accomType'))) {
+            $hotel->accomType = $request->accomType;
+        }
+        if (!empty($request->input('roomType'))) {
+            $hotel->roomType = $request->roomType;
+        }
+        if (!empty($request->input('holidayType'))) {
+            $hotel->holidayType = $request->holidayType;
+        }
+        if (!empty($request->input('feat1'))) {
+            $hotel->feat1 = $request->feat1;
+        }
+        if (!empty($request->input('feat2'))) {
+            $hotel->feat2 = $request->feat2;
+        }
+        if (!empty($request->input('feat3'))) {
+            $hotel->feat3 = $request->feat3;
+        }
+        if (!empty($request->input('feat4'))) {
+            $hotel->feat4 = $request->feat4;
+        }
+        if (!empty($request->input('feat1Price'))) {
+            $hotel->feat1Price = $request->feat1Price;
+        }
+        if (!empty($request->input('feat2Price'))) {
+            $hotel->feat2Price = $request->feat2Price;
+        }
+        if (!empty($request->input('feat3Price'))) {
+            $hotel->feat3Price = $request->feat3Price;
+        }
+        if (!empty($request->input('feat4Price'))) {
+            $hotel->feat4Price = $request->feat4Price;
+        }
+        if (!empty($request->input('upgrade1'))) {
+            $hotel->upgrade1 = $request->upgrade1;
+        }
+        if (!empty($request->input('upgrade2'))) {
+            $hotel->upgrade2 = $request->upgrade2;
+        }
+        if (!empty($request->input('upgrade3'))) {
+            $hotel->upgrade3 = $request->upgrade3;
+        }
+        if (!empty($request->input('upgrade1Price'))) {
+            $hotel->upgrade1Price = $request->upgrade1Price;
+        }
+        if (!empty($request->input('upgrade2Price'))) {
+            $hotel->upgrade2Price = $request->upgrade2Price;
+        }
+        if (!empty($request->input('upgrade1Price'))) {
+            $hotel->upgrade3Price = $request->upgrade3Price;
+        }
+        if (!empty($request->input('package1'))) {
+            $hotel->package1 = $request->package1;
+        }
+        if (!empty($request->input('package2'))) {
+            $hotel->package2 = $request->package2;
+        }
+        if (!empty($request->input('package3'))) {
+            $hotel->package3 = $request->package3;
+        }
+        if (!empty($request->input('package1Price'))) {
+            $hotel->package1Price = $request->package1Price;
+        }
+        if (!empty($request->input('package2Price'))) {
+            $hotel->package2Price = $request->package2Price;
+        }
+        if (!empty($request->input('package1Price'))) {
+            $hotel->package3Price = $request->package3Price;
+        }
+        if (!empty($request->input('currency'))) {
+            $hotel->currency = $request->currency;
+        }
+        if (!empty($request->input('price'))) {
+            $hotel->price = $request->price;
+        }
+        if (!empty($request->input('numRooms'))) {
+            $hotel->numRooms = $request->numRooms;
+        }
+        if (!empty($request->input('description'))) {
+            $hotel->description = $request->description;
+        }
+
+        $hotel->save();
+
+        return redirect()->route('myHotel.show', $hotel->id)->with('success', 'Hotel successfully updated');
+    }
+
+    public function destroy($id)
+    {
+        Hotel::destroy($id);
+
+        return redirect()->route('myHotels.show')->with('success', 'Hotel successfully deleted');
+    }
 }
