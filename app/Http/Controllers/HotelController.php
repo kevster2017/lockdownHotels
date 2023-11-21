@@ -36,6 +36,16 @@ class HotelController extends Controller
             'hotels' => $hotels
         ]);
     }
+
+    public function myHotelsShow($id)
+    {
+        $hotel = Hotel::findOrfail($id);
+
+        return view('hotels.myHotelsShow', [
+            'hotel' => $hotel
+        ]);
+    }
+
     public function fetchData(Request $request)
     {
         // Your PHP logic here - interact with the database, process data, etc.
