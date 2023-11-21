@@ -220,8 +220,13 @@ class HotelController extends Controller
         return view('hotels.edit')->with($arr);
     }
 
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, $id)
     {
+
+        $hotel = Hotel::find($id);
+
+        $hotel->userId = auth()->user()->id;
+        $hotel->agreeTerms = 1;
 
         if (!empty($request->input('name'))) {
             $hotel->name = $request->name;
@@ -326,15 +331,16 @@ class HotelController extends Controller
             $hotel->description = $request->description;
         }
 
+
         $hotel->save();
 
-        return redirect()->route('myHotel.show', $hotel->id)->with('success', 'Hotel successfully updated');
+        return redirect()->route('hotels.myHotelsShow', $hotel->id)->with('success', 'Hotel successfully updated');
     }
 
     public function destroy($id)
     {
         Hotel::destroy($id);
 
-        return redirect()->route('myHotels.show')->with('success', 'Hotel successfully deleted');
+        return redirect()->route('hotels.myHotelsShow')->with('success', 'Hotel successfully deleted');
     }
 }

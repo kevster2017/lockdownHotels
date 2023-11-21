@@ -120,10 +120,21 @@
     </div>
 </div>
 
-<div class="row d-flex justify-content-center">
-    <a class="btn btn-primary" href="{{ route('hotels.edit', $hotel->id) }}">Edit Hotel</a>
-    <a class="btn btn-danger" href="{{ route('hotels.destroy', $hotel->id) }}">Delete Booking</a>
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-sm-6 text-center">
+            <a class="btn btn-primary" href="{{ route('hotels.edit', $hotel->id) }}">Edit Hotel</a>
+        </div>
+        <div class="col-sm-6 text-center">
+            <form method="POST" action="{{ route('hotels.destroy', $hotel->id) }}">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit">Delete Hotel</button>
+            </form>
+        </div>
+    </div>
 </div>
+
 
 
 
