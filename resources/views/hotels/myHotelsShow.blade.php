@@ -4,12 +4,12 @@
 
 
 <div class="container mt-3">
-    <div class="card mb-3">
-        <div class="row g-0">
+    <div class="card mb-3 align-items-center">
+        <div class="row justify-content-center">
             <div class="col-sm-4">
                 <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">
             </div>
-            <div class="col-md-8">
+            <div class="col-sm-8">
                 <div class="card-body" id="divLeft">
                     <h2 class="card-title">{{ $hotel->name }}</h2>
                     <p class="card-text">{{ $hotel->address }}</p>
@@ -22,6 +22,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <div class="container mt-3">
@@ -126,11 +128,35 @@
             <a class="btn btn-primary" href="{{ route('hotels.edit', $hotel->id) }}">Edit Hotel</a>
         </div>
         <div class="col-sm-6 text-center">
-            <form method="POST" action="{{ route('hotels.destroy', $hotel->id) }}">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" type="submit">Delete Hotel</button>
-            </form>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete hotel
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModalLabel">Are you sure you want to delete {{ $hotel->name }}?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deleting is permanent and cannot be undone</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <form method="POST" action="{{ route('hotels.destroy', $hotel->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Delete Hotel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

@@ -341,6 +341,6 @@ class HotelController extends Controller
     {
         Hotel::destroy($id);
 
-        return redirect()->route('hotels.myHotelsShow')->with('success', 'Hotel successfully deleted');
+        return redirect()->route('hotels.myHotels')->with('success', 'Hotel successfully deleted');
     }
 }
