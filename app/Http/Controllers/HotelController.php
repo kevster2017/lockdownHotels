@@ -113,11 +113,6 @@ class HotelController extends Controller
         return view('hotels.create');
     }
 
-    public function edit()
-    {
-        return view('hotels.edit');
-    }
-
     public function store(Request $request, Hotel $hotel)
     {
         //dd($request);
@@ -213,5 +208,15 @@ class HotelController extends Controller
 
 
         return redirect()->back()->with('success', 'Hotel Successfully Uploaded!!');
+    }
+
+
+    public function edit($id)
+    {
+        $hotel = Hotel::find($id);
+
+        $arr['hotel'] = $hotel;
+
+        return view('hotels.edit')->with($arr);
     }
 }
