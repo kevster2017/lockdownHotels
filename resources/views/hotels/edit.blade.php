@@ -24,7 +24,7 @@
 
 <div class="container">
     <br>
-    <h1>List Your Property</h1>
+    <h1>Edit Hotels Details</h1>
 </div>
 
 

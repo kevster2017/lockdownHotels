@@ -113,6 +113,11 @@ class HotelController extends Controller
         return view('hotels.create');
     }
 
+    public function edit()
+    {
+        return view('hotels.edit');
+    }
+
     public function store(Request $request, Hotel $hotel)
     {
         //dd($request);
