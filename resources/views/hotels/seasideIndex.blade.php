@@ -14,7 +14,7 @@
 <div class="container py-3">
 
 
-    <h1 class="text-center py-3">Seaside hotels</h1>
+    <h1 class="text-center py-3">Seaside Hotels</h1>
 
 
     @foreach($hotels as $hotel)
