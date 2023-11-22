@@ -80,6 +80,7 @@ li a {
 }
 
 
+
 /* Button Features */
 
 button {
@@ -155,7 +156,7 @@ div {
     text-align: center;
 }
 
-#divLeft {
+.divLeft {
     text-align:left;
     padding-left: 5%;
 }
