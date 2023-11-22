@@ -13,9 +13,10 @@
 
 <h1 class="text-center py-3">All Messages</h1>
 
+
 <div class="container">
-    <table class="table table-hover table-bordered">
-        <thead>
+    <table class="table table-hover table-bordered table-hover">
+        <thead class="table-primary">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
@@ -26,6 +27,9 @@
                 <th scope="col">Delete</th>
             </tr>
         </thead>
+
+
+
         <tbody class="table-group-divider">
             @foreach($contacts as $contact)
             <tr>
@@ -69,6 +73,8 @@
 
         </tbody>
     </table>
-
+    @if($contacts->count() == 0)
+    <h1 class="text-center py-3">No messages received</h1>
+    @endif
 </div>
 @endsection

@@ -56,7 +56,9 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+
+        return view('contact.show', ['contact' => $contact]);
     }
 
     /**
@@ -80,6 +82,8 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Contact::destroy($id);
+
+        return redirect()->route('contact.index')->with('success', 'Message successfully deleted');
     }
 }
