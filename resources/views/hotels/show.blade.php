@@ -39,7 +39,7 @@
         <h5 class="card-header" id="divLeft">Room Options</h5>
         <div class="card-body" id="divLeft">
             <table class="table table-bordered table-hover">
-                <thead>
+                <thead class="table-primary">
                     <tr>
                         <th scope="col">Room Type</th>
                         <th scope="col">Extras</th>
@@ -158,7 +158,7 @@
                                     </div>
                                 </ul>
                             </td>
-                            <td>{{ $hotel->price }}</td>
+                            <td>£{{ $hotel->price }}</td>
                             <td>{{ $hotel->numRooms }}</td>
                             <td>
                                 <button class="btn btn-primary" type="submit">Book Now</button>
@@ -168,7 +168,7 @@
 
             </table>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 text-center">
             <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
             <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
             <h2>Your total costs: £<span id="totalCost">0</span></span></h2>

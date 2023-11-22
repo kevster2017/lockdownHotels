@@ -82,7 +82,9 @@ li a {
     color: black;
 }
 
-
+#thead{
+    background-color: #0275d8;
+}
 
 /* Button Features */
 
