@@ -215,9 +215,7 @@ class HotelController extends Controller
     {
         $hotel = Hotel::find($id);
 
-        $arr['hotel'] = $hotel;
-
-        return view('hotels.edit')->with($arr);
+        return view('hotels.edit', ['hotel' => $hotel]);
     }
 
     public function update(Request $request, $id)
