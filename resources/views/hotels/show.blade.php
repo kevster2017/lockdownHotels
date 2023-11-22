@@ -10,8 +10,8 @@
                 <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">
             </div>
             <div class="col-md-8">
-                <div class="card-body" id="divLeft">
-                    <h2 class="card-title">{{ $hotel->name }}</h2>
+                <div class="card-body">
+                    <h2 class=" card-title">{{ $hotel->name }}</h2>
                     <p class="card-text">{{ $hotel->address }}</p>
                     <p class="card-text">{{ $hotel->town }}</p>
                     <p class="card-text">{{ $hotel->postCode }}</p>
@@ -27,17 +27,17 @@
 <div class="container mt-3">
 
     <div class="card">
-        <h5 class="card-header" id="divLeft">Description</h5>
+        <h5 class="card-header">Description</h5>
         <div class="card-body">
-            <p class="card-text" id="divLeft"> {{ $hotel->description }}</p>
+            <p class="card-text"> {{ $hotel->description }}</p>
         </div>
     </div>
 </div>
 
 <div class="container mt-3">
     <div class="card">
-        <h5 class="card-header" id="divLeft">Room Options</h5>
-        <div class="card-body" id="divLeft">
+        <h5 class="card-header">Room Options</h5>
+        <div class="card-body">
             <table class="table table-bordered table-hover">
                 <thead class="table-primary">
                     <tr>
