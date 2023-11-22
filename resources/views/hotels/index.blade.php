@@ -13,7 +13,7 @@
 
 
 
-<h1 class="text-center py-3">All hotels</h1>
+<h1 class="text-center py-3">All Hotels</h1>
 
 
 @foreach($hotels as $hotel)

@@ -99,7 +99,7 @@ Route::get('/contactUs', function () {
     return view('contactUs');
 });
 
-Route::get("/contact", [ContactController::class, 'index'])->middleware('auth');
+Route::get("/contact", [ContactController::class, 'index'])->name('contact.index')->middleware('auth');
 Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
 Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
 
