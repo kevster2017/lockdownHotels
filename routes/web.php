@@ -104,7 +104,8 @@ Route::get("/contact", [ContactController::class, 'index'])->name('contact.index
 Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
 Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
 
-Route::delete('/contact/{id}', [HotelController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
+Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
+Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('contact.show');
 
 Route::get('/contact/contactComplete', function () {
     return view('contactComplete');

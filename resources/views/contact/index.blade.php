@@ -30,17 +30,17 @@
             @foreach($contacts as $contact)
             <tr>
                 <th scope="row">{{ $contact->id }}</th>
-                <td>{{ $contact->name }}</td>
+                <td><a href="{{ route('contact.show', $contact->id) }}">{{ $contact->name }}</a></td>
                 <td>{{ $contact->userID }}</td>
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>{{ $contact->created_at->DiffForHumans() }}</td>
                 <td><!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $contact->id }}">
                         Delete Message
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal{{ $contact->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -64,6 +64,7 @@
 
                 </td>
             </tr>
+
             @endforeach
 
         </tbody>
