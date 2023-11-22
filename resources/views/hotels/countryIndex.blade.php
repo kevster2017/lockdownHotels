@@ -12,8 +12,6 @@
 </div>
 
 
-
-
 <h1 class="text-center py-3">Country Escape hotels</h1>
 
 
