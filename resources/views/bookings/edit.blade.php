@@ -1,22 +1,28 @@
 @extends('layouts/app')
 
 @section('content')
-
+<!--Breadcrumb-->
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="{{ url('/home') }}">Home</a></li>
+        <li>Edit Booking Details at {{ $booking->name }}</li>
+    </ul>
+</div>
 
 <div class="container mt-3">
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-sm-4">
-                <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">
+                <img src="/storage/{{ $booking->image }}" class="img-fluid rounded-start" alt="Hotel Image">
             </div>
             <div class="col-md-8">
                 <div class="card-body" id="divLeft">
-                    <h2 class="card-title">{{ $hotel->name }}</h2>
-                    <p class="card-text">{{ $hotel->address }}</p>
-                    <p class="card-text">{{ $hotel->town }}</p>
-                    <p class="card-text">{{ $hotel->postCode }}</p>
-                    <p class="card-text">{{ $hotel->country }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $hotel->created_at->DiffForHumans() }}</small></p>
+                    <h2 class="card-title">{{ $booking->name }}</h2>
+                    <p class="card-text">{{ $booking->address }}</p>
+                    <p class="card-text">{{ $booking->town }}</p>
+                    <p class="card-text">{{ $booking->postCode }}</p>
+                    <p class="card-text">{{ $booking->country }}</p>
+                    <p class="card-text"><small class="text-body-secondary">Hotel Booked: {{ $booking->created_at->DiffForHumans() }}</small></p>
                 </div>
             </div>
         </div>
@@ -29,7 +35,7 @@
     <div class="card">
         <h5 class="card-header" id="divLeft">Description</h5>
         <div class="card-body">
-            <p class="card-text" id="divLeft"> {{ $hotel->description }}</p>
+            <p class="card-text" id="divLeft"> {{ $booking->description }}</p>
         </div>
     </div>
 </div>
@@ -51,31 +57,31 @@
 
                 <form action="{{ route('bookings.store') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
-                    <input type="hidden" name="hotelName" value="{{ $hotel->name }}">
-                    <input type="hidden" name="name" value="{{ $hotel->name }}">
+                    <input type="hidden" name="hotel_Id" value="{{ $booking->id }}">
+
+                    <input type="hidden" name="name" value="{{ $booking->name }}">
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
                     <input type="hidden" name="email" value="{{ Auth()->User()->email }}">
-                    <input type="hidden" name="price" value="{{ $hotel->price}}">
+                    <input type="hidden" name="pricePN" value="{{ $booking->pricePN}}">
                     <input type="hidden" name="currency" value="{{ 'Sterling' }}">
-                    <input type="hidden" name="image" value="{{ $hotel->image }}">
-                    <input type="hidden" name="address" value="{{ $hotel->address }}">
-                    <input type="hidden" name="town" value="{{ $hotel->town }}">
-                    <input type="hidden" name="country" value="{{ $hotel->country}}">
-                    <input type="hidden" name="postCode" value="{{ $hotel->postCode }}">
-                    <input type="hidden" name="accomType" value="{{ $hotel->accomType }}">
-                    <input type="hidden" name="roomType" value="{{ $hotel->roomType }}">
-                    <input type="hidden" name="holidayType" value="{{ $hotel->holidayType }}">
-                    <input type="hidden" name="feat1Price" value="{{ $hotel->feat1Price }}">
-                    <input type="hidden" name="feat2Price" value="{{ $hotel->feat2Price }}">
-                    <input type="hidden" name="feat3Price" value="{{ $hotel->feat3Price }}">
-                    <input type="hidden" name="feat4Price" value="{{ $hotel->feat4Price }}">
-                    <input type="hidden" name="upgrade1Price" value="{{ $hotel->upgrade1Price }}">
-                    <input type="hidden" name="upgrade2Price" value="{{ $hotel->upgrade2Price }}">
-                    <input type="hidden" name="upgrade3Price" value="{{ $hotel->upgrade3Price }}">
-                    <input type="hidden" name="package1Price" value="{{ $hotel->package1Price }}">
-                    <input type="hidden" name="package2Price" value="{{ $hotel->package2Price }}">
-                    <input type="hidden" name="package3Price" value="{{ $hotel->package3Price }}">
+                    <input type="hidden" name="image" value="{{ $booking->image }}">
+                    <input type="hidden" name="address" value="{{ $booking->address }}">
+                    <input type="hidden" name="town" value="{{ $booking->town }}">
+                    <input type="hidden" name="country" value="{{ $booking->country}}">
+                    <input type="hidden" name="postCode" value="{{ $booking->postCode }}">
+                    <input type="hidden" name="accomType" value="{{ $booking->accomType }}">
+                    <input type="hidden" name="roomType" value="{{ $booking->roomType }}">
+                    <input type="hidden" name="holidayType" value="{{ $booking->holidayType }}">
+                    <input type="hidden" name="feat1Price" value="{{ $booking->feat1Price }}">
+                    <input type="hidden" name="feat2Price" value="{{ $booking->feat2Price }}">
+                    <input type="hidden" name="feat3Price" value="{{ $booking->feat3Price }}">
+                    <input type="hidden" name="feat4Price" value="{{ $booking->feat4Price }}">
+                    <input type="hidden" name="upgrade1Price" value="{{ $booking->upgrade1Price }}">
+                    <input type="hidden" name="upgrade2Price" value="{{ $booking->upgrade2Price }}">
+                    <input type="hidden" name="upgrade3Price" value="{{ $booking->upgrade3Price }}">
+                    <input type="hidden" name="package1Price" value="{{ $booking->package1Price }}">
+                    <input type="hidden" name="package2Price" value="{{ $booking->package2Price }}">
+                    <input type="hidden" name="package3Price" value="{{ $booking->package3Price }}">
                     <input type="hidden" name="paid" value="{{ 0 }}">
                     <input type="hidden" name="payment_method" value="Stripe">
 
@@ -86,21 +92,21 @@
 
                     <div class="col" style="text-align: left;">
                         <label class="align-left" style="font-weight: bold; padding-bottom: 15px;">Check in date:</label>
-                        <input class="date form-control" id="checkInDate" type="text" name="checkInDate">
-                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
-                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1" name="numNights">
+                        <input class="date form-control" id="checkInDate" type="text" name="checkInDate" value="{{ old('checkInDate'), $booking->checkInDate }}">
+                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: {{ $booking->numNights }}</label>
+                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="{{ old('numNights'), $booking->numNights }}" name="numNights">
 
                     </div>
                     <tbody>
                         <tr>
-                            <td>{{ $hotel->roomType }}</td>
+                            <td>{{ $booking->roomType }}</td>
                             <td>
                                 <ul id="divLeft">
                                     <label><strong>Custom Options</strong></label>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat1Price }}" id="feat1" name="feat1">{{ $hotel->feat1 }} +£{{ $hotel->feat1Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat2Price }}" id="feat2" name="feat2">{{ $hotel->feat2 }} +£{{ $hotel->feat2Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat3Price }}" id="feat3" name="feat3">{{ $hotel->feat3 }} +£{{ $hotel->feat3Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat4Price }}" id="feat4" name="feat4">{{ $hotel->feat4 }} +£{{ $hotel->feat4Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat1', $booking->feat1) }}" id="feat1" name="feat1">{{ $booking->feat1 }} +£{{ $booking->feat1Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat1Price', $booking->feat1Price) }}" id="feat2" name="feat2">{{ $booking->feat2 }} +£{{ $booking->feat2Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat3', $booking->feat3) }}" id="feat3" name="feat3">{{ $booking->feat3 }} +£{{ $booking->feat3Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat4Price', $booking->feat4Price) }}" id="feat4" name="feat4">{{ $booking->feat4 }} +£{{ $booking->feat4Price }}</li>
 
                                     <label><strong>Package Options</strong></label>
                                     <div class="form-check" id="divLeft">
@@ -110,21 +116,21 @@
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $hotel->package1Price }}">
+                                        <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ old('package1Price', $booking->package1Price) }}">
                                         <label class="form-check-label" for="package1">
-                                            {{ $hotel->package1 }} +£{{ $hotel->package1Price }}
+                                            {{ $booking->package1 }} +£{{ $booking->package1Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $hotel->package2Price }}">
+                                        <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ old('package2', $booking->package2) }}">
                                         <label class="form-check-label" for="package2">
-                                            {{ $hotel->package2 }} +£{{ $hotel->package2Price }}
+                                            {{ $booking->package2 }} +£{{ $booking->package2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $hotel->package3Price }}">
+                                        <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ old('package3', $booking->package3) }}">
                                         <label class="form-check-label" for="package3">
-                                            {{ $hotel->package3 }} +£{{ $hotel->package3Price }}
+                                            {{ $booking->package3 }} +£{{ $booking->package3Price }}
                                         </label>
                                     </div>
 
@@ -138,30 +144,30 @@
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ $hotel->upgrade1Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ old('upgrade1', $booking->upgrade1) }}">
                                         <label class="form-check-label" for="upgrade1">
-                                            {{ $hotel->upgrade1 }} +£{{ $hotel->upgrade1Price }}
+                                            {{ $booking->upgrade1 }} +£{{ $booking->upgrade1Price }}
                                         </label>
 
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ $hotel->upgrade2Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ old('upgrade2', $booking->upgrade2) }}">
                                         <label class="form-check-label" for="upgrade2">
-                                            {{ $hotel->upgrade2 }} +£{{ $hotel->upgrade2Price }}
+                                            {{ $booking->upgrade2 }} +£{{ $booking->upgrade2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ $hotel->upgrade3Price }}">
+                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ old('upgrade3', $booking->upgrade3) }}">
                                         <label class="form-check-label" for="upgrade3">
-                                            {{ $hotel->upgrade3 }} +£{{ $hotel->upgrade3Price }}
+                                            {{ $booking->upgrade3 }} +£{{ $booking->upgrade3Price }}
                                         </label>
                                     </div>
                                 </ul>
                             </td>
-                            <td>{{ $hotel->price }}</td>
-                            <td>{{ $hotel->numRooms }}</td>
+                            <td>{{ $booking->price }}</td>
+                            <td>{{ $booking->numRooms }}</td>
                             <td>
-                                <button class="btn btn-primary" type="submit">Book Now</button>
+                                <button class="btn btn-primary" type="submit">Edit Booking</button>
                             </td>
                         </tr>
                     </tbody>
@@ -186,7 +192,7 @@
 </script>
 
 <script>
-    let hotelCost = parseFloat('{{ $hotel->price }}');
+    let hotelCost = parseFloat('{{ $booking->pricePN }}');
     let noOfNights = 0;
     let customCosts = 0;
     let packageCosts = 0;
@@ -201,7 +207,7 @@
         noOfNights = value;
         let valid = true;
 
-        hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
+        hotelCost = parseFloat('{{ $booking->pricePN }}') * noOfNights;
 
 
 

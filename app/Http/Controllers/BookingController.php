@@ -44,42 +44,7 @@ class BookingController extends Controller
         return view('bookings.paymentComplete');
     }
 
-    /**
-     * Book Hotel by adding to Cart
-     */
 
-
-    static function cartItem()
-    {
-
-        $userId = optional(Auth::user())->id;
-
-        return Cart::where('userId', $userId)->count();
-    }
-
-    function cartList()
-    {
-
-        $userId = auth()->user()->id;
-
-        $bookings = DB::table('cart')
-            ->join('hotels', 'cart.hotel_Id', '=', 'hotels.id')
-            ->where('cart.userId', $userId)
-            ->select('hotels.*', 'cart.id as cart_id')
-            ->get();
-
-        // dd($bookings);
-
-
-        return view('bookings.cartList', ['bookings' => $bookings]);
-    }
-
-    function removeCart($id)
-    {
-        Cart::destroy($id);
-
-        return redirect()->back()->with('success', 'Item successfully removed from bookings');
-    }
 
     public function review()
     {
@@ -278,7 +243,11 @@ class BookingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $booking = Booking::find($id);
+
+        $arr['booking'] = $booking;
+
+        return view('bookings.edit')->with($arr);
     }
 
     /**
