@@ -13,7 +13,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::where('id', '>', 0)
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('created_at', 'ASC')
             ->get();
 
         return view('contact.index', [

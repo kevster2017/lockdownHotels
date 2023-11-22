@@ -33,7 +33,7 @@
 <!--Contact Us Container-->
 <br>
 <div class="container">
-    <div class="contact" text-align: center>
+    <div class="contact text-center">
         <br>
         <h1>Contact Us</h1><br>
         <p>If you would like to get in contact with us, feel free to get in touch using any of the methods
@@ -55,7 +55,7 @@
 
 <!--Contact Us form-->
 <div class="container">
-    <div class="message">
+    <div class="message text-center">
         <form action="{{ route('contact.store') }}" method="POST" id="form" class="was-validated" onkeyup="manage()" novalidate>
             @csrf
             <br>
@@ -90,8 +90,8 @@
     </div>
 
     <!--Social Media Icons-->
-    <div class="container">
-        <div class="social">
+    <div class="container mt-5">
+        <div class="social text-center">
             <h2>Follow Us</h2>
 
             <button data-toggle="tooltip" title="Click here to follow us on Instagram"><a href="https://www.instagram.com/" target="_blank"><img src="/images/Instagram.png" alt="Instagram button"></a></button>

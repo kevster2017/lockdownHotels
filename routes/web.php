@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PayPalController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,6 +103,8 @@ Route::get('/contactUs', function () {
 Route::get("/contact", [ContactController::class, 'index'])->name('contact.index')->middleware('auth');
 Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
 Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
+
+Route::delete('/contact/{id}', [HotelController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
 
 Route::get('/contact/contactComplete', function () {
     return view('contactComplete');
