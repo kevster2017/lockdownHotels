@@ -152,6 +152,14 @@ a.btn-second:hover {
 align: left;
 }
 
+.card{
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: start;
+   
+}
+
+
 div {
     text-align: center;
 }
@@ -285,17 +293,7 @@ ul {
     border-width: 2px !important;
 }
 
-.roomUpgrade:hover {
-    box-shadow: 5px 5px 10px 5px rgb(73, 73, 73);
-    transition: 0.3s;
-    cursor: pointer;
-}
 
-.package:hover {
-    box-shadow: 5px 5px 10px 5px rgb(73, 73, 73);
-    transition: 0.3s;
-    cursor: pointer;
-}
 
 .nav-link:hover {
     color: #bc9c22 !important;
@@ -322,24 +320,4 @@ ul {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-}
-
-.addon1{
-    padding:4px 7px; 
-    background-color:#004aad; 
-    color: white;
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 50%; 
-}
-
-.addon2{
-    padding:4px 7px; 
-    background-color:#004aad; 
-    color: white;
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 50%; 
 }
