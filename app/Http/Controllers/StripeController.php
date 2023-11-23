@@ -30,9 +30,9 @@ class StripeController extends Controller
     {
 
 
-        $user_id = auth()->user()->id;
+        $userId = auth()->user()->id;
 
-        $booking = Booking::where('userId', $user_id)
+        $booking = Booking::where('userId', $userId)
             ->first();
         // dd($booking);
         /*
@@ -77,6 +77,7 @@ class StripeController extends Controller
         //  Cart::where('userId', $user_id)->delete();
 
         $booking->paid = 1;
-        return view('/home')->with('success', 'Booking Completed');
+        $booking->save();
+        return view('bookings.myBookings')->with('success', 'Booking Completed');
     }
 }
