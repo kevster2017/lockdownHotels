@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section("content")
 
-<div class="container loginView">
+
+<div class="container text-center mx-auto">
+
+
    <div class="row">
       <h3 style="text-align: center;margin-top: 40px;margin-bottom: 40px;">Payment Page</h3>
       <div class="col-md-6 col-md-offset-3">
@@ -67,6 +70,7 @@
          </div>
       </div>
    </div>
+
 </div>
 
 @endsection

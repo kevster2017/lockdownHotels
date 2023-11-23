@@ -96,8 +96,8 @@
                     <div class="col" style="text-align: left;">
                         <label class="align-left" style="font-weight: bold; padding-bottom: 15px;">Check in date:</label>
                         <input class="date form-control" id="checkInDate" type="text" name="checkInDate">
-                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
-                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1" name="numNights">
+                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 0</label>
+                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="0" name="numNights">
 
                     </div>
                     <tbody>
@@ -263,7 +263,7 @@
     }
 
     function updateCheckboxValue(checkbox) {
-        const featNumber = parseInt(checkbox.dataset.featNumber); // Assuming you have a data attribute for featNumber
+        const featNumber = parseInt(checkbox.dataset.featNumber);
         const featPrice = parseFloat(checkbox.value) * noOfNights;
         if (checkbox.checked) {
             customCosts += featPrice;
