@@ -29,12 +29,11 @@ class StripeController extends Controller
     public function stripePost(Request $request)
     {
 
-
         $userId = auth()->user()->id;
 
         $booking = Booking::where('userId', $userId)
             ->first();
-        // dd($booking);
+
         /*
         if (!$booking) {
             // Handle the case where the cart is not found
@@ -43,7 +42,6 @@ class StripeController extends Controller
 */
 
         $hotel = Hotel::find($booking->hotel_Id);
-
 
         /*
         // Validate the number of available rooms before decrementing
@@ -58,11 +56,8 @@ class StripeController extends Controller
 
         $hotel = $booking->name;
 
-
         // Total is in pence. Multiply by 100 for £1
         $total = $booking->total * 100;
-
-        // dd($total);
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
@@ -72,12 +67,9 @@ class StripeController extends Controller
             "description" => "This payment is for {$hotel}",
         ]);
 
-
-
-        //  Cart::where('userId', $user_id)->delete();
-
         $booking->paid = 1;
         $booking->save();
-        return view('bookings.myBookings')->with('success', 'Booking Completed');
+
+        return view('/home')->with('success', 'Booking Completed');
     }
 }
