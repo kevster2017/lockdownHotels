@@ -210,6 +210,7 @@
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
         noOfNights = value;
         let valid = true;
+        customCosts = 0;
 
         hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
 
@@ -238,6 +239,10 @@
         });
 
         checkboxInputs.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                customCosts = parseFloat(checkbox.value) * noOfNights;
+
+            }
             checkbox.addEventListener('change', function() {
                 updateCheckboxValue(checkbox);
                 calculateExtrasCosts();
@@ -265,10 +270,15 @@
     function updateCheckboxValue(checkbox) {
         const featNumber = parseInt(checkbox.dataset.featNumber);
         const featPrice = parseFloat(checkbox.value) * noOfNights;
+
+
+
         if (checkbox.checked) {
             customCosts += featPrice;
+
         } else {
             customCosts -= featPrice;
+            console.log(featPrice);
         }
         return customCosts;
     }
