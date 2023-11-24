@@ -32,12 +32,12 @@
 </head>
 
 <body>
-    <div id="app">
+    <div class="app mb-3">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid d-flex align-items-center">
                 <div class="logo">
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        <img src="/images/LockdownHotels.png" alt="logo-image" width="60" height="48" class="d-flex justify-content-center mx-auto">
+                        <img src="/images/LockdownHotels.png" alt="logo-image" style="height: 80px; width:100px" class="d-flex align-items-center">
                     </a>
                 </div>
 
@@ -73,13 +73,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn btn-outline-info" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
