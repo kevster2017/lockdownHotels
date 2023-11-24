@@ -27,7 +27,7 @@
                 <!-- list group item-->
                 <li class="list-group-item">
 
-                    <div class="my-2" style="max-width: 540px;">
+                    <div class="my-2">
                         <div class="row g-0">
                             <div class="col">
                                 <a href="{{ route('hotels.myHotelsShow', $hotel->id) }}"><img src="/storage/{{$hotel->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>

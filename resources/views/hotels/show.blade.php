@@ -212,6 +212,7 @@
         noOfNights = value;
         let valid = true;
         customCosts = 0;
+        extrasCost = 0;
 
         hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
 
@@ -252,6 +253,7 @@
             });
         });
 
+        console.log(customCosts);
         calculateExtrasCosts();
 
         calculateTotalCost();
