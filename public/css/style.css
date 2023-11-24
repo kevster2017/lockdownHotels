@@ -71,11 +71,21 @@ ul.breadcrumb li a:hover {
 
 html,
 body {
+    /*
     background-image: url("/images/HotelsOpaque.PNG");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#welcomeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: azure;
 }
 
 li a {
