@@ -164,7 +164,7 @@ class HotelController extends Controller
         } else {
             $imagePath = $request->file('image')->store('uploads', 'public');
 
-            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(200, 200); //Save updated image as 200 x 200 px
+            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(300, 300); //Save updated image as 300px x 300 px
             $image->save();
         }
 
@@ -232,7 +232,7 @@ class HotelController extends Controller
         if (!empty($request->hasFile('image'))) {
 
             $hotel->image = (request('image')->store('uploads', 'public'));
-            $image = Image::make(public_path("storage/{$hotel->image}"))->orientate()->fit(200, 200); //Save updated image as 200 x 200 px
+            $image = Image::make(public_path("storage/{$hotel->image}"))->orientate()->fit(300, 300); //Save updated image as 300 x 300 px
             $image->save();
         }
         if (!empty($request->input('address'))) {

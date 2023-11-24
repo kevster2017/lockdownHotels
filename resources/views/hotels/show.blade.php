@@ -16,7 +16,7 @@
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-sm-4">
-                <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">
+                <img src="/storage/{{ $hotel->image }}" class="img-fluid" alt="Hotel Image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
