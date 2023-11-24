@@ -77,7 +77,8 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(250, 252, 252);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #welcomeContainer {
@@ -85,7 +86,7 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 100vh;
-    background-color: azure;
+    
 }
 
 li a {
