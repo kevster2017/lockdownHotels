@@ -18,7 +18,7 @@
 
         </div>
         <div class="col-sm-6">
-
+            <img src="/images/HotelsOpaque.PNG">
         </div>
     </div>
 </div>
