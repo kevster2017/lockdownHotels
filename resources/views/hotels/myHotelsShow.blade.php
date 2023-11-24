@@ -4,7 +4,7 @@
 
 
 <div class="container mt-3">
-    <div class="card mb-3 align-items-center">
+    <div class="card mb-3">
         <div class="row justify-content-center">
             <div class="col-sm-4">
                 <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">

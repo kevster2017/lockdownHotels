@@ -16,21 +16,22 @@
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-sm-4">
-                <img src="/storage/{{ $hotel->image }}" class="img-fluid" alt="Hotel Image">
+                <img src="/storage/{{ $hotel->image }}" class="img-responsive rounded-start" alt="Hotel Image">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h2 class=" card-title">{{ $hotel->name }}</h2>
+                    <h2 class="card-title">{{ $hotel->name }}</h2>
                     <p class="card-text">{{ $hotel->address }}</p>
                     <p class="card-text">{{ $hotel->town }}</p>
                     <p class="card-text">{{ $hotel->postCode }}</p>
                     <p class="card-text">{{ $hotel->country }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $hotel->created_at->DiffForHumans() }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $hotel->created_at->diffForHumans() }}</small></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <div class="container mt-3">
