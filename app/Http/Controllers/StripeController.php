@@ -70,8 +70,6 @@ class StripeController extends Controller
         $bookings->paid = 1;
         $bookings->save();
 
-        return view('/bookings/myBookings', [
-            'bookings' => $bookings,
-        ])->with('success', 'Booking Completed');
+        return view('/home')->with('success', 'Booking Completed');
     }
 }
