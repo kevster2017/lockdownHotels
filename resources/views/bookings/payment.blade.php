@@ -13,7 +13,7 @@
 <div class="row">
 
     <!--Booking details display-->
-    <div class="price" text-align: center>
+    <div class="price text-align: center">
         <p> Your total is <b><span id="result2"></span></b></p><br><br>
         <script>
             document.getElementById("result2").innerHTML = formatter2DecimalPlaces.format(localStorage.getItem("addonPrice"));

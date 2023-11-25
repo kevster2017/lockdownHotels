@@ -1,14 +1,23 @@
 @extends('layouts.app')
 @section("content")
 
+<!-- Page Content -->
+<div class="container">
+   <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="/">Home</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Payment</li>
+      </ol>
+   </nav>
+</div>
 
-<div class="container text-center mx-auto">
+<div class="container text-center">
 
 
-   <div class="row">
+   <div class="container mx-auto">
       <h3 style="text-align: center;margin-top: 40px;margin-bottom: 40px;">Payment Page</h3>
-      <div class="col-md-6 col-md-offset-3">
-         <div class="panel panel-default credit-card-box">
+      <div class="mx-auto">
+         <div class="panel panel-default credit-card-box" id="paymentForm">
             <div class="container">
                <h1>Pay {{ $payment->name }} a total of £{{ $payment->total }}</h1>
             </div>
