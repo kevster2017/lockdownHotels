@@ -47,6 +47,15 @@ class BookingController extends Controller
     public function cartList()
     {
 
+        $userId = auth()->user()->id;
+
+        $products = DB::table('cart')
+            ->join('products', 'cart.product_id', '=', 'products.id')
+            ->where('cart.user_id', $userId)
+            ->select('products.*', 'cart.id as cart_id')
+            ->get();
+
+        return view('orders.cartList', ['products' => $products]);
         return view('bookings/cartList');
     }
 
