@@ -66,6 +66,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('hotels.myHotels') }}">My Properties</a>
                         </li>
+                        @if(auth()->check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cartList') }}">View Cart</a>
+                        </li>
+                        @endif
                         @if(auth()->check() && auth()->user()->isAdmin == 1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.index') }}">Messages</a>
