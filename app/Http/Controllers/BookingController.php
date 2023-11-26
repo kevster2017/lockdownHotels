@@ -44,7 +44,11 @@ class BookingController extends Controller
         return view('bookings.paymentComplete');
     }
 
+    public function cartList()
+    {
 
+        return view('bookings/cartList');
+    }
 
     public function review()
     {
