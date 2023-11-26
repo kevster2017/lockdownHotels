@@ -70,11 +70,11 @@ Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bo
 Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment');
 Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete');
 
-/* Cart routes 
+/* Cart routes */
 Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get("/bookings/cartList", [BookingController::class, 'cartList'])->middleware('auth')->name("cartList");
 Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
-*/
+
 
 /* PayPal routes */
 Route::get('/bookings/paypal', function () {
