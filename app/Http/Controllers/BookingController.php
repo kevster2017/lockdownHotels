@@ -133,9 +133,23 @@ class BookingController extends Controller
         $cart->feat3 = $request->feat3 ?? 0;
         $cart->feat4 = $request->feat4 ?? 0;
 
-        dd($cart);
+        if (empty($request->input('feat1'))) {
+            $cart->feat1 = 0;
+        }
+        if (empty($request->input('feat2'))) {
+            $cart->feat2 = 0;
+        }
+        if (empty($request->input('feat3'))) {
+            $cart->feat3 = 0;
+        }
+        if (empty($request->input('feat4'))) {
+            $cart->feat4 = 0;
+        }
+
+        // dd($cart->feat1);
 
         //dd($carts);
+        $cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
     }
