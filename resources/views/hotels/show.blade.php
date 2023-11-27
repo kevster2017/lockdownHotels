@@ -93,8 +93,8 @@
                     <div class="col" style="text-align: left;">
                         <label class="align-left" style="font-weight: bold; padding-bottom: 15px;">Check in date:</label>
                         <input class="date form-control" id="checkInDate" type="text" name="checkInDate">
-                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 0</label>
-                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="0" name="numNights">
+                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: 1</label>
+                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="1" name="numNights">
 
                     </div>
                     <tbody>
@@ -179,7 +179,7 @@
             </table>
         </div>
         <div class="mt-3 text-center">
-            <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
+            <h2>Your hotel room cost: £<span id="hotelCost">{{ $hotel->price}}</span></h2>
         </div>
         </form>
     </div>
