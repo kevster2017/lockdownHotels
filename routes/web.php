@@ -73,6 +73,7 @@ Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentCompl
 /* Cart routes */
 Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get("/bookings/viewCart", [BookingController::class, 'viewCart'])->middleware('auth')->name("viewCart");
+Route::put("/update_cart/{id}", [BookingController::class, 'update'])->name('cart.update');
 Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
 
 

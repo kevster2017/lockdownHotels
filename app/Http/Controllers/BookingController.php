@@ -97,13 +97,32 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
+        /*
         $carts = DB::table('cart')
             ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
             ->where('cart.userId', $userId)
             ->select('hotels.*', 'cart.id as cart_id')
             ->get();
+            */
+        $cart = Cart::where('userId', $userId)
+            ->first();
 
-        return view('bookings.viewCart', ['carts' => $carts]);
+        //dd($carts);
+
+        return view('bookings.viewCart', ['cart' => $cart]);
+    }
+
+    public function updateCart()
+    {
+
+        $userId = auth()->user()->id;
+
+        $cart = Cart::where('userId', $userId)
+            ->first();
+
+        //dd($carts);
+
+        return view('bookings.viewCart', ['cart' => $cart]);
     }
 
     public function review()
