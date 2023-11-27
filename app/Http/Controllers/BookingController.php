@@ -44,6 +44,15 @@ class BookingController extends Controller
         return view('bookings.paymentComplete');
     }
 
+    public function addToCart(Request $request)
+    {
+        $cart = new Cart;
+        $cart->userId = auth()->user()->id;
+        $cart->hotel_Id = $request->hotel_Id;
+        $cart->save();
+        return redirect('/bookings.review')->with('success', 'Booking Updated');
+    }
+
     public function cartList()
     {
 

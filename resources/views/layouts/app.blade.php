@@ -68,7 +68,7 @@
                         </li>
                         @if(auth()->check())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cartList') }}">View Cart</a>
+                            <a class="nav-link" href="{{ route('viewCart') }}">View Cart</a>
                         </li>
                         @endif
                         @if(auth()->check() && auth()->user()->isAdmin == 1)

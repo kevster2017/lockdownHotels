@@ -59,7 +59,7 @@
                     </tr>
                 </thead>
 
-                <form action="{{ route('addToCart') }}" method="POST">
+                <form action="{{ route('bookings.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="hotel_Id" value="{{ $hotel->id }}">
                     <input type="hidden" name="hotelName" value="{{ $hotel->name }}">
@@ -107,43 +107,32 @@
                             <td>
                                 <ul id="divLeft">
                                     <label><strong>Custom Options</strong></label>
-                                    <div class="form-check" id="divLeft">
-                                        <label class="form-check-label" for="feature1">
-                                            {{ $hotel->feat1 }} +£{{ $hotel->feat1Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <label class="form-check-label" for="feature2">
-                                            {{ $hotel->feat2 }} +£{{ $hotel->feat2Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <label class="form-check-label" for="feature3">
-                                            {{ $hotel->feat3 }} +£{{ $hotel->feat3Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <label class="form-check-label" for="feature4">
-                                            {{ $hotel->feat4 }} +£{{ $hotel->feat4Price }}
-                                        </label>
-                                    </div>
-
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat1Price }}" id="feat1" name="feat1">{{ $hotel->feat1 }} +£{{ $hotel->feat1Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat2Price }}" id="feat2" name="feat2">{{ $hotel->feat2 }} +£{{ $hotel->feat2Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat3Price }}" id="feat3" name="feat3">{{ $hotel->feat3 }} +£{{ $hotel->feat3Price }}</li>
+                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ $hotel->feat4Price }}" id="feat4" name="feat4">{{ $hotel->feat4 }} +£{{ $hotel->feat4Price }}</li>
 
                                     <label><strong>Package Options</strong></label>
-
                                     <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" checked>
+                                        <label class="form-check-label" for="noPackage">
+                                            None
+                                        </label>
+                                    </div>
+                                    <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $hotel->package1Price }}">
                                         <label class="form-check-label" for="package1">
                                             {{ $hotel->package1 }} +£{{ $hotel->package1Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-
+                                        <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $hotel->package2Price }}">
                                         <label class="form-check-label" for="package2">
                                             {{ $hotel->package2 }} +£{{ $hotel->package2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-
+                                        <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $hotel->package3Price }}">
                                         <label class="form-check-label" for="package3">
                                             {{ $hotel->package3 }} +£{{ $hotel->package3Price }}
                                         </label>
@@ -152,20 +141,27 @@
 
 
                                     <label><strong>Upgrade Options</strong></label>
-
                                     <div class="form-check" id="divLeft">
-
-                                        <label class="form-check-label" for="upgrade1">
-                                            {{ $hotel->upgrade1 }} +£{{ $hotel->upgrade1Price }}
+                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgradeTotal" value="{{ 0 }}" checked>
+                                        <label class="form-check-label" for="noUpgrade">
+                                            None
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ $hotel->upgrade1Price }}">
+                                        <label class="form-check-label" for="upgrade1">
+                                            {{ $hotel->upgrade1 }} +£{{ $hotel->upgrade1Price }}
+                                        </label>
+
+                                    </div>
+                                    <div class="form-check" id="divLeft">
+                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ $hotel->upgrade2Price }}">
                                         <label class="form-check-label" for="upgrade2">
                                             {{ $hotel->upgrade2 }} +£{{ $hotel->upgrade2Price }}
                                         </label>
                                     </div>
                                     <div class="form-check" id="divLeft">
-
+                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ $hotel->upgrade3Price }}">
                                         <label class="form-check-label" for="upgrade3">
                                             {{ $hotel->upgrade3 }} +£{{ $hotel->upgrade3Price }}
                                         </label>
@@ -184,6 +180,8 @@
         </div>
         <div class="mt-3 text-center">
             <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
+            <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
+            <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
         </div>
         </form>
     </div>
