@@ -18,9 +18,9 @@
         <div class="row g-0">
             <div class="col-md-4">
 
-                <!--
-                <img src="/storage/{{ $image }}" class="img-fluid rounded-start" alt="Hotel Image">
--->
+
+                <img src="/storage/{{ $cart->image }}" class="img-fluid rounded-start" alt="Hotel Image">
+
 
             </div>
             <div class="col-md-8">
@@ -32,7 +32,7 @@
                     <p class="card-text" id="divLeft">{{ $cart->country }}</p>
                     <p class="card-text" id="divLeft">{{ $cart->postCode }}</p>
 
-                    <p class="card-text"><small class="text-body-secondary">Added to Cart: {{ $cart->created_at }}</small></p>
+                    <p class="card-text"><small class="text-body-secondary">Booking Created: {{ $cart->created_at }}</small></p>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
             <p class="card-text" id="divLeft"> {{ $cart->roomType }} room</p>
             <p class="card-text" id="divLeft">Check in: {{ $cart->checkInDate }}</p>
             <p class="card-text" id="divLeft"> {{ $cart->numNights }} nights</p>
-            <p class="card-text" id="divLeft"><strong>Total Price: £{{ $cart->price }}</strong></p>
+            <p class="card-text" id="divLeft"><strong>Hotel Price: £{{ $cart->price * $cart->numNights }}</strong></p>
         </div>
     </div>
 </div>
@@ -58,18 +58,18 @@
         <h5 class="card-header" id="divLeft">Extras Details</h5>
         <div class="card-body">
             @if($cart->feat1 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->feat1 }}</p>
+            <p class="card-text" id="divLeft">Feature: {{ $cart->feat1 }}, £{{ $cart->feat1Price}} per night</p>
             @endif
             @if($cart->feat2 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->feat2 }}</p>
+            <p class="card-text" id="divLeft">Feature: {{ $cart->feat2 }}, £{{ $cart->feat2Price}} per night</p>
             @endif
             @if($cart->feat3 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->feat3 }}</p>
+            <p class="card-text" id="divLeft">Feature: {{ $cart->feat3 }}, £{{ $cart->feat3Price}} per night</p>
             @endif
             @if($cart->feat4 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->feat4 }}</p>
+            <p class="card-text" id="divLeft">Feature: {{ $cart->feat4 }}, £{{ $cart->feat4Price}} per night</p>
             @endif
-            <p class="card-text" id="divLeft"><strong>Total Price: £{{ $cart->price }}</strong></p>
+            <p class="card-text" id="divLeft"><strong>Extras Price: £{{ $cart->feat2Price * $cart->numNights }}</strong></p>
         </div>
     </div>
 

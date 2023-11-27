@@ -121,17 +121,14 @@ class BookingController extends Controller
             'content' => 'required|string',
         ]);
         */
-        dd($request);
+        // dd($request);
 
         $userId = auth()->user()->id;
 
         $cart = Cart::where('userId', $userId)
             ->first();
 
-        $cart->feat1 = $request->feat1 ?? 0;
-        $cart->feat2 = $request->feat2 ?? 0;
-        $cart->feat3 = $request->feat3 ?? 0;
-        $cart->feat4 = $request->feat4 ?? 0;
+
 
         if (empty($request->input('feat1'))) {
             $cart->feat1 = 0;
@@ -146,10 +143,37 @@ class BookingController extends Controller
             $cart->feat4 = 0;
         }
 
-        // dd($cart->feat1);
+        if (!empty($request->input('noPackage'))) {
+            $cart->packageTotal = $request->packageTotal;
+        }
+        if (!empty($request->input('package1'))) {
+            $cart->packageTotal = $request->packageTotal;
+        }
+        if (!empty($request->input('package2'))) {
+            $cart->packageTotal = $request->packageTotal;
+        }
+        if (!empty($request->input('package3'))) {
+            $cart->packageTotal = $request->packageTotal;
+        }
+
+        if (!empty($request->input('noUpgrade'))) {
+            $cart->upgradeTotal = $request->upgradeTotal;
+        }
+        if (!empty($request->input('upgrade1'))) {
+            $cart->upgrade1 = $request->upgrade1;
+        }
+        if (!empty($request->input('upgrade2'))) {
+            $cart->upgrade2 = $request->upgrade2;
+        }
+        if (!empty($request->input('upgrade3'))) {
+            $cart->upgrade3 = $request->upgrade3;
+        }
+
+        // dd($cart->feat3);
+
 
         //dd($carts);
-        $cart->save();
+        //$cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
     }
