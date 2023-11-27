@@ -201,8 +201,6 @@
     function updateNoOfNights(value) {
         document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
         noOfNights = value;
-        let valid = true;
-
 
         hotelCost = parseFloat('{{ $hotel->price }}') * noOfNights;
 
