@@ -43,7 +43,7 @@
           <tr>
             <th scope="col">Room Type</th>
             <th scope="col">Extras (Per Night)</th>
-            <th scope="col">Hotel Room Per Night</th>
+            <th scope="col">Hotel Room (Per Night)</th>
 
           </tr>
         </thead>
@@ -284,7 +284,7 @@
   }
 
   function onPageLoad() {
-    // Your code here
+    // Calculate the three totals when page loads
     calculateHotelCosts();
     calculateTotalCost();
     updateCostsInHTML(hotelCost, extrasCost, totalCost);
