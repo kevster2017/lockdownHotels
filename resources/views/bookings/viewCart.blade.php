@@ -179,12 +179,6 @@
 
 
 
-<script type="text/javascript">
-  $('.date').datepicker({
-    format: 'yyyy-mm-dd'
-  });
-</script>
-
 <script>
   let cartCost = parseFloat('{{ $cart->price }}');
   let noOfNights = 1;
