@@ -167,7 +167,7 @@
 
     </div>
     <div class="mt-3 text-center">
-      <h2>Your cart room cost: £<span id="cartCost">0</span></h2>
+      <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
       <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
       <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
       <a href="/removeCart/{{ $cart->cart_id}}" class="btn btn-danger mt-4">Cancel Booking</a>
@@ -180,8 +180,8 @@
 
 
 <script>
-  let cartCost = parseFloat('{{ $cart->price }}');
-  let noOfNights = 1;
+  let hotelCost = parseFloat('{{ $cart->price }}');
+  let noOfNights = parseFloat('{{ $cart->numNights }}');
   let customCosts = 0;
   let packageCosts = 0;
   let upgradeCosts = 0;
@@ -191,58 +191,64 @@
   let packageRadioButtons = document.querySelectorAll('input[name="packageTotal"]');
   let checkboxInputs = document.querySelectorAll('input[type="checkbox"]');
 
-  function updateNoOfNights(value) {
-    document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
-    noOfNights = value;
-    let valid = true;
-    customCosts = 0;
-    extrasCost = 0;
 
-    cartCost = parseFloat('{{ $cart->price }}') * noOfNights;
 
-    packageRadioButtons.forEach(function(radioButton) {
-      if (radioButton.checked) {
-        packageCosts = parseFloat(radioButton.value);
-      }
-      radioButton.addEventListener('change', function() {
-        packageCosts = parseFloat(radioButton.value);
-        calculateExtrasCosts();
-        calculateTotalCost();
-        updateCostsInHTML(cartCost, extrasCost, totalCost);
-      });
+  checkboxInputs.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      customCosts = parseFloat(checkbox.value);
+
+    }
+    checkbox.addEventListener('change', function() {
+      updateCheckboxValue(checkbox);
+      calculateExtrasCosts();
+      calculateTotalCost();
+      updateCostsInHTML(hotelCost, extrasCost, totalCost);
     });
+  });
 
-    upgradeRadioButtons.forEach(function(radioButton) {
-      if (radioButton.checked) {
-        upgradeCosts = parseFloat(radioButton.value);
-      }
-      radioButton.addEventListener('change', function() {
-        upgradeCosts = parseFloat(this.value);
-        calculateExtrasCosts();
-        calculateTotalCost();
-        updateCostsInHTML(cartCost, extrasCost, totalCost);
-      });
+  function updateCheckboxValue(checkbox) {
+    const featNumber = parseInt(checkbox.dataset.featNumber);
+    const featPrice = parseFloat(checkbox.value);
+
+    if (checkbox.checked) {
+      customCosts += featPrice;
+
+    } else {
+      customCosts -= featPrice;
+
+    }
+    return customCosts;
+
+  }
+
+  packageRadioButtons.forEach(function(radioButton) {
+    if (radioButton.checked) {
+      packageCosts = parseFloat(radioButton.value);
+    }
+    radioButton.addEventListener('change', function() {
+      packageCosts = parseFloat(radioButton.value);
+      calculateExtrasCosts();
+      calculateTotalCost();
+      updateCostsInHTML(hotelCost, extrasCost, totalCost);
     });
+  });
 
-    checkboxInputs.forEach(function(checkbox) {
-      if (checkbox.checked) {
-        customCosts = parseFloat(checkbox.value);
-
-      }
-      checkbox.addEventListener('change', function() {
-        updateCheckboxValue(checkbox);
-        calculateExtrasCosts();
-        calculateTotalCost();
-        updateCostsInHTML(cartCost, extrasCost, totalCost);
-      });
+  upgradeRadioButtons.forEach(function(radioButton) {
+    if (radioButton.checked) {
+      upgradeCosts = parseFloat(radioButton.value);
+    }
+    radioButton.addEventListener('change', function() {
+      upgradeCosts = parseFloat(this.value);
+      calculateExtrasCosts();
+      calculateTotalCost();
+      updateCostsInHTML(hotelCost, extrasCost, totalCost);
     });
+  });
 
-    console.log(customCosts);
-    calculateExtrasCosts();
 
-    calculateTotalCost();
-    // Update HTML with dynamic values
-    updateCostsInHTML(cartCost, extrasCost, totalCost);
+  function calculateHotelCosts() {
+    hotelCost = hotelCost * noOfNights;
+    return hotelCost;
   }
 
   function calculateExtrasCosts() {
@@ -252,7 +258,7 @@
   }
 
   function calculateTotalCost() {
-    totalCost = cartCost + extrasCost;
+    totalCost = (hotelCost + extrasCost);
     return totalCost;
   }
 
@@ -271,11 +277,20 @@
 
   }
 
-  function updateCostsInHTML(cartCost, extrasCost, totalCost) {
-    document.getElementById('cartCost').innerText = cartCost.toFixed(2);
+  function updateCostsInHTML(hotelCost, extrasCost, totalCost) {
+    document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
     document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
     document.getElementById('totalCost').innerText = totalCost.toFixed(2);
   }
+
+  function onPageLoad() {
+    // Your code here
+    calculateHotelCosts();
+    calculateTotalCost();
+    updateCostsInHTML(hotelCost, extrasCost, totalCost);
+  }
+
+  window.onload = onPageLoad;
 </script>
 
 
