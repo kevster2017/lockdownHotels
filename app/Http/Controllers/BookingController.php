@@ -88,22 +88,22 @@ class BookingController extends Controller
 
         // $cart->save();
 
-        dd($cart);
-        return redirect('/bookings.review')->with('success', 'Booking Updated');
+        // dd($cart);
+        return redirect('/bookings/viewCart')->with('success', 'Booking Updated');
     }
 
-    public function cartList()
+    public function viewCart()
     {
 
         $userId = auth()->user()->id;
 
-        $hotels = DB::table('cart')
+        $carts = DB::table('cart')
             ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
-            ->where('cart.user_id', $userId)
+            ->where('cart.userId', $userId)
             ->select('hotels.*', 'cart.id as cart_id')
             ->get();
 
-        return view('bookings.cartList', ['hotels' => $hotels]);
+        return view('bookings.viewCart', ['carts' => $carts]);
     }
 
     public function review()
