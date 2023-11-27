@@ -112,17 +112,32 @@ class BookingController extends Controller
         return view('bookings.viewCart', ['cart' => $cart]);
     }
 
-    public function updateCart()
+    public function updateCart(Request $request, Cart $cart)
     {
+        // Validate the request
+        /*
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+        */
+        dd($request);
 
         $userId = auth()->user()->id;
 
         $cart = Cart::where('userId', $userId)
             ->first();
 
+        $cart->feat1 = $request->feat1 ?? 0;
+        $cart->feat2 = $request->feat2 ?? 0;
+        $cart->feat3 = $request->feat3 ?? 0;
+        $cart->feat4 = $request->feat4 ?? 0;
+
+        dd($cart);
+
         //dd($carts);
 
-        return view('bookings.viewCart', ['cart' => $cart]);
+        return view('bookings.review', ['cart' => $cart]);
     }
 
     public function review()

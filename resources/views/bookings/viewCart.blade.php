@@ -50,6 +50,7 @@
 
         <form action="{{ route('cart.update', $cart->id) }}" method="POST">
           @csrf
+          @method('PUT')
           <input type="hidden" name="cart_Id" value="{{ $cart->id }}">
           <input type="hidden" name="cartName" value="{{ $cart->name }}">
           <input type="hidden" name="name" value="{{ $cart->name }}">
