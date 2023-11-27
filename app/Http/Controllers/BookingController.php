@@ -46,10 +46,49 @@ class BookingController extends Controller
 
     public function addToCart(Request $request)
     {
+
         $cart = new Cart;
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;
-        $cart->save();
+        $cart->name = $request->hotelName;
+        $cart->image = $request->image;
+        $cart->address = $request->address;
+        $cart->town = $request->town;
+        $cart->country = $request->country;
+        $cart->postCode = $request->postCode;
+        $cart->accomType = $request->accomType;
+        $cart->roomType = $request->roomType;
+        $cart->holidayType = $request->holidayType;
+        $cart->feat1 = $request->feat1;
+        $cart->feat2 = $request->feat2;
+        $cart->feat3 = $request->feat3;
+        $cart->feat4 = $request->feat4;
+        $cart->feat1Price = $request->feat1Price;
+        $cart->feat2Price = $request->feat2Price;
+        $cart->feat3Price = $request->feat3Price;
+        $cart->feat4Price = $request->feat4Price;
+        $cart->upgrade1 = $request->upgrade1;
+        $cart->upgrade2 = $request->upgrade2;
+        $cart->upgrade3 = $request->upgrade3;
+        $cart->upgrade1Price = $request->upgrade1Price;
+        $cart->upgrade2Price = $request->upgrade2Price;
+        $cart->upgrade3Price = $request->upgrade3Price;
+        $cart->package1 = $request->package1;
+        $cart->package2 = $request->package2;
+        $cart->package3 = $request->package3;
+        $cart->package1Price = $request->package1Price;
+        $cart->package2Price = $request->package2Price;
+        $cart->package3Price = $request->package3Price;
+        $cart->currency = $request->currency;
+        $cart->price =  $request->price;
+        $cart->checkInDate = Carbon::createFromFormat('Y-m-d', $request->checkInDate);
+        $cart->numNights = $request->numNights;
+
+
+
+        // $cart->save();
+
+        dd($cart);
         return redirect('/bookings.review')->with('success', 'Booking Updated');
     }
 
@@ -58,14 +97,13 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
-        $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'products.id')
+        $hotels = DB::table('cart')
+            ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
             ->where('cart.user_id', $userId)
-            ->select('products.*', 'cart.id as cart_id')
+            ->select('hotels.*', 'cart.id as cart_id')
             ->get();
 
-        return view('orders.cartList', ['products' => $products]);
-        return view('bookings/cartList');
+        return view('bookings.cartList', ['hotels' => $hotels]);
     }
 
     public function review()

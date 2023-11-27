@@ -76,13 +76,23 @@
                     <input type="hidden" name="accomType" value="{{ $hotel->accomType }}">
                     <input type="hidden" name="roomType" value="{{ $hotel->roomType }}">
                     <input type="hidden" name="holidayType" value="{{ $hotel->holidayType }}">
+                    <input type="hidden" name="feat1" value="{{ $hotel->feat1 }}">
+                    <input type="hidden" name="feat2" value="{{ $hotel->feat2 }}">
+                    <input type="hidden" name="feat3" value="{{ $hotel->feat3 }}">
+                    <input type="hidden" name="feat4" value="{{ $hotel->feat4 }}">
                     <input type="hidden" name="feat1Price" value="{{ $hotel->feat1Price }}">
                     <input type="hidden" name="feat2Price" value="{{ $hotel->feat2Price }}">
                     <input type="hidden" name="feat3Price" value="{{ $hotel->feat3Price }}">
                     <input type="hidden" name="feat4Price" value="{{ $hotel->feat4Price }}">
+                    <input type="hidden" name="upgrade1" value="{{ $hotel->upgrade1 }}">
+                    <input type="hidden" name="upgrade2" value="{{ $hotel->upgrade2 }}">
+                    <input type="hidden" name="upgrade3" value="{{ $hotel->upgrade3 }}">
                     <input type="hidden" name="upgrade1Price" value="{{ $hotel->upgrade1Price }}">
                     <input type="hidden" name="upgrade2Price" value="{{ $hotel->upgrade2Price }}">
                     <input type="hidden" name="upgrade3Price" value="{{ $hotel->upgrade3Price }}">
+                    <input type="hidden" name="package1" value="{{ $hotel->package1 }}">
+                    <input type="hidden" name="package2" value="{{ $hotel->package2 }}">
+                    <input type="hidden" name="package3" value="{{ $hotel->package3 }}">
                     <input type="hidden" name="package1Price" value="{{ $hotel->package1Price }}">
                     <input type="hidden" name="package2Price" value="{{ $hotel->package2Price }}">
                     <input type="hidden" name="package3Price" value="{{ $hotel->package3Price }}">
