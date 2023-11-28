@@ -132,15 +132,19 @@ class BookingController extends Controller
 
         if (!empty($request->input('feat1'))) {
             $cart->selectedFeat1 = $request->feat1;
+            $cart->featuresTotal += $request->feat1Price;
         }
         if (!empty($request->input('feat2'))) {
             $cart->selectedFeat2 = $request->feat2;
+            $cart->featuresTotal += $request->feat2Price;
         }
         if (!empty($request->input('feat3'))) {
             $cart->selectedFeat3 = $request->feat3;
+            $cart->featuresTotal += $request->feat3Price;
         }
         if (!empty($request->input('feat4'))) {
             $cart->selectedFeat4 = $request->feat4;
+            $cart->featuresTotal += $request->feat4Price;
         }
 
         if (!empty($request->input('noPackage'))) {
@@ -177,6 +181,9 @@ class BookingController extends Controller
             $cart->selectedUpgrade = $request->upgrade3;
         }
 
+        $cart->featuresTotal = $cart->featuresTotal * $request->numNights;
+        $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->upgradeTotal;
+        $cart->finalTotal = ($request->numNights * $request->price) + $cart->extrasTotal;
         // dd($cart->feat3);
 
 

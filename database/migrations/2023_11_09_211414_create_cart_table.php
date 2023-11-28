@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('accomType');
             $table->string('roomType');
             $table->string('holidayType');
+            $table->integer('price');
             $table->string('feat1')->default("None");
             $table->string('feat2')->default("None");
             $table->string('feat3')->default("None");
@@ -36,6 +37,7 @@ return new class extends Migration
             $table->string('selectedFeat2')->default("None");
             $table->string('selectedFeat3')->default("None");
             $table->string('selectedFeat4')->default("None");
+            $table->integer('featuresTotal')->default(0);
             $table->string('upgrade1');
             $table->string('upgrade2');
             $table->string('upgrade3');
@@ -43,6 +45,7 @@ return new class extends Migration
             $table->integer('upgrade2Price');
             $table->integer('upgrade3Price');
             $table->string('selectedUpgrade')->default("None");
+            $table->integer('upgradeTotal');
             $table->string('package1');
             $table->string('package2');
             $table->string('package3');
@@ -50,8 +53,10 @@ return new class extends Migration
             $table->integer('package2Price');
             $table->integer('package3Price');
             $table->string('selectedPackage')->default("None");
+            $table->integer('packageTotal')->default(0);
             $table->string('currency');
-            $table->integer('price');
+            $table->integer('extrasTotal')->default(0);
+            $table->integer('finalTotal')->default(0);
             $table->date('checkInDate');
             $table->integer('numNights');
 
