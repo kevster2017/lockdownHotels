@@ -130,43 +130,51 @@ class BookingController extends Controller
 
 
 
-        if (empty($request->input('feat1'))) {
-            $cart->feat1 = 0;
+        if (!empty($request->input('feat1'))) {
+            $cart->selectedFeat1 = $request->feat1;
         }
-        if (empty($request->input('feat2'))) {
-            $cart->feat2 = 0;
+        if (!empty($request->input('feat2'))) {
+            $cart->selectedFeat2 = $request->feat2;
         }
-        if (empty($request->input('feat3'))) {
-            $cart->feat3 = 0;
+        if (!empty($request->input('feat3'))) {
+            $cart->selectedFeat3 = $request->feat3;
         }
-        if (empty($request->input('feat4'))) {
-            $cart->feat4 = 0;
+        if (!empty($request->input('feat4'))) {
+            $cart->selectedFeat4 = $request->feat4;
         }
 
         if (!empty($request->input('noPackage'))) {
-            $cart->packageTotal = $request->packageTotal;
+            $cart->packageTotal = 0;
+            $cart->selectedPackage = "None";
         }
         if (!empty($request->input('package1'))) {
-            $cart->packageTotal = $request->packageTotal;
+            $cart->packageTotal = $request->package1Price * $request->numNights;
+            $cart->selectedPackage = $request->package1;
         }
         if (!empty($request->input('package2'))) {
-            $cart->packageTotal = $request->packageTotal;
+            $cart->packageTotal = $request->package2Price * $request->numNights;
+            $cart->selectedPackage = $request->package2;
         }
         if (!empty($request->input('package3'))) {
-            $cart->packageTotal = $request->packageTotal;
+            $cart->packageTotal = $request->package3Price * $request->numNights;
+            $cart->selectedPackage = $request->package3;
         }
 
         if (!empty($request->input('noUpgrade'))) {
-            $cart->upgradeTotal = $request->upgradeTotal;
+            $cart->upgradeTotal = 0;
+            $cart->selectedUpgrade = "None";
         }
         if (!empty($request->input('upgrade1'))) {
-            $cart->upgrade1 = $request->upgrade1;
+            $cart->upgradeTotal = $request->upgrade1Price * $request->numNights;
+            $cart->selectedUpgrade = $request->upgrade1;
         }
         if (!empty($request->input('upgrade2'))) {
-            $cart->upgrade2 = $request->upgrade2;
+            $cart->upgradeTotal = $request->upgrade2Price * $request->numNights;
+            $cart->selectedUpgrade = $request->upgrade2;
         }
         if (!empty($request->input('upgrade3'))) {
-            $cart->upgrade3 = $request->upgrade3;
+            $cart->upgradeTotal = $request->upgrade3Price * $request->numNights;
+            $cart->selectedUpgrade = $request->upgrade3;
         }
 
         // dd($cart->feat3);
