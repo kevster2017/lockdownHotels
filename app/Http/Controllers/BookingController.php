@@ -134,7 +134,7 @@ class BookingController extends Controller
             'content' => 'required|string',
         ]);
         */
-        // dd($request);
+        dd($request);
 
         $userId = auth()->user()->id;
 
@@ -142,8 +142,8 @@ class BookingController extends Controller
             ->first();
 
         if (!empty($request->input('feat1'))) {
-            $cart->selectedFeat1 = $request->selectedFeat1;
-            $cart->featuresTotal = $cart->featuresTotal + $request->feat1;
+            $cart->selectedFeat1 = $request->feat1;
+            $cart->featuresTotal = $cart->featuresTotal + $request->feat1Price;
         }
         if (!empty($request->input('feat2'))) {
             $cart->selectedFeat2 = $request->selectedFeat2;
@@ -157,6 +157,8 @@ class BookingController extends Controller
             $cart->selectedFeat4 = $request->selectedFeat4;
             $cart->featuresTotal += $request->feat4Price;
         }
+
+
 
         if (!empty($request->input('noPackage'))) {
             $cart->packageTotal = 0;
@@ -174,6 +176,7 @@ class BookingController extends Controller
             $cart->packageTotal = $request->package3Price * $request->numNights;
             $cart->selectedPackage = $request->package3;
         }
+        $cart->packageTotal = $request->packageTotal;
 
         if (!empty($request->input('noUpgrade'))) {
             $cart->upgradeTotal = 0;
@@ -191,6 +194,8 @@ class BookingController extends Controller
             $cart->upgradeTotal = $request->upgrade3Price * $request->numNights;
             $cart->selectedUpgrade = $request->upgrade3;
         }
+
+        $cart->packageTotal = $request->packageTotal;
 
         $cart->featuresTotal = $cart->featuresTotal * $request->numNights;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;

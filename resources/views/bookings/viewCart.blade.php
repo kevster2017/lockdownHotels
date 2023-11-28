@@ -70,21 +70,18 @@
           <input type="hidden" name="feat2Price" value="{{ $cart->feat2Price }}">
           <input type="hidden" name="feat3Price" value="{{ $cart->feat3Price }}">
           <input type="hidden" name="feat4Price" value="{{ $cart->feat4Price }}">
-          <input type="hidden" name="selectedFeat1" value="{{ $cart->feat1 }}">
-          <input type="hidden" name="selectedFeat2" value="None">
-          <input type="hidden" name="selectedFeat3" value="None">
-          <input type="hidden" name="selectedFeat4" value="None">
+
 
 
           <input type="hidden" name="upgrade1Price" value="{{ $cart->upgrade1Price }}">
           <input type="hidden" name="upgrade2Price" value="{{ $cart->upgrade2Price }}">
           <input type="hidden" name="upgrade3Price" value="{{ $cart->upgrade3Price }}">
-          <input type="hidden" name="selectedUpgrade" value="None">
+
 
           <input type="hidden" name="package1Price" value="{{ $cart->package1Price }}">
           <input type="hidden" name="package2Price" value="{{ $cart->package2Price }}">
           <input type="hidden" name="package3Price" value="{{ $cart->package3Price }}">
-          <input type="hidden" name="selectedPackage" value="None">
+
 
           <input type="hidden" name="paid" value="{{ 0 }}">
           <input type="hidden" name="payment_method" value="Stripe">
