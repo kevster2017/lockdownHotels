@@ -14,7 +14,7 @@ class PayPalController extends Controller
      */
     public function index()
     {
-        return view('paypal');
+        return view('bookings/paypal');
     }
 
     /**
@@ -88,7 +88,7 @@ class PayPalController extends Controller
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
-                ->route('paypal')
+                ->route('home')
                 ->with('success', 'Transaction complete.');
         } else {
             return redirect()

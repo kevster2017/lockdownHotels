@@ -15,7 +15,7 @@
             <div class="panel-body">
                @if (Session::has('success'))
                <div class="alert alert-success text-center">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                  <a href="#" class="close" data-bs-dismiss="alert" aria-label="close">×</a>
                   <p>{{ Session::get('success') }}</p><br>
                </div>
                @endif
@@ -26,7 +26,7 @@
                   <tbody>
                      <tr>
                         <td>Amount</td>
-                        <td>£{{$total}}</td>
+                        <td>£{{0}}</td>
 
                      </tr>
                      <tr>
@@ -40,14 +40,14 @@
                      </tr>
                      <tr>
                         <td>Total Amount</td>
-                        <td>£{{$total}}</td>
+                        <td>£{{0}}</td>
                      </tr>
 
                   </tbody>
                </table>
                <form action="{{ route('paypal.payment') }}" method="POST">
                   @csrf
-                  <input type="hidden" name="amount" value="{{$total}}">
+                  <input type="hidden" name="amount" value="{{0}}">
 
 
                   <button type="submit" class="btn btn-info my-3">Pay with PayPal</button>
