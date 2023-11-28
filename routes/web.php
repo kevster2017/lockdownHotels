@@ -77,13 +77,19 @@ Route::put("/update_cart/{id}", [BookingController::class, 'updateCart'])->name(
 Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
 
 
-/* PayPal routes */
+/* PayPal routes 
 Route::get('/bookings/paypal', function () {
     return view('/bookings/paypal');
 });
 Route::post('/pay', [PaypalController::class, 'pay'])->name('paypal');
 Route::get('/success', [PaypalController::class, 'success']);
 Route::get('/error', [PaypalController::class, 'error']);
+*/
+
+Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
+Route::get('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
+Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
 
 /* Stripe Payment routes */
 Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe');
