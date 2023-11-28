@@ -47,7 +47,7 @@ class BookingController extends Controller
     public function addToCart(Request $request)
     {
 
-        // dd($request);
+
         $cart = new Cart;
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;
@@ -97,10 +97,11 @@ class BookingController extends Controller
         $cart->numNights = $request->numNights;
 
 
+        //dd($cart);
 
-        // $cart->save();
+        $cart->save();
 
-        // dd($cart);
+
         return redirect('/bookings/viewCart')->with('success', 'Booking Updated');
     }
 
