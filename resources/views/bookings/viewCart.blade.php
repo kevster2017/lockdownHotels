@@ -80,15 +80,12 @@
           <input type="hidden" name="upgrade2Price" value="{{ $cart->upgrade2Price }}">
           <input type="hidden" name="upgrade3Price" value="{{ $cart->upgrade3Price }}">
           <input type="hidden" name="selectedUpgrade" value="None">
-          <input type="hidden" name="upgradeTotal" value="0">
+
           <input type="hidden" name="package1Price" value="{{ $cart->package1Price }}">
           <input type="hidden" name="package2Price" value="{{ $cart->package2Price }}">
           <input type="hidden" name="package3Price" value="{{ $cart->package3Price }}">
           <input type="hidden" name="selectedPackage" value="None">
-          <input type="hidden" name="packageTotal" value="{{ 0 }}">
-          <input type="hidden" name="featuresTotal" value="{{ 0 }}">
-          <input type="hidden" name="extrasTotal" value="{{ 0 }}">
-          <input type="hidden" name="finalTotal" value="{{ 0 }}">
+
           <input type="hidden" name="paid" value="{{ 0 }}">
           <input type="hidden" name="payment_method" value="Stripe">
 
