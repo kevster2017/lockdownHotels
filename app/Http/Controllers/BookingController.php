@@ -193,7 +193,7 @@ class BookingController extends Controller
         }
 
         $cart->featuresTotal = $cart->featuresTotal * $request->numNights;
-        $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->upgradeTotal;
+        $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
         $cart->finalTotal = ($request->numNights * $request->price) + $cart->extrasTotal;
 
         dd($cart);
