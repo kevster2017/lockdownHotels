@@ -47,6 +47,7 @@ class BookingController extends Controller
     public function addToCart(Request $request)
     {
 
+        dd($request);
         $cart = new Cart;
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;

@@ -84,18 +84,31 @@
                     <input type="hidden" name="feat2Price" value="{{ $hotel->feat2Price }}">
                     <input type="hidden" name="feat3Price" value="{{ $hotel->feat3Price }}">
                     <input type="hidden" name="feat4Price" value="{{ $hotel->feat4Price }}">
+                    <input type="hidden" name="selectedFeat1" value="{{ None }}">
+                    <input type="hidden" name="selectedFeat2" value="{{ None }}">
+                    <input type="hidden" name="selectedFeat3" value="{{ None }}">
+                    <input type="hidden" name="selectedFeat4" value="{{ None }}">
+                    <input type="hidden" name="featuresTotal" value="{{ 0 }}">
+
                     <input type="hidden" name="upgrade1" value="{{ $hotel->upgrade1 }}">
                     <input type="hidden" name="upgrade2" value="{{ $hotel->upgrade2 }}">
                     <input type="hidden" name="upgrade3" value="{{ $hotel->upgrade3 }}">
                     <input type="hidden" name="upgrade1Price" value="{{ $hotel->upgrade1Price }}">
                     <input type="hidden" name="upgrade2Price" value="{{ $hotel->upgrade2Price }}">
                     <input type="hidden" name="upgrade3Price" value="{{ $hotel->upgrade3Price }}">
+                    <input type="hidden" name="selectedUpgrade" value="{{ None }}">
+                    <input type="hidden" name="upgradeTotal" value="0">
                     <input type="hidden" name="package1" value="{{ $hotel->package1 }}">
                     <input type="hidden" name="package2" value="{{ $hotel->package2 }}">
                     <input type="hidden" name="package3" value="{{ $hotel->package3 }}">
                     <input type="hidden" name="package1Price" value="{{ $hotel->package1Price }}">
                     <input type="hidden" name="package2Price" value="{{ $hotel->package2Price }}">
                     <input type="hidden" name="package3Price" value="{{ $hotel->package3Price }}">
+                    <input type="hidden" name="selectedPackage" value="{{ None }}">
+                    <input type="hidden" name="packageTotal" value="{{ 0 }}">
+                    <input type="hidden" name="featuresTotal" value="{{ 0 }}">
+                    <input type="hidden" name="extrasTotal" value="{{ 0 }}">
+                    <input type="hidden" name="finalTotal" value="{{ 0 }}">
                     <input type="hidden" name="paid" value="{{ 0 }}">
                     <input type="hidden" name="payment_method" value="Stripe">
 
