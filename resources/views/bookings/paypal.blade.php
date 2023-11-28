@@ -45,7 +45,7 @@
 
                   </tbody>
                </table>
-               <form action="{{ route('paypal') }}" method="POST">
+               <form action="{{ route('paypal.payment') }}" method="POST">
                   @csrf
                   <input type="hidden" name="amount" value="{{$total}}">
 
