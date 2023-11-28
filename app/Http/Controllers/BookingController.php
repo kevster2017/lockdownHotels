@@ -47,7 +47,7 @@ class BookingController extends Controller
     public function addToCart(Request $request)
     {
 
-        dd($request);
+        // dd($request);
         $cart = new Cart;
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;
@@ -68,18 +68,29 @@ class BookingController extends Controller
         $cart->feat2Price = $request->feat2Price;
         $cart->feat3Price = $request->feat3Price;
         $cart->feat4Price = $request->feat4Price;
+        $cart->selectedFeat1 = $request->selectedFeat1;
+        $cart->selectedFeat2 = $request->selectedFeat2;
+        $cart->selectedFeat3 = $request->selectedFeat3;
+        $cart->selectedFeat4 = $request->selectedFeat4;
+        $cart->featuresTotal = $request->featuresTotal;
         $cart->upgrade1 = $request->upgrade1;
         $cart->upgrade2 = $request->upgrade2;
         $cart->upgrade3 = $request->upgrade3;
         $cart->upgrade1Price = $request->upgrade1Price;
         $cart->upgrade2Price = $request->upgrade2Price;
         $cart->upgrade3Price = $request->upgrade3Price;
+        $cart->selectedUpgrade = $request->selectedUpgrade;
+        $cart->upgradeTotal = $request->upgradeTotal;
         $cart->package1 = $request->package1;
         $cart->package2 = $request->package2;
         $cart->package3 = $request->package3;
         $cart->package1Price = $request->package1Price;
         $cart->package2Price = $request->package2Price;
         $cart->package3Price = $request->package3Price;
+        $cart->selectedPackage = $request->selectedPackage;
+        $cart->packageTotal = $request->packageTotal;
+        $cart->extrasTotal = $request->extrasTotal;
+        $cart->finalTotal = $request->finalTotal;
         $cart->currency = $request->currency;
         $cart->price =  $request->price;
         $cart->checkInDate = Carbon::createFromFormat('Y-m-d', $request->checkInDate);
