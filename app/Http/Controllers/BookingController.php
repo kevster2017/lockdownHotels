@@ -134,7 +134,7 @@ class BookingController extends Controller
             'content' => 'required|string',
         ]);
         */
-        dd($request);
+
 
         $userId = auth()->user()->id;
 
@@ -160,6 +160,7 @@ class BookingController extends Controller
 
 
 
+
         if (!empty($request->input('noPackage'))) {
             $cart->packageTotal = 0;
             $cart->selectedPackage = "None";
@@ -178,6 +179,7 @@ class BookingController extends Controller
         }
         $cart->packageTotal = $request->packageTotal;
 
+
         if (!empty($request->input('noUpgrade'))) {
             $cart->upgradeTotal = 0;
             $cart->selectedUpgrade = "None";
@@ -195,11 +197,14 @@ class BookingController extends Controller
             $cart->selectedUpgrade = $request->upgrade3;
         }
 
-        $cart->packageTotal = $request->packageTotal;
+        $cart->upgradeTotal = $request->upgradeTotal;
 
-        $cart->featuresTotal = $cart->featuresTotal * $request->numNights;
+        $cart->featuresTotal = $cart->featuresTotal;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
-        $cart->finalTotal = ($request->numNights * $request->price) + $cart->extrasTotal;
+        $cart->price = $request->price;
+        dd($cart->price);
+        $cart->finalTotal = ($cart->price + $cart->extrasTotal) * $request->numNights;
+
 
         dd($cart);
         // dd($cart->feat3);
