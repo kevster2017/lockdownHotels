@@ -158,7 +158,7 @@ class BookingController extends Controller
             $cart->featuresTotal += $request->feat4Price;
         }
 
-        dd($cart->selectedFeat4);
+
 
 
 
@@ -179,6 +179,17 @@ class BookingController extends Controller
             $cart->selectedPackage = $request->package3;
         }
 
+        if ($request->packageTotal == 0) {
+            $cart->selectedPackage = "None";
+        } elseif ($request->packageTotal == $cart->package1Price) {
+            $cart->selectedPackage = $cart->package1;
+        } elseif ($request->packageTotal == $cart->package2Price) {
+            $cart->selectedPackage = $cart->package2;
+        } else {
+            $cart->selectedPackage = $cart->package3;
+        }
+
+        dd($cart->selectedPackage);
         $cart->packageTotal = $request->packageTotal;
 
 
