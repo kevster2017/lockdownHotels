@@ -166,15 +166,15 @@ class BookingController extends Controller
             $cart->selectedPackage = "None";
         }
         if (!empty($request->input('package1'))) {
-            $cart->packageTotal = $request->package1Price * $request->numNights;
+            $cart->packageTotal = $request->package1Price * $cart->numNights;
             $cart->selectedPackage = $request->package1;
         }
         if (!empty($request->input('package2'))) {
-            $cart->packageTotal = $request->package2Price * $request->numNights;
+            $cart->packageTotal = $request->package2Price * $cart->numNights;
             $cart->selectedPackage = $request->package2;
         }
         if (!empty($request->input('package3'))) {
-            $cart->packageTotal = $request->package3Price * $request->numNights;
+            $cart->packageTotal = $request->package3Price * $cart->numNights;
             $cart->selectedPackage = $request->package3;
         }
         $cart->packageTotal = $request->packageTotal;
@@ -185,25 +185,27 @@ class BookingController extends Controller
             $cart->selectedUpgrade = "None";
         }
         if (!empty($request->input('upgrade1'))) {
-            $cart->upgradeTotal = $request->upgrade1Price * $request->numNights;
+            $cart->upgradeTotal = $request->upgrade1Price * $cart->numNights;
             $cart->selectedUpgrade = $request->upgrade1;
         }
         if (!empty($request->input('upgrade2'))) {
-            $cart->upgradeTotal = $request->upgrade2Price * $request->numNights;
+            $cart->upgradeTotal = $request->upgrade2Price * $cart->numNights;
             $cart->selectedUpgrade = $request->upgrade2;
         }
         if (!empty($request->input('upgrade3'))) {
-            $cart->upgradeTotal = $request->upgrade3Price * $request->numNights;
+            $cart->upgradeTotal = $request->upgrade3Price * $cart->numNights;
             $cart->selectedUpgrade = $request->upgrade3;
         }
 
         $cart->upgradeTotal = $request->upgradeTotal;
 
         $cart->featuresTotal = $cart->featuresTotal;
-        $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
         $cart->price = $request->price;
-        dd($cart->price);
-        $cart->finalTotal = ($cart->price + $cart->extrasTotal) * $request->numNights;
+        $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
+
+
+        $cart->finalTotal = ($cart->price + $cart->extrasTotal) * $cart->numNights;
+        dd($cart->finalTotal);
 
 
         dd($cart);
