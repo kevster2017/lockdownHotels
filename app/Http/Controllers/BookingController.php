@@ -160,25 +160,6 @@ class BookingController extends Controller
 
 
 
-
-
-        if (!empty($request->input('noPackage'))) {
-
-            $cart->selectedPackage = "None";
-        }
-        if (!empty($request->input('package1'))) {
-
-            $cart->selectedPackage = $request->package1;
-        }
-        if (!empty($request->input('package2'))) {
-
-            $cart->selectedPackage = $request->package2;
-        }
-        if (!empty($request->input('package3'))) {
-
-            $cart->selectedPackage = $request->package3;
-        }
-
         if ($request->packageTotal == 0) {
             $cart->selectedPackage = "None";
         } elseif ($request->packageTotal == $cart->package1Price) {
@@ -189,26 +170,21 @@ class BookingController extends Controller
             $cart->selectedPackage = $cart->package3;
         }
 
-        dd($cart->selectedPackage);
+
         $cart->packageTotal = $request->packageTotal;
 
 
-        if (!empty($request->input('noUpgrade'))) {
-            $cart->upgradeTotal = 0;
+        if ($request->upgradeTotal == 0) {
             $cart->selectedUpgrade = "None";
+        } elseif ($request->upgradeTotal == $cart->upgrade1Price) {
+            $cart->selectedUpgrade = $cart->upgrade1;
+        } elseif ($request->upgradeTotal == $cart->upgrade2Price) {
+            $cart->selectedUpgrade = $cart->upgrade2;
+        } else {
+            $cart->selectedUpgrade = $cart->upgrade3;
         }
-        if (!empty($request->input('upgrade1'))) {
-            $cart->upgradeTotal = $request->upgrade1Price * $cart->numNights;
-            $cart->selectedUpgrade = $request->upgrade1;
-        }
-        if (!empty($request->input('upgrade2'))) {
-            $cart->upgradeTotal = $request->upgrade2Price * $cart->numNights;
-            $cart->selectedUpgrade = $request->upgrade2;
-        }
-        if (!empty($request->input('upgrade3'))) {
-            $cart->upgradeTotal = $request->upgrade3Price * $cart->numNights;
-            $cart->selectedUpgrade = $request->upgrade3;
-        }
+
+        dd($cart->selectedUpgrade);
 
         $cart->upgradeTotal = $request->upgradeTotal;
 
@@ -217,10 +193,11 @@ class BookingController extends Controller
 
 
         $cart->finalTotal = ($cart->price + $cart->extrasTotal) * $cart->numNights;
-        dd($cart->finalTotal);
 
 
-        dd($cart);
+
+
+
         // dd($cart->feat3);
 
 
