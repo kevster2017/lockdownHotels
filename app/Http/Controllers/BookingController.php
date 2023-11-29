@@ -142,22 +142,23 @@ class BookingController extends Controller
             ->first();
 
         if (!empty($request->input('feat1'))) {
-            $cart->selectedFeat1 = $request->feat1;
+            $cart->selectedFeat1 = $cart->feat1;
             $cart->featuresTotal = $cart->featuresTotal + $request->feat1Price;
         }
         if (!empty($request->input('feat2'))) {
-            $cart->selectedFeat2 = $request->selectedFeat2;
+            $cart->selectedFeat2 = $cart->feat2;
             $cart->featuresTotal += $request->feat2Price;
         }
         if (!empty($request->input('feat3'))) {
-            $cart->selectedFeat3 = $request->selectedFeat3;
+            $cart->selectedFeat3 = $cart->feat3;
             $cart->featuresTotal += $request->feat3Price;
         }
         if (!empty($request->input('feat4'))) {
-            $cart->selectedFeat4 = $request->selectedFeat4;
+            $cart->selectedFeat4 = $cart->feat4;
             $cart->featuresTotal += $request->feat4Price;
         }
 
+        dd($cart->selectedFeat4);
 
 
 
