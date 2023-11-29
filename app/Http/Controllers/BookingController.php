@@ -162,21 +162,22 @@ class BookingController extends Controller
 
 
         if (!empty($request->input('noPackage'))) {
-            $cart->packageTotal = 0;
+
             $cart->selectedPackage = "None";
         }
         if (!empty($request->input('package1'))) {
-            $cart->packageTotal = $request->package1Price * $cart->numNights;
+
             $cart->selectedPackage = $request->package1;
         }
         if (!empty($request->input('package2'))) {
-            $cart->packageTotal = $request->package2Price * $cart->numNights;
+
             $cart->selectedPackage = $request->package2;
         }
         if (!empty($request->input('package3'))) {
-            $cart->packageTotal = $request->package3Price * $cart->numNights;
+
             $cart->selectedPackage = $request->package3;
         }
+
         $cart->packageTotal = $request->packageTotal;
 
 
@@ -199,7 +200,6 @@ class BookingController extends Controller
 
         $cart->upgradeTotal = $request->upgradeTotal;
 
-        $cart->featuresTotal = $cart->featuresTotal;
         $cart->price = $request->price;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
 
