@@ -118,6 +118,8 @@
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $cart->package1Price }}">
+                    <input type="hidden" name="selectedPackage" value="{{ $cart->package1 }}">
+
                     <label class="form-check-label" for="package1">
                       {{ $cart->package1 }} +£{{ $cart->package1Price }}
                     </label>
