@@ -160,20 +160,8 @@ class BookingController extends Controller
 
 
 
-        if ($request->packageTotal == 0) {
-            $cart->selectedPackage = "None";
-        } elseif ($request->packageTotal == $cart->package1Price) {
-            $cart->selectedPackage = $cart->package1;
-        } elseif ($request->packageTotal == $cart->package2Price) {
-            $cart->selectedPackage = $cart->package2;
-        } else {
-            $cart->selectedPackage = $cart->package3;
-        }
 
-
-        $cart->packageTotal = $request->packageTotal;
-
-
+        $cart->upgradeTotal = $request->upgradeTotal;
         if ($request->upgradeTotal == 0) {
             $cart->selectedUpgrade = "None";
         } elseif ($request->upgradeTotal == $cart->upgrade1Price) {
@@ -186,7 +174,21 @@ class BookingController extends Controller
 
         dd($cart->selectedUpgrade);
 
-        $cart->upgradeTotal = $request->upgradeTotal;
+
+        $cart->packageTotal = $request->packageTotal;
+
+        if ($request->packageTotal == 0) {
+            $cart->selectedPackage = "None";
+        } elseif ($request->packageTotal == $cart->package1Price) {
+            $cart->selectedPackage = $cart->package1;
+        } elseif ($request->packageTotal == $cart->package2Price) {
+            $cart->selectedPackage = $cart->package2;
+        } else {
+            $cart->selectedPackage = $cart->package3;
+        }
+
+
+
 
         $cart->price = $request->price;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
