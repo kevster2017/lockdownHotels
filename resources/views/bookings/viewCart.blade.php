@@ -111,27 +111,30 @@
 
                   <label><strong>Package Options</strong></label>
                   <div class="form-check" id="divLeft">
-                    <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" checked>
+                    <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" onchange="updateSelectedPackage('None')" checked>
+
                     <label class="form-check-label" for="noPackage">
                       None
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
-                    <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $cart->package1Price }}">
-                    <input type="hidden" name="selectedPackage" value="{{ $cart->package1 }}">
+                    <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $cart->package1Price }}" onchange="updateSelectedPackage('{{ $cart->package1 }}')">
+                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package1 }}">
 
                     <label class="form-check-label" for="package1">
                       {{ $cart->package1 }} +£{{ $cart->package1Price }}
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
-                    <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $cart->package2Price }}">
+                    <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $cart->package2Price }}" onchange="updateSelectedPackage('{{ $cart->package2 }}')">
+                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package2 }}">
                     <label class="form-check-label" for="package2">
                       {{ $cart->package2 }} +£{{ $cart->package2Price }}
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
-                    <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $cart->package3Price }}">
+                    <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $cart->package3Price }}" onchange="updateSelectedPackage('{{ $cart->package3 }}')">
+                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package3 }}">
                     <label class="form-check-label" for="package3">
                       {{ $cart->package3 }} +£{{ $cart->package3Price }}
                     </label>
@@ -186,6 +189,8 @@
     </form>
   </div>
 </div>
+
+
 
 
 
@@ -299,6 +304,13 @@
     calculateTotalCost();
     updateCostsInHTML(hotelCost, extrasCost, totalCost);
   }
+
+  function updateSelectedPackage(packageName) {
+    // Update the hidden field value when the radio button is checked
+    document.getElementById('selectedPackage').value = packageName;
+    console.log(packageName);
+  }
+
 
   window.onload = onPageLoad;
 </script>

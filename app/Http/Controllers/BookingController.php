@@ -135,7 +135,7 @@ class BookingController extends Controller
         ]);
         */
 
-
+        dd($request);
         $userId = auth()->user()->id;
 
         $cart = Cart::where('userId', $userId)
@@ -160,6 +160,18 @@ class BookingController extends Controller
 
 
 
+        $cart->packageTotal = $request->packageTotal;
+
+        if ($request->packageTotal == 0) {
+            $cart->selectedPackage = "None";
+        } elseif ($request->packageTotal == $cart->package1Price) {
+            $cart->selectedPackage = $cart->package1;
+        } elseif ($request->packageTotal == $cart->package2Price) {
+            $cart->selectedPackage = $cart->package2;
+        } else {
+            $cart->selectedPackage = $cart->package3;
+        }
+
 
         $cart->upgradeTotal = $request->upgradeTotal;
         if ($request->upgradeTotal == 0) {
@@ -172,20 +184,8 @@ class BookingController extends Controller
             $cart->selectedUpgrade = $cart->upgrade3;
         }
 
-        dd($cart->selectedUpgrade);
 
 
-        $cart->packageTotal = $request->packageTotal;
-
-        if ($request->packageTotal == 0) {
-            $cart->selectedPackage = "None";
-        } elseif ($request->packageTotal == $cart->package1Price) {
-            $cart->selectedPackage = $cart->package1;
-        } elseif ($request->packageTotal == $cart->package2Price) {
-            $cart->selectedPackage = $cart->package2;
-        } else {
-            $cart->selectedPackage = $cart->package3;
-        }
 
 
 
