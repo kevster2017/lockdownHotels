@@ -38,19 +38,20 @@
   <div class="card">
     <h5 class="card-header">Add Extras</h5>
     <div class="card-body">
-      <table class="table table-bordered table-hover">
-        <thead class="table-primary">
-          <tr>
-            <th scope="col">Room Type</th>
-            <th scope="col">Extras (Per Night)</th>
-            <th scope="col">Hotel Room (Per Night)</th>
+      <form action="{{ route('cart.update', $cart->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <table class="table table-bordered table-hover">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">Room Type</th>
+              <th scope="col">Extras (Per Night)</th>
+              <th scope="col">Hotel Room (Per Night)</th>
 
-          </tr>
-        </thead>
+            </tr>
+          </thead>
 
-        <form action="{{ route('cart.update', $cart->id) }}" method="POST">
-          @csrf
-          @method('PUT')
+
           <input type="hidden" name="cart_Id" value="{{ $cart->id }}">
           <input type="hidden" name="cartName" value="{{ $cart->name }}">
           <input type="hidden" name="name" value="{{ $cart->name }}">
@@ -112,14 +113,14 @@
                   <label><strong>Package Options</strong></label>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" onchange="updateSelectedPackage('None')" checked>
-
+                    <input type="hidden" name="selectedPackageNone" id="selectedPackage" value="None">
                     <label class="form-check-label" for="noPackage">
                       None
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ $cart->package1Price }}" onchange="updateSelectedPackage('{{ $cart->package1 }}')">
-                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package1 }}">
+                    <input type="hidden" name="selectedPackage1" id="selectedPackage" value="{{ $cart->package1 }}">
 
                     <label class="form-check-label" for="package1">
                       {{ $cart->package1 }} +£{{ $cart->package1Price }}
@@ -127,14 +128,14 @@
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ $cart->package2Price }}" onchange="updateSelectedPackage('{{ $cart->package2 }}')">
-                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package2 }}">
+                    <input type="hidden" name="selectedPackage2" id="selectedPackage" value="{{ $cart->package2 }}">
                     <label class="form-check-label" for="package2">
                       {{ $cart->package2 }} +£{{ $cart->package2Price }}
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ $cart->package3Price }}" onchange="updateSelectedPackage('{{ $cart->package3 }}')">
-                    <input type="hidden" name="selectedPackage" id="selectedPackage" value="{{ $cart->package3 }}">
+                    <input type="hidden" name="selectedPackage3" id="selectedPackage" value="{{ $cart->package3 }}">
                     <label class="form-check-label" for="package3">
                       {{ $cart->package3 }} +£{{ $cart->package3Price }}
                     </label>
@@ -145,13 +146,14 @@
                   <label><strong>Upgrade Options</strong></label>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="noUpgrade" name="upgradeTotal" value="{{ 0 }}" onchange="updateSelectedUpgrade('None')" checked>
+                    <input type="hidden" name="selectedUpgradeNone" id="selectedUpgrade" value="None">
                     <label class="form-check-label" for="noUpgrade">
                       None
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ $cart->upgrade1Price }}" onchange="updateSelectedUpgrade('{{ $cart->upgrade1 }}')">
-                    <input type="hidden" name="selectedUpgrade" id="selectedUpgrade" value="{{ $cart->upgrade1 }}">
+                    <input type="hidden" name="selectedUpgrade1" id="selectedUpgrade" value="{{ $cart->upgrade1 }}">
                     <label class="form-check-label" for="upgrade1">
                       {{ $cart->upgrade1 }} +£{{ $cart->upgrade1Price }}
                     </label>
@@ -159,14 +161,14 @@
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ $cart->upgrade2Price }}" onchange="updateSelectedUpgrade('{{ $cart->upgrade2 }}')">
-                    <input type="hidden" name="selectedUpgrade" id="selectedUpgrade" value="{{ $cart->upgrade2 }}">
+                    <input type="hidden" name="selectedUpgrade2" id="selectedUpgrade" value="{{ $cart->upgrade2 }}">
                     <label class="form-check-label" for="upgrade2">
                       {{ $cart->upgrade2 }} +£{{ $cart->upgrade2Price }}
                     </label>
                   </div>
                   <div class="form-check" id="divLeft">
                     <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ $cart->upgrade3Price }}" onchange="updateSelectedUpgrade('{{ $cart->upgrade3 }}')">
-                    <input type="hidden" name="selectedUpgrade" id="selectedUpgrade" value="{{ $cart->upgrade3 }}">
+                    <input type="hidden" name="selectedUpgrade3" id="selectedUpgrade" value="{{ $cart->upgrade3 }}">
                     <label class="form-check-label" for="upgrade3">
                       {{ $cart->upgrade3 }} +£{{ $cart->upgrade3Price }}
                     </label>
@@ -178,7 +180,7 @@
             </tr>
           </tbody>
 
-      </table>
+        </table>
 
 
     </div>
