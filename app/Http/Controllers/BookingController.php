@@ -161,35 +161,12 @@ class BookingController extends Controller
 
 
         $cart->packageTotal = $request->packageTotal;
-
-        if ($request->selectedPackageNone == "None") {
-            $cart->selectedPackage = "None";
-        }
-        if ($request->selectedPackage1 == $cart->package1) {
-            $cart->selectedPackage = $cart->package1;
-        }
-        if ($request->selectedPackage2 == $cart->package2) {
-            $cart->selectedPackage = $cart->package2;
-        }
-        if ($request->selectedPackage3 == $cart->package3) {
-            $cart->selectedPackage = $cart->package3;
-        }
+        $cart->selectedPackage = $request->selectedPackage;
 
 
         $cart->upgradeTotal = $request->upgradeTotal;
-        if ($request->selectedUpgradeNone == "None") {
-            $cart->selectedUpgrade = "None";
-        }
+        $cart->selectedUpgrade = $request->selectedupgrade;
 
-        if ($request->selectedUpgrade1 == $cart->upgrade1) {
-            $cart->selectedUpgrade = $cart->upgrade1;
-        }
-        if ($request->selectedUpgrade2 == $cart->upgrade2) {
-            $cart->selectedUpgrade = $cart->upgrade2;
-        }
-        if ($request->selectedUpgrade3 == $cart->upgrade3) {
-            $cart->selectedUpgrade = $cart->upgrade3;
-        }
 
 
 
@@ -210,7 +187,7 @@ class BookingController extends Controller
         // dd($cart->feat3);
 
 
-        //dd($carts);
+        dd($cart);
         //$cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
