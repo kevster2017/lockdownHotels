@@ -135,7 +135,7 @@ class BookingController extends Controller
         ]);
         */
 
-        dd($request);
+
         $userId = auth()->user()->id;
 
         $cart = Cart::where('userId', $userId)
@@ -187,7 +187,7 @@ class BookingController extends Controller
         // dd($cart->feat3);
 
 
-        dd($cart);
+        //  dd($cart);
         //$cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
