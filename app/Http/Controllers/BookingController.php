@@ -160,11 +160,11 @@ class BookingController extends Controller
 
 
 
-        $cart->packageTotal = $request->packageTotal;
+        $cart->packageTotal = $request->packageTotal * $cart->numNights;
         $cart->selectedPackage = $request->selectedPackage;
 
 
-        $cart->upgradeTotal = $request->upgradeTotal;
+        $cart->upgradeTotal = $request->upgradeTotal * $cart->numNights;
         $cart->selectedUpgrade = $request->selectedUpgrade;
 
 
@@ -174,11 +174,11 @@ class BookingController extends Controller
 
 
 
-        $cart->price = $request->price;
+        $cart->price = $request->price * $cart->numNights;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
 
 
-        $cart->finalTotal = ($cart->price + $cart->extrasTotal) * $cart->numNights;
+        $cart->finalTotal = $cart->price + $cart->extrasTotal;
 
 
 

@@ -10,7 +10,7 @@
 </div>
 
 <div class="container">
-    <h1>Review Booking</h1>
+    <h1>Review Booking at {{ $cart->name }}</h1>
 </div>
 
 <div class="container mt-3">
@@ -47,7 +47,7 @@
             <p class="card-text" id="divLeft"> {{ $cart->roomType }} room</p>
             <p class="card-text" id="divLeft">Check in: {{ $cart->checkInDate }}</p>
             <p class="card-text" id="divLeft"> {{ $cart->numNights }} nights</p>
-            <p class="card-text" id="divLeft"><strong>Hotel Price: £{{ $cart->price * $cart->numNights }}</strong></p>
+            <p class="card-text" id="divLeft"><strong>Hotel Price: £{{ $cart->price }}</strong></p>
         </div>
     </div>
 </div>
