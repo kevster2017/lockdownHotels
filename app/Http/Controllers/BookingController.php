@@ -165,7 +165,7 @@ class BookingController extends Controller
 
 
         $cart->upgradeTotal = $request->upgradeTotal;
-        $cart->selectedUpgrade = $request->selectedupgrade;
+        $cart->selectedUpgrade = $request->selectedUpgrade;
 
 
 
@@ -188,7 +188,7 @@ class BookingController extends Controller
 
 
         //  dd($cart);
-        //$cart->save();
+        $cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
     }

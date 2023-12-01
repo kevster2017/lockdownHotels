@@ -57,62 +57,63 @@
     <div class="card">
         <h5 class="card-header" id="divLeft">Extras Details</h5>
         <div class="card-body">
-            @if($cart->feat1 != 0)
+            @if($cart->selectedFeat1 != "None")
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat1 }}, £{{ $cart->feat1Price}} per night</p>
             @endif
-            @if($cart->feat2 != 0)
+            @if($cart->selectedFeat2 != "None")
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat2 }}, £{{ $cart->feat2Price}} per night</p>
             @endif
-            @if($cart->feat3 != 0)
+            @if($cart->selectedFeat3 != "None")
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat3 }}, £{{ $cart->feat3Price}} per night</p>
             @endif
-            @if($cart->feat4 != 0)
+            @if($cart->selectedFeat4 != "None")
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat4 }}, £{{ $cart->feat4Price}} per night</p>
             @endif
+            @if($cart->featuresTotal != 0)
             <p class="card-text" id="divLeft"><strong>Extras Price: £{{ $cart->feat2Price * $cart->numNights }}</strong></p>
+            @else
+            <p class="card-text" id="divLeft"><strong>{{ "No extras added" }}</strong></p>
+            @endif
         </div>
     </div>
 
     <div class="card mt-3">
         <h5 class="card-header" id="divLeft">Upgrade Details</h5>
         <div class="card-body">
-            @if($cart->upgrade1 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->upgrade1 }}</p>
+            @if($cart->upgradeTotal == 0)
+            <p class="card-text" id="divLeft"><strong>{{ "No upgrade added" }}</strong></p>
+            @else
+
+            <p class="card-text" id="divLeft">Upgrade:1{{ $cart->selectedUpgrade }}</p>
+            <p class="card-text" id="divLeft"><strong>Total Upgrade Price: £{{ $cart->upgradeTotal }}</strong></p>
+
             @endif
-            @if($cart->upgrade2 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->upgrade2 }}</p>
-            @endif
-            @if($cart->upgrade3 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->upgrade3 }}</p>
-            @endif
-            @if($cart->upgrade1 == 0 && $cart->upgrade2 == 0 && $cart->upgrade3 == 0)
-            <p class="card-text" id="divLeft">No upgrades selected</p>
-            @endif
-            <p class="card-text" id="divLeft"><strong>Total Price: £{{ $cart->price }}</strong></p>
+
         </div>
     </div>
 
     <div class="card mt-3">
         <h5 class="card-header" id="divLeft">Package Details</h5>
         <div class="card-body">
-            @if($cart->package1 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->package1 }}</p>
+            @if($cart->packageTotal == 0)
+            <p class="card-text" id="divLeft"><strong>{{ "No package added" }}</strong></p>
+            @else
+            <p class="card-text" id="divLeft">Package: {{ $cart->selectedPackage }}</p>
+            <p class="card-text" id="divLeft"><strong>Total Package Price: £{{ $cart->packageTotal }}</strong></p>
             @endif
-            @if($cart->package2 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->package2 }}</p>
-            @endif
-            @if($cart->package3 != 0)
-            <p class="card-text" id="divLeft">Feature: {{ $cart->package3 }}</p>
-            @endif
-            @if($cart->package1 == 0 && $cart->package2 == 0 && $cart->package3 == 0)
-            <p class="card-text" id="divLeft">No packages selected</p>
-            @endif
-            <p class="card-text" id="divLeft"><strong>Total Price: £{{ $cart->price }}</strong></p>
+
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <h5 class="card-header" id="divLeft">Final Total</h5>
+        <div class="card-body">
+            <h3><strong>Final Total: £</strong>{{ $cart->finalTotal}}</h3>
         </div>
     </div>
 
     <div class="container">
-        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary">Book Now for £{{ $cart->price}}</a>
+        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary">Book Now for £{{ $cart->finalTotal}}</a>
     </div>
 </div>
 @endsection
