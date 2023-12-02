@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section("content")
 
+<!-- Page Content -->
+<div class="container">
+   <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="/">Home</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Payment Page</li>
+      </ol>
+   </nav>
+</div>
+
 <div class="container loginView">
    <div class="row">
       <h3 style="text-align: center;margin-top: 40px;margin-bottom: 40px;">Payment Page</h3>

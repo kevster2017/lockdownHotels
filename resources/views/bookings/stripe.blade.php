@@ -6,7 +6,7 @@
    <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="/">Home</a></li>
-         <li class="breadcrumb-item active" aria-current="page">Payment</li>
+         <li class="breadcrumb-item active" aria-current="page">Payment Page</li>
       </ol>
    </nav>
 </div>
@@ -19,7 +19,7 @@
       <div class="mx-auto">
          <div class="panel panel-default credit-card-box" id="paymentForm">
             <div class="container">
-               <h1>Pay {{ $payment->name }} a total of £{{ $payment->total }}</h1>
+               <h1>Pay {{ $cart->name }} a total of £{{ $cart->finalTotal }}</h1>
             </div>
             <div class="panel-heading">
                <div class="row">
