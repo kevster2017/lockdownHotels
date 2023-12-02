@@ -139,6 +139,7 @@
 
     <div class="container text-center">
         <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now for £{{ $cart->finalTotal}}</a>
+        <a href="{{ route('delete.cart') }}" class="btn btn-primary" id="paymentButton">Cancel Booking</a>
     </div>
 
 </div>
@@ -153,7 +154,7 @@
             if (radioButton.id === 'stripe' && radioButton.checked) {
                 paymentButton.href = "{{ route('bookings.stripe') }}";
             } else if (radioButton.id === 'paypal' && radioButton.checked) {
-                paymentButton.href = "{{ route('paypal') }}";
+                paymentButton.href = "{{ route('bookings.paypal') }}";
             }
         })
     });

@@ -74,7 +74,7 @@ Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentCompl
 Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get("/bookings/viewCart", [BookingController::class, 'viewCart'])->middleware('auth')->name("viewCart");
 Route::put("/update_cart/{id}", [BookingController::class, 'updateCart'])->name('cart.update');
-Route::get("/removeCart/{id}", [BookingController::class, 'removeCart']);
+Route::get("/removeCart/{id}", [BookingController::class, 'removeCart'])->name('delete.cart');
 
 
 /* PayPal routes 
