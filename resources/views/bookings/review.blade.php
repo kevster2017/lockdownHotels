@@ -138,22 +138,23 @@
     </div>
 
     <div class="container text-center">
-        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary">Book Now for £{{ $cart->finalTotal}}</a>
-        <a href="{{ route('bookings.paypal') }}" class="btn btn-primary">Book Now for £{{ $cart->finalTotal}}</a>
+        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now for £{{ $cart->finalTotal}}</a>
     </div>
 
 </div>
 
 <script>
     let paymentRadioButtons = document.querySelectorAll('input[name="payment"]');
+    let paymentButton = document.getElementById('paymentButton');
 
     paymentRadioButtons.forEach(function(radioButton) {
-        if (radioButton.checked) {
-
-        }
 
         radioButton.addEventListener('change', function() {
-
+            if (radioButton.id === 'stripe' && radioButton.checked) {
+                paymentButton.href = "{{ route('bookings.stripe') }}";
+            } else if (radioButton.id === 'paypal' && radioButton.checked) {
+                paymentButton.href = "{{ route('bookings.paypal') }}";
+            }
         })
     });
 </script>
