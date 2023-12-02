@@ -118,7 +118,7 @@
             <div class="row justify-content-center">
                 <div class="col-auto">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment" id="stripe" checked>
+                        <input class="form-check-input" type="radio" name="payment" id="stripe" onchange="paymentMethod('Stripe')" checked>
                         <label class="form-check-label" for="stripe">
                             Stripe Payment
                         </label>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-auto">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment" id="paypal">
+                        <input class="form-check-input" type="radio" name="payment" id="paypal" onchange="paymentMethod('PayPal')">
                         <label class="form-check-label" for="paypal">
                             PayPal
                         </label>
@@ -139,7 +139,24 @@
 
     <div class="container text-center">
         <a href="{{ route('bookings.stripe') }}" class="btn btn-primary">Book Now for £{{ $cart->finalTotal}}</a>
+        <a href="{{ route('bookings.paypal') }}" class="btn btn-primary">Book Now for £{{ $cart->finalTotal}}</a>
     </div>
 
 </div>
+
+<script>
+    let paymentRadioButtons = document.querySelectorAll('input[name="payment"]');
+
+    paymentRadioButtons.forEach(function(radioButton) {
+        if (radioButton.checked) {
+
+        }
+
+        radioButton.addEventListener('change', function() {
+
+        })
+    });
+</script>
+
+
 @endsection
