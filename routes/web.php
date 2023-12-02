@@ -86,7 +86,7 @@ Route::get('/success', [PaypalController::class, 'success']);
 Route::get('/error', [PaypalController::class, 'error']);
 */
 
-Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
+Route::get('bookings/paypal', [PayPalController::class, 'index'])->name('bookings.paypal');
 Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
 Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
 Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');

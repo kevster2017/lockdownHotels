@@ -153,7 +153,7 @@
             if (radioButton.id === 'stripe' && radioButton.checked) {
                 paymentButton.href = "{{ route('bookings.stripe') }}";
             } else if (radioButton.id === 'paypal' && radioButton.checked) {
-                paymentButton.href = "{{ route('bookings.paypal') }}";
+                paymentButton.href = "{{ route('paypal') }}";
             }
         })
     });
