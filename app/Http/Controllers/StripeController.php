@@ -17,12 +17,12 @@ class StripeController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $details = DB::table('cart')
+        $cart = DB::table('cart')
             ->where('userId', $userId)
             ->first();
 
         return view('bookings.stripe', [
-            'details' =>  $details
+            'cart' =>  $cart
         ]);
     }
 

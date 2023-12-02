@@ -168,12 +168,6 @@ class BookingController extends Controller
         $cart->selectedUpgrade = $request->selectedUpgrade;
 
 
-
-
-
-
-
-
         $cart->price = $request->price * $cart->numNights;
         $cart->extrasTotal = $cart->upgradeTotal + $cart->featuresTotal + $cart->packageTotal;
 
@@ -181,13 +175,6 @@ class BookingController extends Controller
         $cart->finalTotal = $cart->price + $cart->extrasTotal;
 
 
-
-
-
-        // dd($cart->feat3);
-
-
-        //  dd($cart);
         $cart->save();
 
         return view('bookings.review', ['cart' => $cart]);
