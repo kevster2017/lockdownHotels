@@ -70,6 +70,8 @@ class StripeController extends Controller
         $bookings->paid = 1;
         $bookings->save();
 
+        Cart::where('userId', $userId)->delete();
+
         return view('/home')->with('success', 'Booking Completed');
     }
 }
