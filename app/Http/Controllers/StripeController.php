@@ -31,33 +31,59 @@ class StripeController extends Controller
 
         $userId = auth()->user()->id;
 
-        $bookings = Booking::where('userId', $userId)
+        $cart = Cart::where('userId', $userId)
             ->first();
 
         /*
-        if (!$bookings) {
+        if (!$cart) {
             // Handle the case where the cart is not found
-            return redirect()->back()->with('error', 'Booking not found');
+            return redirect()->back()->with('error', 'Cart not found');
         }
 */
 
-        $hotel = Hotel::find($bookings->hotel_Id);
+        /* Create a new Booking */
+        $booking = new Booking;
 
-        /*
-        // Validate the number of available rooms before decrementing
-        if ($hotel->numRooms > 0) {
-            $hotel->decrement('numRooms');
-        } else {
-            // Handle the case where the number of available rooms is already 0
-            return redirect()->back()->with('error', 'No available rooms');
-        }
+$booking->userId = $cart->userId;
+$booking->name = $cart->name;
+$booking->hotelId = $cart->hotelId;
+$booking->image = $cart->image;
+$booking->address = $cart->address;
+$booking->postCode = $cart->postCode;
+$booking->accomType = $cart->accomType;
+$booking->roomType = $cart->roomType;
+$booking->holidayType = $cart->holidayType;
+$booking->price = $cart->price;
+$booking->checkInDate = $cart->checkInDate;
+$booking->numNights = $cart->numNights;
+$booking->feat1 = $cart->feat1;
+$booking->feat2 = $cart->feat2;
+$booking->feat3 = $cart->feat3;
+$booking->feat4 = $cart->feat4;
+$booking->feat1Price = $cart->feat1Price;
+$booking->feat2Price = $cart->feat2Price;
+$booking->feat3Price = $cart->feat3Price;
+$booking->feat4Price = $cart->feat4Price;
+$booking->selectedFeat1 = $cart->selectedFeat1;
+$booking->selectedFeat2 = $cart->selectedFeat2;
+$booking->selectedFeat3 = $cart->selectedFeat3;
+$booking->selectedFeat4 = $cart->selectedFeat4;
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
+$booking-> = $cart->
 
-*/
 
-        $hotel = $bookings->name;
+
+        $hotel = $cart->name;
+
 
         // Total is in pence. Multiply by 100 for £1
-        $total = $bookings->total * 100;
+        $total = $cart->finalTotal * 100;
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
@@ -67,8 +93,12 @@ class StripeController extends Controller
             "description" => "This payment is for {$hotel}",
         ]);
 
+
+
         $bookings->paid = 1;
         $bookings->save();
+
+
 
         Cart::where('userId', $userId)->delete();
 
