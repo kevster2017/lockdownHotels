@@ -35,24 +35,27 @@
 
                <tbody>
                   <tr>
-                     <td>Amount</td>
-                     <td>£{{0}}</td>
+                     <td>Payment from</td>
+                     <td>{{ auth()->user()->name }}</td>
 
                   </tr>
                   <tr>
-                     <td>Tax</td>
-                     <td>£0</td>
+                     <td>Payment to</td>
+                     <td>{{ $cart->name }}</td>
 
                   </tr>
-                  <tr>
-                     <td>Delivery</td>
-                     <td>£10</td>
-                  </tr>
+                  @if($cart->currency == 'Sterling')
                   <tr>
                      <td>Total Amount</td>
-                     <td>£{{0}}</td>
+                     <td>£{{ $cart->finalTotal }}</td>
                   </tr>
 
+                  @else
+                  <tr>
+                     <td>Total Amount</td>
+                     <td>€{{ $cart->finalTotal }}</td>
+                  </tr>
+                  @endif
                </tbody>
             </table>
             <form action="{{ route('paypal.payment') }}" method="POST">
