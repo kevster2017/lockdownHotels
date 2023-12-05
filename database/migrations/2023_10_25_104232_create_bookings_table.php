@@ -13,23 +13,21 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('name');
-            $table->string('email');
-            $table->string('userId');
-            $table->date('checkInDate');
-            $table->integer('numNights');
-            $table->string('hotelName');
+
             $table->integer('hotel_Id');
+            $table->integer('userId');
+            $table->string('name');
             $table->string('image');
             $table->string('address');
             $table->string('town');
             $table->string('country');
             $table->string('postCode');
             $table->string('accomType');
-            $table->string('holidayType');
             $table->string('roomType');
-            $table->integer('pricePN');
+            $table->string('holidayType');
+            $table->integer('price');
+            $table->date('checkInDate');
+            $table->integer('numNights');
             $table->string('feat1')->default("None");
             $table->string('feat2')->default("None");
             $table->string('feat3')->default("None");
@@ -38,26 +36,33 @@ return new class extends Migration
             $table->integer('feat2Price')->default(0);
             $table->integer('feat3Price')->default(0);
             $table->integer('feat4Price')->default(0);
+            $table->string('selectedFeat1')->default("None");
+            $table->string('selectedFeat2')->default("None");
+            $table->string('selectedFeat3')->default("None");
+            $table->string('selectedFeat4')->default("None");
+            $table->integer('featuresTotal')->default(0);
             $table->string('upgrade1');
             $table->string('upgrade2');
             $table->string('upgrade3');
             $table->integer('upgrade1Price');
             $table->integer('upgrade2Price');
             $table->integer('upgrade3Price');
+            $table->string('selectedUpgrade')->default("None");
+            $table->integer('upgradeTotal');
             $table->string('package1');
             $table->string('package2');
             $table->string('package3');
             $table->integer('package1Price');
             $table->integer('package2Price');
             $table->integer('package3Price');
-            $table->integer('upgradeTotal')->default(0);
+            $table->string('selectedPackage')->default("None");
             $table->integer('packageTotal')->default(0);
-            $table->integer('featuresTotal')->default(0);
-            $table->integer('extrasTotal')->default(0);
-            $table->integer('total');
-            $table->string('payment_method');
             $table->string('currency');
+            $table->integer('extrasTotal')->default(0);
+            $table->integer('finalTotal')->default(0);
+            $table->string('payment_method');
             $table->boolean('paid')->default(0);
+            $table->timestamps();
         });
     }
 
