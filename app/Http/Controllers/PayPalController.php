@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
 
 class PayPalController extends Controller
 {
@@ -14,7 +16,15 @@ class PayPalController extends Controller
      */
     public function index()
     {
-        return view('bookings/paypal');
+        $userId = auth()->user()->id;
+
+        $cart = DB::table('cart')
+            ->where('userId', $userId)
+            ->first();
+
+        return view('bookings/paypal', [
+            'cart' =>  $cart
+        ]);
     }
 
     /**
