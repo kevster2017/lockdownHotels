@@ -139,7 +139,7 @@
 
     <div class="container text-center">
         <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now for £{{ $cart->finalTotal}}</a>
-        <a href="{{ route('delete.cart') }}" class="btn btn-primary" id="paymentButton">Cancel Booking</a>
+        <a href="{{ route('delete.cart', $cart->id) }}" class="btn btn-primary" id="paymentButton">Cancel Booking</a>
     </div>
 
 </div>
