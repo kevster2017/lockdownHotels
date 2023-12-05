@@ -34,6 +34,12 @@ class PayPalController extends Controller
      */
     public function payment(Request $request)
     {
+        $userId = auth()->user()->id;
+
+        $cart = DB::table('cart')
+            ->where('userId', $userId)
+            ->first();
+
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -47,8 +53,8 @@ class PayPalController extends Controller
             "purchase_units" => [
                 0 => [
                     "amount" => [
-                        "currency_code" => "USD",
-                        "value" => "100.00"
+                        "currency_code" => "GBP",
+                        "value" => $cart->finalTotal
                     ]
                 ]
             ]

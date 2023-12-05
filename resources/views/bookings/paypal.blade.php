@@ -60,7 +60,7 @@
             </table>
             <form action="{{ route('paypal.payment') }}" method="POST">
                @csrf
-               <input type="hidden" name="amount" value="{{0}}">
+               <input type="hidden" name="amount" value="{{ $cart->finalTotal }}">
 
 
                <button type="submit" class="btn btn-info my-3">Pay with PayPal</button>
