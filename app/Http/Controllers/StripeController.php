@@ -64,7 +64,9 @@ class StripeController extends Controller
         $bookings->hotel_Id = $cart->hotel_Id;
         $bookings->image = $cart->image;
         $bookings->address = $cart->address;
+        $bookings->town = $cart->town;
         $bookings->postCode = $cart->postCode;
+        $bookings->country = $cart->country;
         $bookings->accomType = $cart->accomType;
         $bookings->roomType = $cart->roomType;
         $bookings->holidayType = $cart->holidayType;
