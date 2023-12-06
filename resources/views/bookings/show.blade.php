@@ -70,10 +70,10 @@
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-dark">Hotel Costs</div>
                         <div class="card-body text-dark">
-                            <h5 class="card-title">Price Per Night: £{{ $booking->pricePN }}</h5>
+                            <h5 class="card-title">Price Per Night: £{{ $booking->price }}</h5>
 
                         </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Hotel Costs:</strong> £{{ $booking->pricePN * $booking->numNights }}</div>
+                        <div class="card-footer bg-transparent border-dark"><strong>Total Hotel Costs:</strong> £{{ $booking->price * $booking->numNights }}</div>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -91,13 +91,13 @@
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-dark">Total Costs</div>
                         <div class="card-body text-dark">
-                            <h5 class="card-title">Hotel Costs: £{{ $booking->pricePN * $booking->numNights }}</h5>
+                            <h5 class="card-title">Hotel Costs: £{{ $booking->price * $booking->numNights }}</h5>
                             <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
                             <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
                             <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>
 
                         </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Costs:</strong> £{{ $booking->total }}</div>
+                        <div class="card-footer bg-transparent border-dark"><strong>Total Costs:</strong> £{{ $booking->finalTotal }}</div>
                     </div>
 
                 </div>
