@@ -115,6 +115,6 @@ class StripeController extends Controller
 
         Cart::where('userId', $userId)->delete();
 
-        return view('/booking/myBookings')->with('success', 'Booking Completed');
+        return view('/bookings/myBookings')->with('success', 'Booking Completed');
     }
 }
