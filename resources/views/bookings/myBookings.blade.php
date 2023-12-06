@@ -38,7 +38,7 @@
         </th>
 
         <td><a href="{{ route('bookings.show', $booking->booking_id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
-        <td>{{ $booking->hotelName }}</td>
+        <td>{{ $booking->name }}</td>
         <td>{{ $booking->country }}</td>
         <td>{{ date('d-m-Y', strtotime($booking->checkInDate));  }}</td>
         <td>{{ $booking->numNights }}</td>
