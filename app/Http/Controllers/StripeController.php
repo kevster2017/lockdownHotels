@@ -34,19 +34,34 @@ class StripeController extends Controller
         $cart = Cart::where('userId', $userId)
             ->first();
 
-        /*
+
         if (!$cart) {
             // Handle the case where the cart is not found
             return redirect()->back()->with('error', 'Cart not found');
         }
-*/
+
+
+        // Set hotel name for Stripe Charge
+        $hotel = $cart->name;
+
+
+        // Total is in pence. Multiply by 100 for £1
+        $total = $cart->finalTotal * 100;
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create([
+            "amount" => $total,
+            "currency" => "GBP",
+            "source" => $request->stripeToken,
+            "description" => "This payment is for {$hotel}",
+        ]);
 
         /* Create a new Booking */
         $booking = new Booking;
 
         $booking->userId = $cart->userId;
         $booking->name = $cart->name;
-        $booking->hotelId = $cart->hotelId;
+        $booking->hotel_Id = $cart->hotel_Id;
         $booking->image = $cart->image;
         $booking->address = $cart->address;
         $booking->postCode = $cart->postCode;
@@ -88,26 +103,8 @@ class StripeController extends Controller
         $booking->currency = $cart->currency;
         $booking->extrasTotal = $cart->extrasTotal;
         $booking->finalTotal = $cart->finalTotal;
+        $booking->payment_method = 'Stripe';
         $booking->paid = 1;
-
-
-        dd($booking);
-
-        $hotel = $cart->name;
-
-
-        // Total is in pence. Multiply by 100 for £1
-        $total = $cart->finalTotal * 100;
-
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create([
-            "amount" => $total,
-            "currency" => "GBP",
-            "source" => $request->stripeToken,
-            "description" => "This payment is for {$hotel}",
-        ]);
-
-
 
 
         $booking->save();
