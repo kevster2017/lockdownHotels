@@ -57,62 +57,62 @@ class StripeController extends Controller
         ]);
 
         /* Create a new Booking */
-        $booking = new Booking;
+        $bookings = new Booking;
 
-        $booking->userId = $cart->userId;
-        $booking->name = $cart->name;
-        $booking->hotel_Id = $cart->hotel_Id;
-        $booking->image = $cart->image;
-        $booking->address = $cart->address;
-        $booking->postCode = $cart->postCode;
-        $booking->accomType = $cart->accomType;
-        $booking->roomType = $cart->roomType;
-        $booking->holidayType = $cart->holidayType;
-        $booking->price = $cart->price;
-        $booking->checkInDate = $cart->checkInDate;
-        $booking->numNights = $cart->numNights;
-        $booking->feat1 = $cart->feat1;
-        $booking->feat2 = $cart->feat2;
-        $booking->feat3 = $cart->feat3;
-        $booking->feat4 = $cart->feat4;
-        $booking->feat1Price = $cart->feat1Price;
-        $booking->feat2Price = $cart->feat2Price;
-        $booking->feat3Price = $cart->feat3Price;
-        $booking->feat4Price = $cart->feat4Price;
-        $booking->selectedFeat1 = $cart->selectedFeat1;
-        $booking->selectedFeat2 = $cart->selectedFeat2;
-        $booking->selectedFeat3 = $cart->selectedFeat3;
-        $booking->selectedFeat4 = $cart->selectedFeat4;
-        $booking->featuresTotal = $cart->featuresTotal;
-        $booking->upgrade1 = $cart->upgrade1;
-        $booking->upgrade2 = $cart->upgrade2;
-        $booking->upgrade3 = $cart->upgrade3;
-        $booking->upgrade1Price = $cart->upgrade1Price;
-        $booking->upgrade2Price = $cart->upgrade2Price;
-        $booking->upgrade3Price = $cart->upgrade3Price;
-        $booking->selectedUpgrade = $cart->selectedUpgrade;
-        $booking->upgradeTotal = $cart->upgradeTotal;
-        $booking->package1 = $cart->package1;
-        $booking->package2 = $cart->package2;
-        $booking->package3 = $cart->package3;
-        $booking->package1Price = $cart->package1Price;
-        $booking->package2Price = $cart->package2Price;
-        $booking->package3Price = $cart->package3Price;
-        $booking->selectedPackage = $cart->selectedPackage;
-        $booking->packageTotal = $cart->packageTotal;
-        $booking->currency = $cart->currency;
-        $booking->extrasTotal = $cart->extrasTotal;
-        $booking->finalTotal = $cart->finalTotal;
-        $booking->payment_method = 'Stripe';
-        $booking->paid = 1;
+        $bookings->userId = $cart->userId;
+        $bookings->name = $cart->name;
+        $bookings->hotel_Id = $cart->hotel_Id;
+        $bookings->image = $cart->image;
+        $bookings->address = $cart->address;
+        $bookings->postCode = $cart->postCode;
+        $bookings->accomType = $cart->accomType;
+        $bookings->roomType = $cart->roomType;
+        $bookings->holidayType = $cart->holidayType;
+        $bookings->price = $cart->price;
+        $bookings->checkInDate = $cart->checkInDate;
+        $bookings->numNights = $cart->numNights;
+        $bookings->feat1 = $cart->feat1;
+        $bookings->feat2 = $cart->feat2;
+        $bookings->feat3 = $cart->feat3;
+        $bookings->feat4 = $cart->feat4;
+        $bookings->feat1Price = $cart->feat1Price;
+        $bookings->feat2Price = $cart->feat2Price;
+        $bookings->feat3Price = $cart->feat3Price;
+        $bookings->feat4Price = $cart->feat4Price;
+        $bookings->selectedFeat1 = $cart->selectedFeat1;
+        $bookings->selectedFeat2 = $cart->selectedFeat2;
+        $bookings->selectedFeat3 = $cart->selectedFeat3;
+        $bookings->selectedFeat4 = $cart->selectedFeat4;
+        $bookings->featuresTotal = $cart->featuresTotal;
+        $bookings->upgrade1 = $cart->upgrade1;
+        $bookings->upgrade2 = $cart->upgrade2;
+        $bookings->upgrade3 = $cart->upgrade3;
+        $bookings->upgrade1Price = $cart->upgrade1Price;
+        $bookings->upgrade2Price = $cart->upgrade2Price;
+        $bookings->upgrade3Price = $cart->upgrade3Price;
+        $bookings->selectedUpgrade = $cart->selectedUpgrade;
+        $bookings->upgradeTotal = $cart->upgradeTotal;
+        $bookings->package1 = $cart->package1;
+        $bookings->package2 = $cart->package2;
+        $bookings->package3 = $cart->package3;
+        $bookings->package1Price = $cart->package1Price;
+        $bookings->package2Price = $cart->package2Price;
+        $bookings->package3Price = $cart->package3Price;
+        $bookings->selectedPackage = $cart->selectedPackage;
+        $bookings->packageTotal = $cart->packageTotal;
+        $bookings->currency = $cart->currency;
+        $bookings->extrasTotal = $cart->extrasTotal;
+        $bookings->finalTotal = $cart->finalTotal;
+        $bookings->payment_method = 'Stripe';
+        $bookings->paid = 1;
 
 
-        $booking->save();
+        $bookings->save();
 
 
 
         Cart::where('userId', $userId)->delete();
 
-        return view('/home')->with('success', 'Booking Completed');
+        return view('/booking/myBookings')->with('success', 'Booking Completed');
     }
 }
