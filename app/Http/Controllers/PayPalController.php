@@ -179,7 +179,7 @@ class PayPalController extends Controller
             return view('/bookings/myBookings')->with('success', 'Booking completed');
         } else {
             return redirect()
-                ->route('paypal')
+                ->route('bookings.paypal')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
