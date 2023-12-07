@@ -69,7 +69,7 @@
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat4 }}, £{{ $cart->feat4Price}} per night</p>
             @endif
             @if($cart->featuresTotal != 0)
-            <p class="card-text" id="divLeft"><strong>Features Total: £{{ $cart->featuresTotal * $cart->numNights }}</strong></p>
+            <p class="card-text" id="divLeft"><strong>Features Total: £{{ $cart->featuresTotal }}</strong></p>
             @else
             <p class="card-text" id="divLeft"><strong>{{ "No extras added" }}</strong></p>
             @endif
