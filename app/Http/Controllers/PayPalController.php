@@ -36,9 +36,14 @@ class PayPalController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $cart = DB::table('cart')
-            ->where('userId', $userId)
+        $cart = Cart::where('userId', $userId)
             ->first();
+
+
+        if (!$cart) {
+            // Handle the case where the cart is not found
+            return redirect()->back()->with('error', 'Cart not found');
+        }
 
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -76,6 +81,8 @@ class PayPalController extends Controller
                 ->route('create.payment')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
+
+        /* If payment successful, create the booking */
     }
 
     /**
