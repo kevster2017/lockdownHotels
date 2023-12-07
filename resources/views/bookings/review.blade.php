@@ -54,7 +54,7 @@
 <div class="container mt-3">
 
     <div class="card">
-        <h5 class="card-header" id="divLeft">Extras Details</h5>
+        <h5 class="card-header" id="divLeft">Features Details</h5>
         <div class="card-body">
             @if($cart->selectedFeat1 != "None")
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat1 }}, £{{ $cart->feat1Price}} per night</p>
@@ -69,7 +69,7 @@
             <p class="card-text" id="divLeft">Feature: {{ $cart->feat4 }}, £{{ $cart->feat4Price}} per night</p>
             @endif
             @if($cart->featuresTotal != 0)
-            <p class="card-text" id="divLeft"><strong>Extras Price: £{{ $cart->feat2Price * $cart->numNights }}</strong></p>
+            <p class="card-text" id="divLeft"><strong>Features Total: £{{ $cart->featuresTotal * $cart->numNights }}</strong></p>
             @else
             <p class="card-text" id="divLeft"><strong>{{ "No extras added" }}</strong></p>
             @endif
@@ -83,7 +83,7 @@
             <p class="card-text" id="divLeft"><strong>{{ "No upgrade added" }}</strong></p>
             @else
 
-            <p class="card-text" id="divLeft">Upgrade:{{ $cart->selectedUpgrade }}</p>
+            <p class="card-text" id="divLeft">Upgrade: {{ $cart->selectedUpgrade }}</p>
             <p class="card-text" id="divLeft"><strong>Total Upgrade Price: £{{ $cart->upgradeTotal }}</strong></p>
 
             @endif
