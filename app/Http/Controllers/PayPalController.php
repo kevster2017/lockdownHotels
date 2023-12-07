@@ -176,8 +176,7 @@ class PayPalController extends Controller
 
             Cart::where('userId', $userId)->delete();
 
-            return redirect()
-                ->view('/bookings/myBookings')->with('success', 'Booking completed');
+            return view('/bookings/myBookings')->with('success', 'Booking completed');
         } else {
             return redirect()
                 ->route('paypal')
