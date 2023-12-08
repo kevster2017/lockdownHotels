@@ -29,7 +29,9 @@
     </thead>
     <tbody>
 
-
+      @if($bookings->isEmpty())
+      <p>No bookings available</p>
+      @else
       @foreach($bookings as $booking)
 
       <tr>
@@ -54,7 +56,7 @@
 
 
       @endforeach
-
+      @endif
 
     </tbody>
   </table>
