@@ -188,10 +188,37 @@
       <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
       <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
       <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
-      <a href="/removeCart/{{ $cart->cart_id}}" class="btn btn-danger mt-4">Cancel Booking</a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $cart->id }}">
+        Cancel Booking
+      </button>
+
+
       <button class="btn btn-primary" type="submit">Add Extras</button>
     </div>
     </form>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal{{ $cart->id  }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteModalLabel">Are you sure you want to cancel this booking?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Deleting is permanent and cannot be undone</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <form method="POST" action="{{ route('delete.cart', $cart->id) }}">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger" type="submit">Cancel Booking</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
