@@ -398,10 +398,10 @@ class BookingController extends Controller
         //
     }
 
-    public function removeCart(string $id)
+    public function removeCart($id)
     {
         Cart::destroy($id);
 
-        return view('home')->with('success', 'Item successfully removed from cart');
+        return redirect()->route('home')->with('success', 'Item successfully removed from cart');
     }
 }
