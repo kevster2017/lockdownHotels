@@ -137,9 +137,11 @@ class BookingController extends Controller
         $cart = Cart::where('userId', $userId)
             ->first();
 
+        $cart->featuresTotal = 0;
+
         if (!empty($request->input('feat1'))) {
             $cart->selectedFeat1 = $cart->feat1;
-            $cart->featuresTotal = $cart->featuresTotal + $request->feat1Price;
+            $cart->featuresTotal += $request->feat1Price;
         }
         if (!empty($request->input('feat2'))) {
             $cart->selectedFeat2 = $cart->feat2;
@@ -154,7 +156,7 @@ class BookingController extends Controller
             $cart->featuresTotal += $request->feat4Price;
         }
 
-
+        $cart->featuresTotal = $cart->featuresTotal * $cart->numNights;
 
         $cart->packageTotal = $request->packageTotal * $cart->numNights;
         $cart->selectedPackage = $request->selectedPackage;
