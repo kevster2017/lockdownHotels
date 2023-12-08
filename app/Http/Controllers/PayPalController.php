@@ -177,7 +177,7 @@ class PayPalController extends Controller
             Cart::where('userId', $userId)->delete();
 
             $bookings = Booking::where('userId', $userId)
-                ->first();
+                ->paginate(10);
 
             return view('/bookings/myBookings', [
                 'bookings' => $bookings

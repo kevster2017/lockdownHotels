@@ -270,7 +270,7 @@ class BookingController extends Controller
             ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
             ->where('bookings.userId', $userId)
             ->select('*', 'bookings.id as booking_id') // Selects the original order ID
-            ->paginate(5);
+            ->paginate(10);
 
         return view('/bookings/myBookings', ['bookings' => $bookings, 'ids' => $ids]);
     }
