@@ -101,11 +101,11 @@
 
                             @endif
                             @if($booking-> selectedUpgrade != 'None')
-                            <h5 class="card-title">{{ $booking->selectedUpgrade }}: {{$booking->upgradeTotal * $booking->numNights }} </h5>
+                            <h5 class="card-title">{{ $booking->selectedUpgrade }}: £{{$booking->upgradeTotal * $booking->numNights }} </h5>
 
                             @endif
                             @if($booking-> selectedPackage != 'None')
-                            <h5 class="card-title">{{ $booking->selectedPackage }}: {{$booking->packageTotal * $booking->numNights }} </h5>
+                            <h5 class="card-title">{{ $booking->selectedPackage }}: £{{$booking->packageTotal * $booking->numNights }} </h5>
 
                             @endif
                             @endif

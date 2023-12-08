@@ -34,7 +34,7 @@
 
       <tr>
 
-        <th scope="row">{{ $booking->id }}
+        <th scope="row">{{ $booking->booking_id }}
         </th>
 
         <td><a href="{{ route('bookings.show', $booking->id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
