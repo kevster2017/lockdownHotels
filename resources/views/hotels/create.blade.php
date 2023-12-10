@@ -44,7 +44,9 @@
         </div>
 
         <!--Upload Photo-->
-        <label for="image" class="form-label">Add Photo</label>
+        <div class="col-md-4 offset-md-4">
+            <label for="image" class="form-label text-center">Add Photo</label>
+        </div>
         <div class="input-group mb-3">
             <div class="col-md-4 offset-md-4">
                 <input type="file" class="form-control" name="image" id="image" required>
