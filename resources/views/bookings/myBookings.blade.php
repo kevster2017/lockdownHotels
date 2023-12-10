@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section("content")
 
+
 <div class="container">
-  <ul class="breadcrumb">
-    <li><a href="{{ url('/') }}">Home</a></li>
-    <li>My Bookings</li>
-  </ul>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">My Bookings</li>
+    </ol>
+  </nav>
 </div>
 
 
