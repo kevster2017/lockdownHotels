@@ -3,10 +3,12 @@
 @section('content')
 <!--Breadcrumb-->
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a href="{{ url('/home') }}">Home</a></li>
-        <li>List Your Property</li>
-    </ul>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List Your Property</li>
+        </ol>
+    </nav>
 </div>
 
 @if(count($errors) > 0 )
