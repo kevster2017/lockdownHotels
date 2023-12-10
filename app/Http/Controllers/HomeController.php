@@ -26,11 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            // User is already logged in, redirect to /home
-            return redirect('/home');
+            // User is already logged in, show the home view
+            return view('home');
+        } else {
+            // Otherwise, show the default welcome view
+            return view('welcome');
         }
-
-        // Otherwise, show the default localhost view
-        return view('welcome');
     }
 }
