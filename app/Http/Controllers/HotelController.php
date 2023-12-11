@@ -115,8 +115,8 @@ class HotelController extends Controller
 
     public function store(Request $request, Hotel $hotel)
     {
-        //dd($request);
-        $validatedData = $request->validate([
+
+        $request->validate([
 
             'userId' => 'required',
             'name' => 'required',
@@ -124,7 +124,7 @@ class HotelController extends Controller
             'address' => 'required',
             'town' => 'required',
             'country' => 'required',
-            'postCode' => 'required', 'min:3', 'max:4',
+            'postCode' => 'required', 'min:6', 'max:9',
             'accomType' => 'required',
             'roomType' => 'required',
             'holidayType' => 'required',
@@ -132,25 +132,25 @@ class HotelController extends Controller
             'feat2' => 'required',
             'feat3' => 'required',
             'feat4' => 'required',
-            'feat1Price' => 'required',
-            'feat2Price' => 'required',
-            'feat3Price' => 'required',
-            'feat4Price' => 'required',
+            'feat1Price' => 'required|integer',
+            'feat2Price' => 'required|integer',
+            'feat3Price' => 'required|integer',
+            'feat4Price' => 'required|integer',
             'upgrade1' => 'required',
             'upgrade2' => 'required',
             'upgrade3' => 'required',
-            'upgrade1Price' => 'required',
-            'upgrade2Price' => 'required',
-            'upgrade3Price' => 'required',
+            'upgrade1Price' => 'required|integer',
+            'upgrade2Price' => 'required|integer',
+            'upgrade3Price' => 'required|integer',
             'package1' => 'required',
             'package2' => 'required',
             'package3' => 'required',
-            'package1Price' => 'required',
-            'package2Price' => 'required',
-            'package3Price' => 'required',
+            'package1Price' => 'required|integer',
+            'package2Price' => 'required|integer',
+            'package3Price' => 'required|integer',
             'currency' => 'required',
-            'price' => 'required',
-            'numRooms' => 'required',
+            'price' => 'required|integer',
+            'numNights' => 'required|integer',
             'description' => 'required',
             'agreeTerms' => 'required'
 
