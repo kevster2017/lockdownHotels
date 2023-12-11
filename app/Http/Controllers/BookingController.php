@@ -324,6 +324,7 @@ class BookingController extends Controller
 
         ]);
 
+        dd($request);
 
         $booking->userId = auth()->user()->id;
         $booking->hotel_Id = $request->hotel_Id;
