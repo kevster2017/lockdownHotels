@@ -304,6 +304,19 @@ class BookingController extends Controller
             'feat2Price' => 'required|integer',
             'feat3Price' => 'required|integer',
             'feat4Price' => 'required|integer',
+            'upgrade1' => 'required',
+            'upgrade2' => 'required',
+            'upgrade3' => 'required',
+            'upgrade1Price' => 'required|integer',
+            'upgrade2Price' => 'required|integer',
+            'upgrade3Price' => 'required|integer',
+            'package1' => 'required',
+            'package2' => 'required',
+            'package3' => 'required',
+            'package1Price' => 'required|integer',
+            'package2Price' => 'required|integer',
+            'package3Price' => 'required|integer',
+
 
         ]);
 
