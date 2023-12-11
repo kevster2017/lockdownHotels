@@ -281,6 +281,17 @@ class BookingController extends Controller
     public function store(Request $request, Booking $booking)
     {
 
+        $request->validate([
+            'hotel_Id' => 'required',
+            'hotelName' => 'required',
+            'price' => 'required|integer',
+            'checkInDate' => 'required|date',
+            'name' => 'required',
+            'email' => 'required|email',
+            'image' => 'required|url',
+
+        ]);
+
 
         $booking->userId = auth()->user()->id;
         $booking->hotel_Id = $request->hotel_Id;
