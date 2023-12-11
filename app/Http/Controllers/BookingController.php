@@ -289,6 +289,21 @@ class BookingController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'image' => 'required|url',
+            'address' => 'required',
+            'town' => 'required',
+            'country' => 'required',
+            'postCode' => 'required', 'min:6', 'max:9',
+            'accomType' => 'required',
+            'roomType' => 'required',
+            'holidayType' => 'required',
+            'feat1' => 'required',
+            'feat2' => 'required',
+            'feat3' => 'required',
+            'feat4' => 'required',
+            'feat1Price' => 'required|integer',
+            'feat2Price' => 'required|integer',
+            'feat3Price' => 'required|integer',
+            'feat4Price' => 'required|integer',
 
         ]);
 
