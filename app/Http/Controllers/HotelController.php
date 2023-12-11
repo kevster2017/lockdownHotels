@@ -221,6 +221,45 @@ class HotelController extends Controller
     public function update(Request $request, $id)
     {
 
+        $request->validate([
+
+            'userId' => 'required',
+            'name' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png,gif',
+            'address' => 'required',
+            'town' => 'required',
+            'country' => 'required',
+            'postCode' => 'required', 'min:6', 'max:9',
+            'accomType' => 'required',
+            'roomType' => 'required',
+            'holidayType' => 'required',
+            'feat1' => 'required',
+            'feat2' => 'required',
+            'feat3' => 'required',
+            'feat4' => 'required',
+            'feat1Price' => 'required|integer',
+            'feat2Price' => 'required|integer',
+            'feat3Price' => 'required|integer',
+            'feat4Price' => 'required|integer',
+            'upgrade1' => 'required',
+            'upgrade2' => 'required',
+            'upgrade3' => 'required',
+            'upgrade1Price' => 'required|integer',
+            'upgrade2Price' => 'required|integer',
+            'upgrade3Price' => 'required|integer',
+            'package1' => 'required',
+            'package2' => 'required',
+            'package3' => 'required',
+            'package1Price' => 'required|integer',
+            'package2Price' => 'required|integer',
+            'package3Price' => 'required|integer',
+            'currency' => 'required',
+            'price' => 'required|integer',
+            'numNights' => 'required|integer',
+            'description' => 'required',
+            'agreeTerms' => 'required'
+
+        ]);
         $hotel = Hotel::find($id);
 
         $hotel->userId = auth()->user()->id;
