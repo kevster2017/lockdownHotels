@@ -28,7 +28,7 @@
 
 <div class="container">
     <br>
-    <h1>Edit Hotel Details</h1>
+    <h1 class="text-center">Edit Hotel Details</h1>
 </div>
 
 
@@ -49,7 +49,9 @@
     </div>
 
     <!-- Upload Photo -->
-    <label for="image" class="form-label">Add Photo</label>
+    <div class="col-md-4 offset-md-4 mt-3">
+        <label for="image" class="form-label">Add Photo</label>
+    </div>
     <div class="input-group mb-3">
         <div class="col-md-4 offset-md-4">
             <!-- Display old photo or current photo -->
@@ -109,8 +111,10 @@
 
 
     <!--Property Type-->
-    <div class="Accomodation Type">
+    <div class="col-md-4 offset-md-4">
         <label for="accomType" class="form-label">Accomodation Type</label>
+    </div>
+    <div class="col-md-4 offset-md-4">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }}required>
             <label class="form-check-label" for="inlineRadio1">Hotel</label>
@@ -127,9 +131,10 @@
     <br>
 
     <!--Room Type-->
-    <div class="Room Type">
+    <div class="col-md-4 offset-md-4">
         <label for="roomType" class="form-label">Room Type</label>
-
+    </div>
+    <div class="col-md-4 offset-md-4">
         <div class="form-check form-check-inline">
             <input class="form-check-input room-type" type="radio" name="roomType" id="single" value="Single" onclick='checkBoxCheck("roomTypeOptions")' {{ old('roomType', $hotel->roomType) == 'Single' ? 'checked' : '' }} required>
             <label class="form-check-label" for="inlineRadio4">Single</label>
@@ -154,8 +159,10 @@
     <br>
 
     <!--Price per night-->
-    <label for="numRooms" class="form-label">Number of rooms</label>
-    <div class="col-md-2 offset-md-5">
+    <div class="col-md-4 offset-md-4">
+        <label for="numRooms" class="form-label">Number of rooms</label>
+    </div>
+    <div class="col-md-4 offset-md-4">
         <input type="text" class="form-control" name="numRooms" id="numRooms" value="{{ old('numRooms', $hotel->numRooms) }}" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
         <div class="invalid-feedback">Enter the number of rooms</div><br>
     </div>
@@ -163,20 +170,22 @@
     <br>
 
     <!--Price per night-->
-    <label for="holidayType" class="form-label">Select Holiday Type</label>
-    <div class="col-md-2 offset-md-5">
-        <div class="col">
-            <select class="form-select @error('holidayType') is-invalid @enderror" name="holidayType" aria-label="Default select example" value="{{ old('holidayType', $hotel->holidayType) }}">
+    <div class="col-md-4 offset-md-4">
+        <label for="holidayType" class="form-label">Select Holiday Type</label>
+    </div>
+    <div class="col-md-4 offset-md-4">
 
-                <option selected="City">City Break</option>
-                <option value="Seaside">Seaside Resort</option>
-                <option value="Country">Country Escape</option>
+        <select class="form-select @error('holidayType') is-invalid @enderror" name="holidayType" aria-label="Default select example" value="{{ old('holidayType', $hotel->holidayType) }}">
 
-            </select> @error('holidayType')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span> @enderror
-        </div>
+            <option selected="City">City Break</option>
+            <option value="Seaside">Seaside Resort</option>
+            <option value="Country">Country Escape</option>
+
+        </select> @error('holidayType')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span> @enderror
+
     </div>
 
     <br>
@@ -312,9 +321,10 @@
 
 
     <!--Currency Type-->
-    <div class="currency mb-3">
+    <div class="col-md-4 offset-md-4">
         <label for="Currency" class="form-label">Currency</label>
-
+    </div>
+    <div class="col-md-4 offset-md-4">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' {{ old('currency', $hotel->currency) == 'Sterling' ? 'checked' : '' }} required>
             <label class="form-check-label" for="inlineRadio7">Sterling</label>
@@ -324,11 +334,14 @@
             <input class="form-check-input" type="radio" name="currency" id="euro" value="Euro" onclick='checkBoxCheck("currencyOptions")' {{ old('currency', $hotel->currency) == 'Euro' ? 'checked' : '' }} required>
             <label class="form-check-label" for="inlineRadio8">Euro</label>
         </div>
+
     </div>
 
     <!--Price per night-->
-    <label for="PricePerNight" class="form-label">Price Per Night</label>
-    <div class="col-md-2 offset-md-5">
+    <div class="col-md-4 offset-md-4">
+        <label for="PricePerNight" class="form-label">Price Per Night</label>
+    </div>
+    <div class="col-md-4 offset-md-4">
         <input type="text" class="form-control" name="price" id="price" placeholder="Room price per night" pattern="[0-9]+" minlength="2" maxlength="7" value="{{ old('price', $hotel->price) }}" required>
         <div class="invalid-feedback">Enter the room price per night</div><br>
     </div>
@@ -347,16 +360,21 @@
 
 
     <!--Terms and Conditions-->
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="agreeTerms" id="agreeTerms" value="{{ 1 }}" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
-        <label class="form-check-label" for="agreeTerms">I accept the terms and conditions</label>
+    <div class="container text-center">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="agreeTerms" id="agreeTerms" value="{{ 1 }}" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
+            <label class="form-check-label" for="agreeTerms">I accept the terms and conditions</label>
+        </div>
     </div>
 
     <br>
     <!--List property button-->
-    <div class="form-check form-check-inline">
-        <button id="listProperty" class="w-40 btn btn-success btn-md mt-3" type="submit" disabled="disabled">Edit Property</button>
+    <div class="container text-center">
+        <div class="form-check form-check-inline">
+            <button id="listProperty" class="w-40 btn btn-success btn-md mt-3" type="submit" disabled="disabled">Edit Property</button>
+        </div>
     </div>
+
 
 </form>
 
