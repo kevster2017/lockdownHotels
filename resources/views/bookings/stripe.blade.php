@@ -2,11 +2,15 @@
 @section("content")
 
 <!-- Page Content -->
+
 <div class="container">
    <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="/">Home</a></li>
-         <li class="breadcrumb-item active" aria-current="page">Payment Page</li>
+         <li class="breadcrumb-item"><a href="/hotels/show/{{ $cart->hotel_Id }}">Hotel</a></li>
+         <li class="breadcrumb-item"><a href="/bookings/viewCart">View Cart</a></li>
+         <li class="breadcrumb-item"><a href="/bookings/review">Booking Review</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Stripe Payment</li>
       </ol>
    </nav>
 </div>
@@ -82,8 +86,54 @@
 
 </div>
 
-<script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+   $(function() {
+      var $form = $(".require-validation");
+      $('form.require-validation').bind('submit', function(e) {
+         var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]', 'input[type=text]', 'input[type=file]', 'textarea'].join(', '),
+            $inputs = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid = true;
+         $errorMessage.addClass('hide');
+         $('.has-error').removeClass('has-error');
+         $inputs.each(function(i, el) {
+            var $input = $(el);
+            if ($input.val() === '') {
+               $input.parent().addClass('has-error');
+               $errorMessage.removeClass('hide');
+               e.preventDefault();
+            }
+         });
+         if (!$form.data('cc-on-file')) {
+            e.preventDefault();
+            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+            Stripe.createToken({
+               number: $('.card-number').val(),
+               cvc: $('.card-cvc').val(),
+               exp_month: $('.card-expiry-month').val(),
+               exp_year: $('.card-expiry-year').val()
+            }, stripeResponseHandler);
+         }
+      });
 
+      function stripeResponseHandler(status, response) {
+         if (response.error) {
+            $('.error')
+               .removeClass('hide')
+               .find('.alert')
+               .text(response.error.message);
+         } else {
+            /* token contains id, last4, and card type */
+            var token = response['id'];
+            $form.find('input[type=text]').empty();
+            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            $form.get(0).submit();
+         }
+      }
+   });
 </script>
+
 
 @endsection
