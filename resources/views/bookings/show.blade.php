@@ -101,11 +101,11 @@
 
                             @endif
                             @if($booking-> selectedUpgrade != 'None')
-                            <h5 class="card-title">{{ $booking->selectedUpgrade }}: £{{$booking->upgradeTotal * $booking->numNights }} </h5>
+                            <h5 class="card-title">{{ $booking->selectedUpgrade }}: £{{$booking->upgradeTotal }} </h5>
 
                             @endif
                             @if($booking-> selectedPackage != 'None')
-                            <h5 class="card-title">{{ $booking->selectedPackage }}: £{{$booking->packageTotal * $booking->numNights }} </h5>
+                            <h5 class="card-title">{{ $booking->selectedPackage }}: £{{$booking->packageTotal }} </h5>
 
                             @endif
                             @endif
@@ -119,7 +119,7 @@
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-dark">Total Costs</div>
                         <div class="card-body text-dark">
-                            <h5 class="card-title">Hotel Costs: £{{ $booking->price * $booking->numNights }}</h5>
+                            <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
                             <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
                             <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
                             <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>

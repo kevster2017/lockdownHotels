@@ -324,7 +324,7 @@ class BookingController extends Controller
 
         ]);
 
-        dd($request);
+
 
         $booking->userId = auth()->user()->id;
         $booking->hotel_Id = $request->hotel_Id;
@@ -437,9 +437,10 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Booking::destroy($id);
+        return redirect()->route('myBookings')->with('success', 'Booking successfully deleted');
     }
 
     public function removeCart($id)
