@@ -33,7 +33,7 @@
     <!-- Form input -->
     <form method="POST" action="{{ route('hotels.store') }}" id="form" class="was-validated" onkeyup="manage()" enctype="multipart/form-data" novalidate>
         @csrf
-        <input type="hidden" name="userId" id="userId" value="{{ 1 }}" />
+        <input type="hidden" name="userId" id="userId" value="{{ auth()->user() ->id }}" />
 
 
         <!--Property Name-->
