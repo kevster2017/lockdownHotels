@@ -7,13 +7,15 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/hotels/show/{{ $cart->hotel_Id }}">Hotel</a></li>
+            <li class="breadcrumb-item"><a href="/bookings/viewCart">View Cart</a></li>
             <li class="breadcrumb-item active" aria-current="page">Booking Review</li>
         </ol>
     </nav>
 </div>
 
 <div class="container text-center">
-    <h1>Review Booking at {{ $cart->name }}</h1>
+    <h1 class="my-3">Review Booking at {{ $cart->name }}</h1>
 </div>
 
 <div class="container mt-3">
