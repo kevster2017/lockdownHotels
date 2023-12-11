@@ -64,7 +64,7 @@
                             <a class="nav-link" href="{{ route('hotels.create') }}">List Your Property</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hotels.myHotels') }}">My Properties</a>
+                            <a class="nav-link" href="{{ route('myHotels') }}">My Properties</a>
                         </li>
                         @if(auth()->check())
                         <li class="nav-item">

@@ -2,11 +2,15 @@
 
 @section('content')
 <!--Breadcrumb-->
+
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a href="{{ url('/home') }}">Home</a></li>
-        <li>Edit Hotel Details</li>
-    </ul>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('myHotels') }}">My Hotels</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Hotel Details</li>
+        </ol>
+    </nav>
 </div>
 
 @if(count($errors) > 0 )
