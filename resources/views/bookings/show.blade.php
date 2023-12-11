@@ -70,10 +70,10 @@
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-dark">Hotel Costs</div>
                         <div class="card-body text-dark">
-                            <h5 class="card-title">Price Per Night: £{{ $booking->price }}</h5>
+                            <h5 class="card-title">Price Per Night: £{{ $booking->price / $booking->numNights }}</h5>
 
                         </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Hotel Costs:</strong> £{{ $booking->price * $booking->numNights }}</div>
+                        <div class="card-footer bg-transparent border-dark"><strong>Total Hotel Costs:</strong> £{{ $booking->price }}</div>
                     </div>
                 </div>
                 <div class="col-sm-4">
