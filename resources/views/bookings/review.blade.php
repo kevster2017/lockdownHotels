@@ -14,8 +14,8 @@
     </nav>
 </div>
 
-<div class="container text-center">
-    <h1 class="my-3">Review Booking at {{ $cart->name }}</h1>
+<div class="container text-center my-5">
+    <h1>Review Booking at {{ $cart->name }}</h1>
 </div>
 
 <div class="container mt-3">
