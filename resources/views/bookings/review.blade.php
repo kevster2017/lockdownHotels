@@ -143,7 +143,7 @@
     </div>
 
     <div class="container text-center">
-        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now for £{{ $cart->finalTotal}}</a>
+        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now</a>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $cart->id }}">
             Cancel Booking
