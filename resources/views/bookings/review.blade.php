@@ -143,9 +143,9 @@
     </div>
 
     <div class="container text-center">
-        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton">Book Now</a>
+        <a href="{{ route('bookings.stripe') }}" class="btn btn-primary" id="paymentButton" style="min-width: 150px;">Book Now</a>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $cart->id }}">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $cart->id }}" style="min-width: 150px;">
             Cancel Booking
         </button>
         <!-- Modal -->
