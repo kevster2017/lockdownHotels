@@ -190,7 +190,7 @@ class BookingController extends Controller
         //dd($booking);
         $hotelId = Hotel::where('id', $booking->hotel_Id)->first();
 
-        dd($hotelId);
+        //dd($hotelId);
         $image = $hotelId->image;
 
         return view('bookings.review', ['booking' => $booking, 'image', $image]);
@@ -202,12 +202,7 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
-        /*
-        $total = DB::table('cart')
-            ->join('hotels', 'cart.hotel_id', '=', 'hotels.id')
-            ->where('cart.userId', $userId)
-            ->sum('hotels.price');
-*/
+
         $cart = DB::table('cart')
             ->where('user_id', $userId)
             ->first();
@@ -237,8 +232,6 @@ class BookingController extends Controller
             $order->payment_method = $req->payment;
             $order->payment_status = "Pending";
             $order->save();
-            // Cart::where('user_id', $user_id)->delete();
-
         }
 
         if ($order->payment_method == 'Online') {
