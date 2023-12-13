@@ -68,7 +68,9 @@
 
                 <div class="col-sm-4">
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">Hotel Costs</div>
+                        <div class="card-header bg-transparent border-dark">
+                            <h4>Hotel Costs</h4>
+                        </div>
                         <div class="card-body text-dark">
                             <h5 class="card-title">Price Per Night: £{{ $booking->price / $booking->numNights }}</h5>
 
@@ -78,7 +80,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">Extras Costs</div>
+                        <div class="card-header bg-transparent border-dark">
+                            <h4>Extras Costs</h4>
+                        </div>
                         <div class="card-body text-dark">
 
                             @if($booking->extrasTotal == 0)
@@ -117,7 +121,9 @@
 
                 <div class="col-sm-4">
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">Total Costs</div>
+                        <div class="card-header bg-transparent border-dark">
+                            <h4>Total Costs</h4>
+                        </div>
                         <div class="card-body text-dark">
                             <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
                             <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
@@ -135,10 +141,10 @@
         </div>
     </div>
 
-    <div class="row d-flex justify-content-center">
+    <div class="container text-center">
         <a class="btn btn-primary" href="{{ route('bookings.edit', $booking->id) }}">Edit Booking</a>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $booking->id }}">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $booking->id }}" id="cancelBookButton">
             Delete Booking
         </button>
         <!-- Modal -->
