@@ -62,81 +62,69 @@
         <h5 class="card-header" id="divLeft">Cost Breakdown</h5>
         <div class="card-body">
 
+            <div class="card-group">
+                <div class="card">
 
-
-            <div class="row">
-
-                <div class="col-sm-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">
-                            <h4>Hotel Costs</h4>
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5 class="card-title">Price Per Night: £{{ $booking->price / $booking->numNights }}</h5>
-
-                        </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Hotel Costs:</strong> £{{ $booking->price }}</div>
+                    <div class="card-body">
+                        <h4>Hotel Costs</h4>
+                        <h5 class="card-title">Price Per Night: £{{ $booking->price / $booking->numNights }}</h5>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small class="text-body-secondary"><strong>Total Hotel Costs:</strong> £{{ $booking->price }}</small>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">
-                            <h4>Extras Costs</h4>
-                        </div>
-                        <div class="card-body text-dark">
+                <div class="card">
 
-                            @if($booking->extrasTotal == 0)
-                            <h5 class="card-title">No Extras Purchased </h5>
-                            @else
-                            @if($booking->selectedFeat1 != 'None')
-                            <h5 class="card-title">{{ $booking->feat1 }}: £{{$booking->feat1Price * $booking->numNights }} </h5>
+                    <div class="card-body">
+                        <h4>Extras Costs</h4>
+                        @if($booking->extrasTotal == 0)
+                        <h5 class="card-title">No Extras Purchased </h5>
+                        @else
+                        @if($booking->selectedFeat1 != 'None')
+                        <h5 class="card-title">{{ $booking->feat1 }}: £{{$booking->feat1Price * $booking->numNights }} </h5>
 
-                            @endif
-                            @if($booking-> selectedFeat2 != 'None')
-                            <h5 class="card-title">{{ $booking->feat2 }}: £{{$booking->feat2Price * $booking->numNights }} </h5>
+                        @endif
+                        @if($booking-> selectedFeat2 != 'None')
+                        <h5 class="card-title">{{ $booking->feat2 }}: £{{$booking->feat2Price * $booking->numNights }} </h5>
 
-                            @endif
-                            @if($booking-> selectedFeat3 != 'None')
-                            <h5 class="card-title">{{ $booking->feat3 }}: £{{$booking->feat3Price * $booking->numNights }} </h5>
+                        @endif
+                        @if($booking-> selectedFeat3 != 'None')
+                        <h5 class="card-title">{{ $booking->feat3 }}: £{{$booking->feat3Price * $booking->numNights }} </h5>
 
-                            @endif
-                            @if($booking-> selectedFeat4 != 'None')
-                            <h5 class="card-title">{{ $booking->feat4 }}: £{{$booking->feat4Price * $booking->numNights }} </h5>
+                        @endif
+                        @if($booking-> selectedFeat4 != 'None')
+                        <h5 class="card-title">{{ $booking->feat4 }}: £{{$booking->feat4Price * $booking->numNights }} </h5>
 
-                            @endif
-                            @if($booking-> selectedUpgrade != 'None')
-                            <h5 class="card-title">{{ $booking->selectedUpgrade }}: £{{$booking->upgradeTotal }} </h5>
+                        @endif
+                        @if($booking-> selectedUpgrade != 'None')
+                        <h5 class="card-title">{{ $booking->selectedUpgrade }}: £{{$booking->upgradeTotal }} </h5>
 
-                            @endif
-                            @if($booking-> selectedPackage != 'None')
-                            <h5 class="card-title">{{ $booking->selectedPackage }}: £{{$booking->packageTotal }} </h5>
+                        @endif
+                        @if($booking-> selectedPackage != 'None')
+                        <h5 class="card-title">{{ $booking->selectedPackage }}: £{{$booking->packageTotal }} </h5>
 
-                            @endif
-                            @endif
+                        @endif
+                        @endif
 
-                        </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</div>
+
+                    </div>
+                    <div class="card-footer text-center">
+                        <small class="text-body-secondary">"><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</small>
                     </div>
                 </div>
+                <div class="card">
 
-                <div class="col-sm-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-dark">
-                            <h4>Total Costs</h4>
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
-                            <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
-                            <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
-                            <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>
-
-                        </div>
-                        <div class="card-footer bg-transparent border-dark"><strong>Total Costs:</strong> £{{ $booking->finalTotal }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
                     </div>
-
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Last updated 3 mins ago</small>
+                    </div>
                 </div>
-
             </div>
+
+
 
         </div>
     </div>
