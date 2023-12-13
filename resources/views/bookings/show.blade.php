@@ -109,17 +109,21 @@
 
                     </div>
                     <div class="card-footer text-center">
-                        <small class="text-body-secondary">"><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</small>
+                        <small class="text-body-secondary"><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</small>
                     </div>
                 </div>
                 <div class="card">
 
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <h4>Total Costs</h4>
+                        <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
+                        <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
+                        <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
+                        <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>
+
                     </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">Last updated 3 mins ago</small>
+                    <div class="card-footer text-center">
+                        <small class="text-body-secondary">"><strong>Total Costs:</strong> £{{ $booking->finalTotal }}</small>
                     </div>
                 </div>
             </div>
