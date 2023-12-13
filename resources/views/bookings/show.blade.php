@@ -65,17 +65,17 @@
             <div class="card-group">
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4>Hotel Costs</h4>
                         <h5 class="card-title">Price Per Night: £{{ $booking->price / $booking->numNights }}</h5>
                     </div>
                     <div class="card-footer text-center">
-                        <small class="text-body-secondary"><strong>Total Hotel Costs:</strong> £{{ $booking->price }}</small>
+                        <h6><strong>Total Hotel Costs:</strong> £{{ $booking->price }}</h6>
                     </div>
                 </div>
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4>Extras Costs</h4>
                         @if($booking->extrasTotal == 0)
                         <h5 class="card-title">No Extras Purchased </h5>
@@ -109,12 +109,13 @@
 
                     </div>
                     <div class="card-footer text-center">
-                        <small class="text-body-secondary"><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</small>
+                        <h6><strong>Total Extras Costs:</strong> £{{ $booking->extrasTotal }}</h6>
+
                     </div>
                 </div>
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4>Total Costs</h4>
                         <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
                         <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
@@ -123,7 +124,8 @@
 
                     </div>
                     <div class="card-footer text-center">
-                        <small class="text-body-secondary">"><strong>Total Costs:</strong> £{{ $booking->finalTotal }}</small>
+                        <h6><strong>Total Costs:</strong> £{{ $booking->finalTotal }}</h6>
+
                     </div>
                 </div>
             </div>
