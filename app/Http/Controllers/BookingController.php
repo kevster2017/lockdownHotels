@@ -28,7 +28,7 @@ class BookingController extends Controller
     public function addToCart(Request $request)
     {
 
-
+        /* Create new Cart, pass request details to the $cart variables */
         $cart = new Cart;
         $cart->userId = auth()->user()->id;
         $cart->hotel_Id = $request->hotel_Id;
@@ -77,9 +77,7 @@ class BookingController extends Controller
         $cart->checkInDate = Carbon::createFromFormat('Y-m-d', $request->checkInDate);
         $cart->numNights = $request->numNights;
 
-
-        //dd($cart);
-
+        /* Save details to the Cart */
         $cart->save();
 
 
@@ -89,11 +87,14 @@ class BookingController extends Controller
     public function viewCart()
     {
 
+        // Get auth userID
         $userId = auth()->user()->id;
 
+        // Find userID in the Cart
         $cart = Cart::where('userId', $userId)
             ->first();
 
+        // Check if the cart is empty, return cart if not empty
         if ($cart === null) {
             return back()->with('error', 'No items in cart');
         } else {
@@ -104,15 +105,8 @@ class BookingController extends Controller
 
     public function updateCart(Request $request, Cart $cart)
     {
-        // Validate the request
-        /*
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]);
-        */
 
-
+        /* Add extras to the Cart */
         $userId = auth()->user()->id;
 
         $cart = Cart::where('userId', $userId)
@@ -163,15 +157,15 @@ class BookingController extends Controller
     {
         $userId = auth()->user()->id;
 
-
+        // Find auth user booking details
         $booking = DB::table('bookings')
             ->where('userId', $userId)
             ->get();
 
-        //dd($booking);
+
+        // Find the hotel image 
         $hotelId = Hotel::where('id', $booking->hotel_Id)->first();
 
-        //dd($hotelId);
         $image = $hotelId->image;
 
         return view('bookings.review', ['booking' => $booking, 'image', $image]);
@@ -183,7 +177,6 @@ class BookingController extends Controller
 
         $userId = auth()->user()->id;
 
-
         $cart = DB::table('cart')
             ->where('user_id', $userId)
             ->first();
@@ -194,6 +187,8 @@ class BookingController extends Controller
 
     function placeBooking(Request $req)
     {
+
+        // Get the auth user's cart details
         $userId = auth()->user()->id;
         $fullCart = Cart::where('userId', $userId)
             ->get();
@@ -203,6 +198,7 @@ class BookingController extends Controller
             'payment' => 'required'
         ]);
 
+        // Loop through cart and create new booking
         foreach ($fullCart as $cart) {
             $order = new Booking;
             $order->hotelId = $cart->hotelId;
@@ -215,6 +211,7 @@ class BookingController extends Controller
             $order->save();
         }
 
+        // Check and redirect based on method of payment
         if ($order->payment_method == 'Online') {
             return redirect('/orders/stripe');
         }
