@@ -26,10 +26,6 @@ class BookingController extends Controller
 
 
 
-    public function addonPayment()
-    {
-        return view('bookings.addonPayment');
-    }
 
     public function paymentComplete()
     {
