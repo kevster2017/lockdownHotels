@@ -25,13 +25,6 @@ class BookingController extends Controller
      */
 
 
-
-
-    public function paymentComplete()
-    {
-        return view('bookings.paymentComplete');
-    }
-
     public function addToCart(Request $request)
     {
 
