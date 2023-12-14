@@ -23,16 +23,8 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('bookings.create');
-    }
 
 
-    public function payment()
-    {
-        return view('bookings.payment');
-    }
 
     public function addonPayment()
     {
