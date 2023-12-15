@@ -231,12 +231,14 @@ class BookingController extends Controller
     function myBookings()
     {
 
+        /* Get auth users id, get booking */
         $userId = auth()->user()->id;
 
         $ids = DB::table('bookings')
             ->where('userId', $userId)
             ->get();
 
+        /* Join the bookings table and hotel table */
         $bookings = DB::table('bookings')
             ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
             ->where('bookings.userId', $userId)
@@ -252,6 +254,7 @@ class BookingController extends Controller
     public function store(Request $request, Booking $booking)
     {
 
+        /* Validate user input */
         $request->validate([
             'hotel_Id' => 'required',
             'hotelName' => 'required',
