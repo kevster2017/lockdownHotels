@@ -42,7 +42,6 @@ class StripeController extends Controller
 
         $hotel_Id = $cart->hotel_Id;
 
-
         $hotelRoom = Hotel::where('id', $hotel_Id)->first();
 
 
@@ -117,7 +116,6 @@ class StripeController extends Controller
             $bookings->paid = 1;
 
             $hotelRoom->numRooms -= 1;
-            //dd($hotel->numRooms);
             $hotelRoom->save();
 
             $bookings->save();
