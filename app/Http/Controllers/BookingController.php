@@ -374,7 +374,8 @@ class BookingController extends Controller
 
             // dd($booking);
             $hotel->numRooms -= 1;
-            dd($hotel);
+            dd($hotel->numRooms);
+            $hotel->save();
             $booking->save();
 
             $payment = Booking::where('id', $booking->id)->first();
