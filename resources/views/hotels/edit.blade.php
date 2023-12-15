@@ -116,7 +116,7 @@
     </div>
     <div class="col-md-4 offset-md-4">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }}required>
+            <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }} required>
             <label class="form-check-label" for="inlineRadio1">Hotel</label>
         </div>
         <div class="form-check form-check-inline">
@@ -124,7 +124,7 @@
             <label class="form-check-label" for="inlineRadio2">Apartment</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="accomType" id="villa" value="Villa" {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }}onclick='checkBoxCheck("accomodationTypeOptions")' required>
+            <input class="form-check-input" type="radio" name="accomType" id="villa" value="Villa" {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }} onclick='checkBoxCheck("accomodationTypeOptions")' required>
             <label class="form-check-label" for="inlineRadio3">Villa</label>
         </div>
     </div>

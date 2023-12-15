@@ -13,6 +13,7 @@
 </div>
 
 <div class="container mt-3">
+    <h1 class="text-center my-5">Your booking at {{ $booking->name }}</h1>
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-sm-4">

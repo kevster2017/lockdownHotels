@@ -255,7 +255,7 @@ class HotelController extends Controller
             'package3Price' => 'required|integer',
             'currency' => 'required',
             'price' => 'required|integer',
-            'numNights' => 'required|integer',
+            'numRooms' => 'required|integer',
             'description' => 'required',
             'agreeTerms' => 'required'
 
