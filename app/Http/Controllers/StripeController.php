@@ -40,7 +40,13 @@ class StripeController extends Controller
             return redirect()->back()->with('error', 'Cart not found');
         }
 
+        $hotel_Id = $request->hotel_Id;
 
+        $hotelRoom = Hotel::where('id', $hotel_Id)->first();
+
+        if ($hotelRoom->numRooms < 1) {
+            return back()->with('error', 'No rooms available');
+        } else {
         // Set hotel name for Stripe Charge
         $hotel = $cart->name;
 
@@ -108,6 +114,9 @@ class StripeController extends Controller
         $bookings->payment_method = 'Stripe';
         $bookings->paid = 1;
 
+        $hotel->numRooms -= 1;
+        dd($hotel->numRooms);
+        $hotel->save();
 
         $bookings->save();
 
