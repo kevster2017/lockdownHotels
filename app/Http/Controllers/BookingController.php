@@ -238,16 +238,7 @@ class BookingController extends Controller
             ->where('userId', $userId)
             ->get();
 
-        //dd($ids);
-
-        /* Join the bookings table and hotel table */
-        $images = DB::table('bookings')
-            ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
-            ->where('bookings.userId', $userId)
-            ->select('*', 'bookings.id as booking_id') // Selects the original order ID
-            ->paginate(10);
-
-        return view('/bookings/myBookings', ['images' => $images, 'bookings' => $bookings]);
+        return view('/bookings/myBookings', ['bookings' => $bookings]);
     }
 
     /**
