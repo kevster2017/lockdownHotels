@@ -30,7 +30,7 @@
               <div class="col">
                 <a href="{{ route('bookings.show', $booking->id) }}"><img src="/storage/{{$booking->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
               </div>
-              <div class="col ms-3 pt-3">
+              <div class="col ms-3"> <!-- Added classes -->
                 <div class="card-body">
                   <a href="{{ route('bookings.show', $booking->id) }}">
                     <h5 class="card-title">{{ $booking->name}}</h5>
@@ -39,10 +39,8 @@
                   <p class="card-text">Country: {{ $booking->country }}</p>
                   <p class="card-text">Check-in: {{ date('d-m-Y', strtotime($booking->checkInDate));  }}
                   </p>
-                  <p class="card-text"> {{ $booking->numNights
- }} nights</p>
-                  <p class="card-text">Payment: {{ $booking->payment_method 
- }}</p>
+                  <p class="card-text">{{ $booking->numNights }} nights</p>
+                  <p class="card-text">Payment: {{ $booking->payment_method }}</p>
                   <p class="card-text"><small class="text-muted">Booking Created: {{ date('d-m-Y', strtotime($booking->created_at)); }}</small></p>
                 </div>
               </div>
@@ -57,4 +55,5 @@
   </div>
   <br>
   @endforeach
+
   @endsection
