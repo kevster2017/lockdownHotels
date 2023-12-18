@@ -30,7 +30,7 @@
               <div class="col">
                 <a href="{{ route('bookings.show', $booking->id) }}"><img src="/storage/{{$booking->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
               </div>
-              <div class="col ms-3"> <!-- Added classes -->
+              <div class="col ms-3">
                 <div class="card-body">
                   <a href="{{ route('bookings.show', $booking->id) }}">
                     <h5 class="card-title">{{ $booking->name}}</h5>
