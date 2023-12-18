@@ -52,4 +52,10 @@ class Hotel extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Hotel belongs to a booking relationship
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }

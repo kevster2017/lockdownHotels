@@ -50,4 +50,9 @@ class Booking extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class);
+    }
 }
