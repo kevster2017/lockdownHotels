@@ -52,7 +52,8 @@
             </ul>
         </div>
     </div>
+
+    <br>
+    @endforeach
 </div>
-<br>
-@endforeach
 @endsection
