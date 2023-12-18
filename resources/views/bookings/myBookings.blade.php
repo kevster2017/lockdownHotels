@@ -15,6 +15,12 @@
 
   <h1 class="text-center py-3">My Bookings</h1>
 
+  @if($bookings->count() == 0)
+
+  <h2 class="text-center">No Bookings Available</h2>
+
+  @else
+
   @foreach($bookings as $booking)
   <div class="row">
     <div class="col-sm-8 mx-auto">
@@ -55,5 +61,6 @@
   </div>
   <br>
   @endforeach
+  @endif
 
   @endsection

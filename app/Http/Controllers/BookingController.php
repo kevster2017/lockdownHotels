@@ -234,18 +234,20 @@ class BookingController extends Controller
         /* Get auth users id, get booking */
         $userId = auth()->user()->id;
 
-        $ids = DB::table('bookings')
+        $bookings = DB::table('bookings')
             ->where('userId', $userId)
             ->get();
 
+        //dd($ids);
+
         /* Join the bookings table and hotel table */
-        $bookings = DB::table('bookings')
+        $images = DB::table('bookings')
             ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
             ->where('bookings.userId', $userId)
             ->select('*', 'bookings.id as booking_id') // Selects the original order ID
             ->paginate(10);
 
-        return view('/bookings/myBookings', ['bookings' => $bookings, 'ids' => $ids]);
+        return view('/bookings/myBookings', ['images' => $images, 'bookings' => $bookings]);
     }
 
     /**
