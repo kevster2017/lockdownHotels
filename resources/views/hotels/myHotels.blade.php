@@ -35,7 +35,7 @@
                             <div class="col ms-3 pt-3">
                                 <div class="card-body">
                                     <a href="{{ route('hotels.show', $hotel->id) }}">
-                                        <h5 class="card-title">Name: {{ $hotel->name}}</h5>
+                                        <h5 class="card-title">{{ $hotel->name}}</h5>
                                     </a>
 
                                     <p class="card-text">Description: {{ $hotel->description }}</p>
