@@ -1,7 +1,7 @@
-@extends('layouts.app')
-@section("content")
+@extends('layouts/app')
 
-
+@section('content')
+<!-- Page Content -->
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -11,62 +11,50 @@
   </nav>
 </div>
 
+<div class="container py-3">
 
+  <h1 class="text-center py-3">My Bookings</h1>
 
-<h1 class="text-center pb-3">My Bookings</h1>
+  @foreach($bookings as $booking)
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
 
-<div class="container mt-5 d-flex justify-content-center">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Booking ID</th>
-        <th scope="col">Hotel</th>
-        <th scope="col">Name</th>
-        <th scope="col">Country</th>
-        <th scope="col">Check In</th>
-        <th scope="col">Nights</th>
-        <th scope="col">Method of Payment</th>
-        <th scope="col">Booking Date</th>
+      <!-- List group-->
+      <ul class="list-group" id="indexCard">
 
-      </tr>
-    </thead>
-    <tbody>
+        <!-- list group item-->
+        <li class="list-group-item">
 
+          <div class="my-2">
+            <div class="row g-0">
+              <div class="col">
+                <a href="{{ route('bookings.myBookings', $booking->id) }}"><img src="/uploads/{{$booking->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
+              </div>
+              <div class="col ms-3 pt-3">
+                <div class="card-body">
+                  <a href="{{ route('bookings.show', $booking->id) }}">
+                    <h5 class="card-title">Name: {{ $hotel->name}}</h5>
+                  </a>
+                  <p class="card-text">Description: {{ $booking->id}}</p>
+                  <p class="card-text">Country: {{ $booking->country }}</p>
+                  <p class="card-text">Check-in: {{ date('d-m-Y', strtotime($booking->checkInDate));  }}
+                    p>
+                  <p class="card-text"> {{ $booking->numNights
+ }} nights</p>
+                  <p class="card-text">Payment: {{ $booking->payment_method 
+ }}</p>
+                  <p class="card-text"><small class="text-muted">Booking Created: {{ $booking->created_at-> diffforhumans() }}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      @foreach($bookings as $booking)
-
-      <tr>
-
-        <th scope="row">{{ $booking->booking_id }}
-        </th>
-
-        <td><a href="{{ route('bookings.show', $booking->id) }}"><img class=" trending-img" src="/storage/{{ $booking->image }}"> </a></td>
-        <td>{{ $booking->name }}</td>
-        <td>{{ $booking->country }}</td>
-        <td>{{ date('d-m-Y', strtotime($booking->checkInDate));  }}</td>
-        <td>{{ $booking->numNights }}</td>
-        <td>{{ $booking->payment_method }}</td>
-        <td>{{ date('d-m-Y', strtotime($booking->created_at));  }}</td>
-
-
-
-
-      </tr>
-
-
-
-
-      @endforeach
-
-
-    </tbody>
-  </table>
-
-
-
-</div>
-<div class="pagination justify-content-center mt-4">
-  {{ $bookings->links() }}
-</div>
-
-@endsection
+          <!-- End -->
+        </li>
+        <!-- End -->
+      </ul>
+    </div>
+  </div>
+  <br>
+  @endforeach
+  @endsection
