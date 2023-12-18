@@ -59,9 +59,10 @@
       </ul>
     </div>
   </div>
-</div>
-<br>
-@endforeach
-@endif
 
+  <br>
+  @endforeach
+
+  @endif
+</div>
 @endsection
