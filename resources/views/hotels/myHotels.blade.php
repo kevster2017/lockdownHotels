@@ -25,30 +25,32 @@
             <ul class="list-group" id="indexCard">
 
                 <!-- list group item-->
-                <li class="list-group-item">
+                <div class="cardStyle">
+                    <li class="list-group-item">
 
-                    <div class="my-2">
-                        <div class="row g-0">
-                            <div class="col">
-                                <a href="{{ route('hotels.myHotelsShow', $hotel->id) }}"><img src="/storage/{{$hotel->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
-                            </div>
-                            <div class="col ms-3">
-                                <div class="card-body">
-                                    <a href="{{ route('hotels.show', $hotel->id) }}">
-                                        <h5 class="card-title">{{ $hotel->name}}</h5>
-                                    </a>
+                        <div class="my-2">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a href="{{ route('hotels.myHotelsShow', $hotel->id) }}"><img src="/storage/{{$hotel->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
+                                </div>
+                                <div class="col ms-3">
+                                    <div class="card-body">
+                                        <a href="{{ route('hotels.show', $hotel->id) }}">
+                                            <h5 class="card-title">{{ $hotel->name}}</h5>
+                                        </a>
 
-                                    <p class="card-text">Description: {{ $hotel->description }}</p>
-                                    <p class="card-text">Home Town: {{ $hotel->town }}</p>
-                                    <p class="card-text"><small class="text-muted">Hotel Added: {{ $hotel->created_at-> diffforhumans() }}</small></p>
+                                        <p class="card-text">Description: {{ $hotel->description }}</p>
+                                        <p class="card-text">Home Town: {{ $hotel->town }}</p>
+                                        <p class="card-text"><small class="text-muted">Hotel Added: {{ $hotel->created_at-> diffforhumans() }}</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <!-- End -->
-                </li>
+                        <!-- End -->
+                    </li>
+                </div>
                 <!-- End -->
             </ul>
         </div>
