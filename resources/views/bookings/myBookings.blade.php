@@ -33,10 +33,10 @@
 
             <div class="my-2">
               <div class="row g-0">
-                <div class="col-sm-6 d-flex">
-                  <a href="{{ route('bookings.show', $booking->id) }}"><img src="/storage/{{$booking->image}} " class="img-responsive rounded-start" alt="Hotel Image"></a>
+                <div class="col-sm d-flex">
+                  <a href="{{ route('bookings.show', $booking->id) }}"><img src="/storage/{{$booking->image}} " class="img-responsive img-fluid rounded-start" alt="Hotel Image"></a>
                 </div>
-                <div class="col-sm-6 d-flex">
+                <div class="col-sm d-flex">
                   <div class="card-body">
                     <a href="{{ route('bookings.show', $booking->id) }}">
                       <h5 class="card-title">{{ $booking->name}}</h5>
