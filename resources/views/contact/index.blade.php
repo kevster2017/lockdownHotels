@@ -13,7 +13,9 @@
 
 <h1 class="text-center py-3">All Messages</h1>
 
-
+@if($contacts->count() == 0)
+<h1 class="text-center py-3">No messages received</h1>
+@else
 <div class="container">
     <table class="table table-hover table-bordered table-hover">
         <thead class="table-primary">
@@ -73,8 +75,7 @@
 
         </tbody>
     </table>
-    @if($contacts->count() == 0)
-    <h1 class="text-center py-3">No messages received</h1>
-    @endif
+
 </div>
+@endif
 @endsection
