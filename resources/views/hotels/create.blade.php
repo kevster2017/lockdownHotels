@@ -132,19 +132,19 @@
             <div class="Room Type">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input room-type" type="radio" name="roomType" id="single" value="Single" onclick='checkBoxCheck("roomTypeOptions")' required>
-                    <label class="form-check-label" for="inlineRadio4">Single</label>
+                    <label class="form-check-label" for="single">Single</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input room-type" type="radio" name="roomType" id="double" value="Double" onclick='checkBoxCheck("roomTypeOptions")' required>
-                    <label class="form-check-label" for="inlineRadio5">Double</label>
+                    <label class="form-check-label" for="double">Double</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="roomType" id="twin" value="Twin" onclick='checkBoxCheck("roomTypeOptions")' required>
-                    <label class="form-check-label" for="inlineRadio6">Twin</label>
+                    <label class="form-check-label" for="twin">Twin</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="roomType" id="family" value="Family" onclick='checkBoxCheck("roomTypeOptions")' required>
-                    <label class="form-check-label" for="inlineRadio6">Family room</label>
+                    <label class="form-check-label" for="family">Family room</label>
                 </div>
             </div>
         </div>
@@ -319,11 +319,11 @@
             <label for="Currency" class="form-label">Currency</label>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' required>
-                <label class="form-check-label" for="inlineRadio7">Sterling</label>
+                <label class="form-check-label" for="sterling">Sterling</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="currency" id="euro" value="Euro" onclick='checkBoxCheck("currencyOptions")' required>
-                <label class="form-check-label" for="inlineRadio8">Euro</label>
+                <label class="form-check-label" for="euro">Euro</label>
             </div>
         </div>
 
