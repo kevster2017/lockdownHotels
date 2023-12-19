@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* Hotel routes */
 Route::get("/hotels", [HotelController::class, 'index'])->name('hotels.index');
-Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create');
+Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create')->middleware('auth');
 Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store');
 
 Route::get("/hotels/{id}/edit", [HotelController::class, 'edit'])->name('hotels.edit');
@@ -47,7 +47,7 @@ Route::get('/hotels/city', [HotelController::class, 'cityIndex'])->name('hotels.
 Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('hotels.seaside');
 Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('hotels.country');
 
-Route::get('/hotels/myHotels', [HotelController::class, 'myHotels'])->name('myHotels');
+Route::get('/hotels/myHotels', [HotelController::class, 'myHotels'])->name('myHotels')->middleware('auth');
 Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow'])->name('hotels.myHotelsShow');
 
 //Route::resource('/hotels', HotelController::class);
@@ -56,7 +56,7 @@ Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow']
 /* Booking routes */
 Route::get("/bookings", [BookingController::class, 'index']);
 Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create');
-Route::get("/bookings/myBookings", [BookingController::class, 'myBookings'])->name('myBookings');
+Route::get("/bookings/myBookings", [BookingController::class, 'myBookings'])->name('myBookings')->middleware('auth');
 
 Route::post("/bookings/store", [BookingController::class, 'store'])->name('bookings.store');
 
