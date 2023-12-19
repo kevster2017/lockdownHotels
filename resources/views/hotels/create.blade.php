@@ -74,7 +74,7 @@
 
         <div class="col-md-4 offset-md-4">
             <label for="town" class="form-label">Enter Town</label>
-            <input type="text" class="form-control" name="town" value="{{ old('town') }}" d="town" placeholder="Town" minlength="3" maxlength="100" required>
+            <input type="text" class="form-control" name="town" value="{{ old('town') }}" id="town" placeholder="Town" minlength="3" maxlength="100" required>
             @error('town')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -369,11 +369,7 @@
 
     function activateButton(element) {
 
-        if (element.checked) {
-            document.getElementById("listProperty").disabled = false;
-        } else {
-            document.getElementById("listProperty").disabled = true;
-        }
+        document.getElementById("listProperty").disabled = !element.checked;
 
     }
 </script>
@@ -414,7 +410,7 @@
                 oneBoxChecked = true;
             }
         }
-        if (oneBoxChecked = true) {
+        if (oneBoxChecked == true) {
             for (i = 0; i < elem.length; i++) {
                 elem[i].required = false;
             }
