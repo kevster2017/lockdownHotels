@@ -31,7 +31,7 @@
                         <div class="my-2">
                             <div class="row g-0">
                                 <div class="col">
-                                    <a href="{{ route('hotels.myHotelsShow', $hotel->id) }}"><img src="/storage/{{$hotel->image}} " class="img-responsive img-fluidrounded-start" alt="Hotel Image"></a>
+                                    <a href="{{ route('hotels.myHotelsShow', $hotel->id) }}"><img src="/storage/{{$hotel->image}} " class="img-responsive img-fluid rounded-start" alt="Hotel Image"></a>
                                 </div>
                                 <div class="col ms-3">
                                     <div class="card-body">
