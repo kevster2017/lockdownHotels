@@ -65,7 +65,7 @@
 
         <div class="col-sm-6 text-center">
             <img src="Images/Titanic_Circle.png" alt="Titanic" style="width:250px; height:250px; padding-top:25px">
-            <h2>City Break</h2>
+            <h2 class="holidayHeading">City Break</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.city') }}">View details &raquo;</a></p>
         </div>
@@ -74,7 +74,7 @@
 
         <div class="col-sm-6 text-center">
             <img src="Images/Causeway_Circle.png" alt="Causeway" style="width:250px; height:250px; padding-top:25px">
-            <h2>Seaside Resort</h2>
+            <h2 class="holidayHeading">Seaside Resort</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.seaside') }}">View details &raquo;</a></p>
         </div>
@@ -89,14 +89,14 @@
     <div class="row mt-3">
         <div class="col-sm-6 text-center">
             <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
-            <h2>Country Escape</h2>
+            <h2 class="holidayHeading">Country Escape</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.country') }}">View details &raquo;</a></p>
         </div>
 
         <div class="col-sm-6 text-center">
             <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
-            <h2>All Hotels</h2>
+            <h2 class="holidayHeading">All Hotels</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.index') }}">View details &raquo;</a></p>
         </div>

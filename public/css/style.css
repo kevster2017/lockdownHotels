@@ -183,14 +183,13 @@ a.btn-second:hover {
 }
 
 .form-check-input {
-align: left;
+text-align: left;
 }
 
 .card{
     margin-bottom: 30px;
     padding: 20px;
-    text-align: start;
-   
+    text-align: start;   
 }
 
 
@@ -352,4 +351,8 @@ ul {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
+}
+
+.holidayHeading{
+    padding-top: 3%;
 }
