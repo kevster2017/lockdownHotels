@@ -361,10 +361,10 @@ ul {
 .cardStyle {
    border: 1px solid #999;
    border-radius: 10px;
+  
 }
 
 .cardStyle:hover {
     box-shadow: 10px 10px 5px 0px rgba(93, 91, 91, 0.75);
 }
-
 
