@@ -25,7 +25,7 @@
 <!--Breadcrumb-->
 <div class="container">
     <ul class="breadcrumb">
-        <li><a href="{{ url('/') }}">Home</a></li>
+        <li><a href="{{ url('/home') }}">Home</a></li>
         <li>Contact Us</li>
     </ul>
 </div>
