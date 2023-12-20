@@ -35,7 +35,7 @@
             <div class="carousel-item">
                 <img class="d-block w-100" src="Images/Giants_CausewayHD.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Giant's Causway - North Coast</h5>
+                    <h5>Giant's Causeway - North Coast</h5>
                 </div>
             </div>
             <div class="carousel-item">
