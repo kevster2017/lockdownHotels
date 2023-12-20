@@ -95,7 +95,7 @@
         </div>
 
         <div class="col-sm-6 text-center">
-            <img src="Images/Country_Circle.png" alt="Country" style="width:250px; height:250px; padding-top:25px">
+            <img src="Images/hotel_circle.jpg" alt="Hotel" style="width:250px; height:250px; padding-top:25px">
             <h2 class="holidayHeading">All Hotels</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.index') }}">View details &raquo;</a></p>
