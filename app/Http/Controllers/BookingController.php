@@ -400,7 +400,7 @@ class BookingController extends Controller
     {
         $booking = Booking::find($id);
 
-        return view('booking.edit', compact('booking'))->with('info', 'Please contact the hotel using the form below to amend your booking');
+        return view('bookings.edit', compact('booking'))->with('info', 'Please contact the hotel using the form below to amend your booking');
     }
 
     /**
