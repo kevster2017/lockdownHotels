@@ -137,7 +137,7 @@
 
                 <!--Copyright info-->
                 <p>
-                    <span>&#169;</span>Lockdown Hotels 2021
+                    <span>&#169;</span>Lockdown Hotels 2021 - {{ now()->year }}
                 </p>
             </div>
 
