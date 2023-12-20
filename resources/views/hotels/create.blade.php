@@ -26,7 +26,7 @@
 
 <div class="container">
 
-    <h1 class="text-center">List Your Property</h1>
+    <h1 class="text-center py-3">List Your Property</h1>
 
 
 
@@ -155,7 +155,7 @@
         <div class="col-md-4 offset-md-4">
             <label for="numRooms" class="form-label">Number of rooms</label>
         </div>
-        <div class="col-md-2 offset-md-4">
+        <div class="col-md-4 offset-md-4">
             <input type="text" class="form-control" name="numRooms" id="numRooms" value="{{ old('numRooms') }}" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
             <div class="invalid-feedback">Enter the number of rooms</div><br>
         </div>
