@@ -31,16 +31,6 @@
 
 
 <div class="container mt-3">
-
-    <div class="card">
-        <h5 class="card-header" id="divLeft">Description</h5>
-        <div class="card-body">
-            <p class="card-text" id="divLeft"> {{ $booking->description }}</p>
-        </div>
-    </div>
-</div>
-
-<div class="container mt-3">
     <div class="card">
         <h5 class="card-header" id="divLeft">Room Options</h5>
         <div class="card-body" id="divLeft">
@@ -174,7 +164,7 @@
 
             </table>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 text-center">
             <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
             <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
             <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
