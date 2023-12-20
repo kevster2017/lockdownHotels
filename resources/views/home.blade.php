@@ -79,9 +79,6 @@
             <p><a class="btn btn-primary" href="{{ route('hotels.seaside') }}">View details &raquo;</a></p>
         </div>
 
-
-
-
     </div>
 </div>
 
