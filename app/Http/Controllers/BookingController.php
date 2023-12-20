@@ -401,9 +401,7 @@ class BookingController extends Controller
     {
         $booking = Booking::find($id);
 
-        $arr['booking'] = $booking;
-
-        return view('bookings.edit')->with($arr);
+        return view('booking.edit', compact('booking'))->with('info', 'Please contact the hotel using the form below to amend your booking');
     }
 
     /**

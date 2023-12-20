@@ -1,292 +1,105 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
 @section('content')
+<!--Script to enable Pay Now button after validating form-->
+<script>
+    function manage(txt) {
+        var bt = document.getElementById('send');
+        var ele = document.querySelectorAll('input, textarea');
+
+
+        // Loop through each element.
+        for (i = 0; i < ele.length; i++) {
+
+            // Check the element type
+            if (ele[0].checkValidity() == true && ele[1].checkValidity() == true &&
+                ele[2].checkValidity() == true) {
+                bt.disabled = false;
+            } else {
+                bt.disabled = true;
+            }
+        }
+    }
+</script>
+
 <!--Breadcrumb-->
 <div class="container">
     <ul class="breadcrumb">
-        <li><a href="{{ url('/home') }}">Home</a></li>
-        <li>Edit Booking Details at {{ $booking->name }}</li>
+        <li><a href="{{ url('/') }}">Home</a></li>
+        <li>Edit Booking</li>
     </ul>
 </div>
 
-<div class="container mt-3">
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col-sm-4">
-                <img src="/storage/{{ $booking->image }}" class="img-fluid rounded-start" alt="Hotel Image">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body" id="divLeft">
-                    <h2 class="card-title">{{ $booking->name }}</h2>
-                    <p class="card-text">{{ $booking->address }}</p>
-                    <p class="card-text">{{ $booking->town }}</p>
-                    <p class="card-text">{{ $booking->postCode }}</p>
-                    <p class="card-text">{{ $booking->country }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Hotel Booked: {{ $booking->created_at->DiffForHumans() }}</small></p>
-                </div>
-            </div>
-        </div>
+<!--Contact Us Container-->
+<br>
+<div class="container">
+    <div class="contact text-center">
+        <br>
+        <h1>Contact Us</h1><br>
+        <p>If you would like to get in contact with us, feel free to get in touch using any of the methods
+            below</p>
+
+        <span>&#128222; Telephone: 02895 123456 (NI) / 442895 123456 (ROI) </span><br>
+        <span>&#9993; Email: <a href="mailto:customerservice@lockdownhotels.com" target="_blank">customerservice@lockdownhotels.com</a></span><br>
+        <span>&#9999; Write to us at the address below:<br>
+            Lockdown Hotels <br>
+            1a Main Street<br>
+            Belfast<br>
+            Co.Antrim<br>
+            BT1 1LH<br><br>
+        </span>
     </div>
+
 </div>
+<br><br>
 
+<!--Contact Us form-->
+<div class="container">
+    <div class="message text-center">
+        <form action="{{ route('contact.store') }}" method="POST" id="form" class="was-validated" onkeyup="manage()" novalidate>
+            @csrf
+            <br>
+            <input type="hidden" name="userID" value="{{ Auth::user()->id }}">
+            <p>Alternatively, you can send us a message and we will endeavour to reply as soon as possible
+            </p>
+            <div class="col-md-6 offset-md-3">
+                <label for="nameInput" class="form-label">Name</label><br>
+                <input type="text" class="form-control" id="nameInput" value="{{ auth()->user()->name }}" minlength="3" maxlength="40" name="name" required>
+                <div class="invalid-feedback">Enter your name
+                </div><br>
+            </div>
 
-<div class="container mt-3">
-    <div class="card">
-        <h5 class="card-header" id="divLeft">Room Options</h5>
-        <div class="card-body" id="divLeft">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Room Type</th>
-                        <th scope="col">Extras</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Available Rooms</th>
-                        <th scope="col">Book Now</th>
-                    </tr>
-                </thead>
+            <div class="col-md-6 offset-md-3">
+                <label for="emailInput" class="form-label">Email</label><br>
+                <input type="email" class="form-control" id="emailInput" value="{{ auth()->user()->email }}" minlength="10" maxlength="50" name="email" required>
+                <div class="invalid-feedback">Enter your email address
+                </div><br>
+            </div>
 
-                <form action="{{ route('bookings.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="hotel_Id" value="{{ $booking->id }}">
-
-                    <input type="hidden" name="name" value="{{ $booking->name }}">
-                    <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
-                    <input type="hidden" name="email" value="{{ Auth()->User()->email }}">
-                    <input type="hidden" name="pricePN" value="{{ $booking->pricePN}}">
-                    <input type="hidden" name="currency" value="{{ 'Sterling' }}">
-                    <input type="hidden" name="image" value="{{ $booking->image }}">
-                    <input type="hidden" name="address" value="{{ $booking->address }}">
-                    <input type="hidden" name="town" value="{{ $booking->town }}">
-                    <input type="hidden" name="country" value="{{ $booking->country}}">
-                    <input type="hidden" name="postCode" value="{{ $booking->postCode }}">
-                    <input type="hidden" name="accomType" value="{{ $booking->accomType }}">
-                    <input type="hidden" name="roomType" value="{{ $booking->roomType }}">
-                    <input type="hidden" name="holidayType" value="{{ $booking->holidayType }}">
-                    <input type="hidden" name="feat1Price" value="{{ $booking->feat1Price }}">
-                    <input type="hidden" name="feat2Price" value="{{ $booking->feat2Price }}">
-                    <input type="hidden" name="feat3Price" value="{{ $booking->feat3Price }}">
-                    <input type="hidden" name="feat4Price" value="{{ $booking->feat4Price }}">
-                    <input type="hidden" name="upgrade1Price" value="{{ $booking->upgrade1Price }}">
-                    <input type="hidden" name="upgrade2Price" value="{{ $booking->upgrade2Price }}">
-                    <input type="hidden" name="upgrade3Price" value="{{ $booking->upgrade3Price }}">
-                    <input type="hidden" name="package1Price" value="{{ $booking->package1Price }}">
-                    <input type="hidden" name="package2Price" value="{{ $booking->package2Price }}">
-                    <input type="hidden" name="package3Price" value="{{ $booking->package3Price }}">
-                    <input type="hidden" name="paid" value="{{ 0 }}">
-                    <input type="hidden" name="payment_method" value="Stripe">
-
-
-
-
-
-
-                    <div class="col" style="text-align: left;">
-                        <label class="align-left" style="font-weight: bold; padding-bottom: 15px;">Check in date:</label>
-                        <input class="date form-control" id="checkInDate" type="text" name="checkInDate" value="{{ old('checkInDate'), $booking->checkInDate }}">
-                        <label class="align-left mt-3" id="noOfNightsRangeLabel" style="font-weight: bold; padding-bottom: 15px;">No. of Nights: {{ $booking->numNights }}</label>
-                        <input type="range" onchange="updateNoOfNights(value)" class="form-range" id="noOfNightsRange" min="1" max="30" step="1" value="{{ old('numNights'), $booking->numNights }}" name="numNights">
-
-                    </div>
-                    <tbody>
-                        <tr>
-                            <td>{{ $booking->roomType }}</td>
-                            <td>
-                                <ul id="divLeft">
-                                    <label><strong>Custom Options</strong></label>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat1', $booking->feat1) }}" id="feat1" name="feat1">{{ $booking->feat1 }} +£{{ $booking->feat1Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat1Price', $booking->feat1Price) }}" id="feat2" name="feat2">{{ $booking->feat2 }} +£{{ $booking->feat2Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat3', $booking->feat3) }}" id="feat3" name="feat3">{{ $booking->feat3 }} +£{{ $booking->feat3Price }}</li>
-                                    <li><input class="form-check-input me-2" type="checkbox" value="{{ old('feat4Price', $booking->feat4Price) }}" id="feat4" name="feat4">{{ $booking->feat4 }} +£{{ $booking->feat4Price }}</li>
-
-                                    <label><strong>Package Options</strong></label>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noPackage" name="packageTotal" value="{{ 0 }}" checked>
-                                        <label class="form-check-label" for="noPackage">
-                                            None
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package1" name="packageTotal" value="{{ old('package1Price', $booking->package1Price) }}">
-                                        <label class="form-check-label" for="package1">
-                                            {{ $booking->package1 }} +£{{ $booking->package1Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package2" name="packageTotal" value="{{ old('package2', $booking->package2) }}">
-                                        <label class="form-check-label" for="package2">
-                                            {{ $booking->package2 }} +£{{ $booking->package2Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="package3" name="packageTotal" value="{{ old('package3', $booking->package3) }}">
-                                        <label class="form-check-label" for="package3">
-                                            {{ $booking->package3 }} +£{{ $booking->package3Price }}
-                                        </label>
-                                    </div>
-
-
-
-                                    <label><strong>Upgrade Options</strong></label>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="noUpgrade" name="upgradeTotal" value="{{ 0 }}" checked>
-                                        <label class="form-check-label" for="noUpgrade">
-                                            None
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade1" name="upgradeTotal" value="{{ old('upgrade1', $booking->upgrade1) }}">
-                                        <label class="form-check-label" for="upgrade1">
-                                            {{ $booking->upgrade1 }} +£{{ $booking->upgrade1Price }}
-                                        </label>
-
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade2" name="upgradeTotal" value="{{ old('upgrade2', $booking->upgrade2) }}">
-                                        <label class="form-check-label" for="upgrade2">
-                                            {{ $booking->upgrade2 }} +£{{ $booking->upgrade2Price }}
-                                        </label>
-                                    </div>
-                                    <div class="form-check" id="divLeft">
-                                        <input class="form-check-input" type="radio" id="upgrade3" name="upgradeTotal" value="{{ old('upgrade3', $booking->upgrade3) }}">
-                                        <label class="form-check-label" for="upgrade3">
-                                            {{ $booking->upgrade3 }} +£{{ $booking->upgrade3Price }}
-                                        </label>
-                                    </div>
-                                </ul>
-                            </td>
-                            <td>{{ $booking->price }}</td>
-                            <td>{{ $booking->numRooms }}</td>
-                            <td>
-                                <button class="btn btn-primary" type="submit">Edit Booking</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-            </table>
-        </div>
-        <div class="mt-3 text-center">
-            <h2>Your hotel room cost: £<span id="hotelCost">0</span></h2>
-            <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
-            <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
-        </div>
+            <div class="col-md-6 offset-md-3">
+                <label for="message" class="form-label">Message</label><br>
+                <textarea id="message" class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="5" maxlength="500" name="message" required></textarea>
+                <div class="invalid-feedback">Enter your message
+                </div><br>
+            </div>
+            <button id="send" class="btn btn-primary" type="submit" disabled="disabled">Submit</button>
         </form>
+
+        <br><br>
+
     </div>
-</div>
 
+    <!--Social Media Icons-->
+    <div class="container mt-5">
+        <div class="social text-center">
+            <h2>Follow Us</h2>
 
+            <button data-toggle="tooltip" title="Click here to follow us on Instagram"><a href="https://www.instagram.com/" target="_blank"><img src="/images/Instagram.png" alt="Instagram button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on YouTube"><a href="https://www.youtube.com/" target="_blank"><img src="/images/YouTube.png" alt="YouTube button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on Facebook"><a href="https://www.facebook.com/" target="_blank"><img src="/images/Facebook.png" alt="Facebook button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on Twitter"><a href="https://twitter.com/?lang=en-gb" target="_blank"><img src="/images/Twitter.png" alt="Twitter button"></a></button>
+            <button data-toggle="tooltip" title="Click here to follow us on LinkedIn"><a href="https://uk.linkedin.com/" target="_blank"><img src="/images/LinkedIn.png" alt="LinkedIn button"></a></button>
 
-<script type="text/javascript">
-    $('.date').datepicker({
-        format: 'yyyy-mm-dd'
-    });
-</script>
-
-<script>
-    let hotelCost = parseFloat('{{ $booking->pricePN }}');
-    let noOfNights = 0;
-    let customCosts = 0;
-    let packageCosts = 0;
-    let upgradeCosts = 0;
-    let totalCost = 0;
-    let extrasCost = customCosts + packageCosts + upgradeCosts;
-    let upgradeRadioButtons = document.querySelectorAll('input[name="upgradeTotal"]');
-    let packageRadioButtons = document.querySelectorAll('input[name="packageTotal"]');
-
-    function updateNoOfNights(value) {
-        document.getElementById('noOfNightsRangeLabel').innerHTML = "No. of Nights: " + value;
-        noOfNights = value;
-        let valid = true;
-
-        hotelCost = parseFloat('{{ $booking->pricePN }}') * noOfNights;
-
-
-
-        // Add event listeners to checkboxes
-        document.getElementById('feat1').addEventListener('change', function() {
-            updateCheckboxValue(this, 1);
-        });
-
-        document.getElementById('feat2').addEventListener('change', function() {
-            updateCheckboxValue(this, 2);
-        });
-
-        document.getElementById('feat3').addEventListener('change', function() {
-            updateCheckboxValue(this, 3);
-        });
-
-        document.getElementById('feat4').addEventListener('change', function() {
-            updateCheckboxValue(this, 4);
-        });
-
-
-        packageRadioButtons.forEach(function(radioButton) {
-            if (radioButton.checked) {
-                packageCosts = parseFloat(radioButton.value) * noOfNights;
-            }
-            radioButton.addEventListener('change', function() {
-                packageCosts = parseFloat(radioButton.value) * noOfNights;
-                extrasCost = upgradeCosts + packageCosts;
-                totalCost = hotelCost + extrasCost;
-                updateCostsInHTML(hotelCost, extrasCost, totalCost);
-            });
-
-        });
-
-
-        upgradeRadioButtons.forEach(function(radioButton) {
-            if (radioButton.checked) {
-                upgradeCosts = parseFloat(radioButton.value) * noOfNights;
-            }
-            radioButton.addEventListener('change', function() {
-                upgradeCosts = parseFloat(this.value) * noOfNights;
-                extrasCost = upgradeCosts + packageCosts;
-                totalCost = hotelCost + extrasCost;
-                updateCostsInHTML(hotelCost, extrasCost, totalCost);
-            });
-
-
-        });
-
-
-
-        extrasCost = upgradeCosts + packageCosts;
-        totalCost = hotelCost + extrasCost;
-        // Update HTML with dynamic values
-        updateCostsInHTML(hotelCost, extrasCost, totalCost);
-
-
-
-    }
-
-
-    function calculateHotelCosts() {
-        hotelCost = hotelCost * noOfNights;
-        return hotelCost;
-    }
-
-    function calculateTotalCost() {
-        return hotelCost + extrasCost;
-    }
-
-
-    function updateCheckboxValue(checkbox, featNumber) {
-        const featPrice = parseFloat(checkbox.value) * noOfNights;
-        if (checkbox.checked) {
-            extrasCost += featPrice;
-        } else {
-            extrasCost -= featPrice;
-        }
-        totalCost = calculateTotalCost();
-        updateCostsInHTML(hotelCost, extrasCost, totalCost);
-    }
-
-
-    function updateCostsInHTML(hotelCost, extrasCost, totalCost) {
-        document.getElementById('hotelCost').innerText = hotelCost.toFixed(2);
-        document.getElementById('extrasCost').innerText = extrasCost.toFixed(2);
-        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
-    }
-</script>
-
-
-@endsection
+        </div>
+    </div>
+    @endsection
