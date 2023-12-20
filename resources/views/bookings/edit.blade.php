@@ -78,7 +78,7 @@
 
             <div class="col-md-6 offset-md-3">
                 <label for="message" class="form-label">Message</label><br>
-                <textarea id="message" class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="5" maxlength="500" name="message" required></textarea>
+                <textarea id="message" class="form-control" id="messageInput" name="message" rows="6" columns="50" placeholder="500 characters max" minlength="5" maxlength="500" name="message" required>Booking ref: {{ $booking->id }}</textarea>
                 <div class="invalid-feedback">Enter your message
                 </div><br>
             </div>
