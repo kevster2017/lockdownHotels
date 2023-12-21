@@ -50,8 +50,6 @@ Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('h
 Route::get('/hotels/myHotels', [HotelController::class, 'myHotels'])->name('myHotels')->middleware('auth');
 Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow'])->name('hotels.myHotelsShow');
 
-//Route::resource('/hotels', HotelController::class);
-
 
 /* Booking routes */
 Route::get("/bookings", [BookingController::class, 'index']);
@@ -89,6 +87,24 @@ Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])-
 Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe');
 Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
+/* Contact Routes */
+
+Route::get('/contactUs', function () {
+    return view('contactUs');
+});
+
+Route::get("/contact", [ContactController::class, 'index'])->name('contact.index')->middleware('auth');
+Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
+Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
+
+Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
+Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('contact.show');
+
+Route::get('/contact/contactComplete', function () {
+    return view('contactComplete');
+})->name('contactComplete');
+
+
 
 /* Footer Routes */
 Route::get('/aboutUs', function () {
@@ -106,20 +122,3 @@ Route::get('/tsAndCs', function () {
 Route::get('/privacyPolicy', function () {
     return view('privacypolicy');
 });
-
-/* Contact Routes */
-
-Route::get('/contactUs', function () {
-    return view('contactUs');
-});
-
-Route::get("/contact", [ContactController::class, 'index'])->name('contact.index')->middleware('auth');
-Route::get("/contact/create", [ContactController::class, 'create'])->name('contact.create')->middleware('auth');
-Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
-
-Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
-Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('contact.show');
-
-Route::get('/contact/contactComplete', function () {
-    return view('contactComplete');
-})->name('contactComplete');
