@@ -193,7 +193,7 @@
 
     <!--Hotel Options-->
     <div class="container">
-        <label for="hotelOptions" class="form-label">Hotel Options</label><br>
+        <h5 for="hotelOptions" class="form-label">Hotel Options</h5><br>
 
         <div class="row mb-3">
             <div class="col-sm-8">
@@ -242,7 +242,7 @@
     </div>
 
     <div class="container">
-        <label for="upgradeOptions" class="form-label">Upgrade Options</label><br>
+        <h5 for="upgradeOptions" class="form-label">Upgrade Options</h5><br>
 
         <div class="row mb-3">
             <div class="col-sm-8">
@@ -281,7 +281,7 @@
 
 
     <div class="container">
-        <label for="packageOptions" class="form-label">Package Options</label><br>
+        <h5 for="packageOptions" class="form-label">Package Options</h5><br>
 
         <div class="row mb-3">
             <div class="col-sm-8">
