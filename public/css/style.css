@@ -88,14 +88,6 @@ body {
 }
 
 
-#welcomeContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 66vh;
-    
-}
-
 li a {
     color: black;
 }
