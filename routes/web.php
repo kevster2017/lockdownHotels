@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StripeController;
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
 /* Hotel routes */
@@ -41,7 +42,6 @@ Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
 
-Route::get('/fetch-data', [HotelController::class, 'fetchData']);
 
 Route::get('/hotels/city', [HotelController::class, 'cityIndex'])->name('hotels.city');
 Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('hotels.seaside');
@@ -78,14 +78,7 @@ Route::put("/update_cart/{id}", [BookingController::class, 'updateCart'])->name(
 Route::delete("/removeCart/{id}", [BookingController::class, 'removeCart'])->name('delete.cart');
 
 
-/* PayPal routes 
-Route::get('/bookings/paypal', function () {
-    return view('/bookings/paypal');
-});
-Route::post('/pay', [PaypalController::class, 'pay'])->name('paypal');
-Route::get('/success', [PaypalController::class, 'success']);
-Route::get('/error', [PaypalController::class, 'error']);
-*/
+/* PayPal routes */
 
 Route::get('bookings/paypal', [PayPalController::class, 'index'])->name('bookings.paypal');
 Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
@@ -100,6 +93,18 @@ Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('
 /* Footer Routes */
 Route::get('/aboutUs', function () {
     return view('aboutUs');
+});
+
+Route::get('/siteMap', function () {
+    return view('siteMap');
+});
+
+Route::get('/tsAndCs', function () {
+    return view('tsAndCs');
+});
+
+Route::get('/privacyPolicy', function () {
+    return view('privacypolicy');
 });
 
 /* Contact Routes */
@@ -118,16 +123,3 @@ Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('cont
 Route::get('/contact/contactComplete', function () {
     return view('contactComplete');
 })->name('contactComplete');
-
-
-Route::get('/siteMap', function () {
-    return view('siteMap');
-});
-
-Route::get('/tsAndCs', function () {
-    return view('tsAndCs');
-});
-
-Route::get('/privacyPolicy', function () {
-    return view('privacypolicy');
-});
