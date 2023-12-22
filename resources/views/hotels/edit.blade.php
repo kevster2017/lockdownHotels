@@ -190,6 +190,25 @@
 
     <br>
 
+    <!-- Star Rating -->
+    <label for="stars" class="form-label">Select Star Rating</label>
+
+    <select class="form-select @error('stars') is-invalid @enderror" name="stars" id="stars" aria-label="Default select example" value="{{ old('stars', $hotel->stars) }}" required>
+
+        <option selected="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+        <option value="four">Four</option>
+        <option value="five">Five</option>
+
+    </select> @error('stars')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span> @enderror
+
+
+    <br>
+
 
     <!--Hotel Options-->
     <div class="container">
