@@ -127,11 +127,11 @@
 
                     <select class="form-select @error('stars') is-invalid @enderror" name="stars" id="stars" aria-label="Default select example" required>
 
-                        <option selected="one">One</option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                        <option value="five">Five</option>
+                        <option selected="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
 
                     </select> @error('stars')
                     <span class="invalid-feedback" role="alert">

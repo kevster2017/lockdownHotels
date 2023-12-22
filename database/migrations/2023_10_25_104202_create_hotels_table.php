@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('accomType');
             $table->string('roomType');
             $table->string('holidayType');
-            $table->string('stars');
+            $table->integer('stars');
             $table->string('feat1');
             $table->string('feat2');
             $table->string('feat3');
