@@ -6,7 +6,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/">Back</a></li>
+      <li class="breadcrumb-item"><a href="#" onclick="goBack()">Back</a></li>
       <li class="breadcrumb-item active" aria-current="page">Your cart</li>
     </ol>
   </nav>
@@ -21,7 +21,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title">{{ $cart->name }}</h2>
-          @for ($i = 1; $i <= $cart->hotel->stars; $i++)
+          @for ($i = 1; $i <= $cart->stars; $i++)
             <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
             @endfor
             <p class="card-text">{{ $cart->address }}</p>

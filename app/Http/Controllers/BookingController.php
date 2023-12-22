@@ -41,6 +41,7 @@ class BookingController extends Controller
         $cart->accomType = $request->accomType;
         $cart->roomType = $request->roomType;
         $cart->holidayType = $request->holidayType;
+        $cart->stars = $request->stars;
         $cart->feat1 = $request->feat1;
         $cart->feat2 = $request->feat2;
         $cart->feat3 = $request->feat3;
@@ -316,6 +317,7 @@ class BookingController extends Controller
             $booking->accomType = $request->accomType;
             $booking->roomType = $request->roomType;
             $booking->holidayType = $request->holidayType;
+
 
             $booking->feat1 = $request->feat1 ?? 0;
             $booking->feat2 = $request->feat2 ?? 0;
