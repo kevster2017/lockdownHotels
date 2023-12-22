@@ -38,10 +38,12 @@
                                         <a href="{{ route('hotels.show', $hotel->id) }}">
                                             <h5 class="card-title">{{ $hotel->name}}</h5>
                                         </a>
-
-                                        <p class="card-text">Room Type: {{ $hotel->roomType}}</p>
-                                        <p class="card-text">Town: {{ $hotel->town }}</p>
-                                        <p class="card-text"><small class="text-muted">Hotel Added: {{ $hotel->created_at->diffForHumans() }}</small></p>
+                                        @for ($i = 1; $i <= $hotel->stars; $i++)
+                                            <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
+                                            @endfor
+                                            <p class="card-text">Room Type: {{ $hotel->roomType}}</p>
+                                            <p class="card-text">Town: {{ $hotel->town }}</p>
+                                            <p class="card-text"><small class="text-muted">Hotel Added: {{ $hotel->created_at->diffForHumans() }}</small></p>
 
                                     </div>
                                 </div>
