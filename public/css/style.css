@@ -244,7 +244,9 @@ ul {
     list-style-type: none;
 }
 
-
+#card-header{
+    background-color: aliceblue;
+}
 /*Site Map Page Styling */
 
 .booking {

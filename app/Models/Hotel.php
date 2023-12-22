@@ -59,4 +59,9 @@ class Hotel extends Model
     {
         return $this->hasOne(Booking::class);
     }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

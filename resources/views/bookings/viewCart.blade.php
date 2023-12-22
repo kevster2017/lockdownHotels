@@ -21,11 +21,14 @@
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title">{{ $cart->name }}</h2>
-          <p class="card-text">{{ $cart->address }}</p>
-          <p class="card-text">{{ $cart->town }}</p>
-          <p class="card-text">{{ $cart->postCode }}</p>
-          <p class="card-text">{{ $cart->country }}</p>
-          <p class="card-text"><small class="text-body-secondary">Booking Created: {{ $cart->created_at->diffForHumans() }}</small></p>
+          @for ($i = 1; $i <= $cart->hotel->stars; $i++)
+            <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
+            @endfor
+            <p class="card-text">{{ $cart->address }}</p>
+            <p class="card-text">{{ $cart->town }}</p>
+            <p class="card-text">{{ $cart->postCode }}</p>
+            <p class="card-text">{{ $cart->country }}</p>
+            <p class="card-text"><small class="text-body-secondary">Booking Created: {{ $cart->created_at->diffForHumans() }}</small></p>
         </div>
       </div>
     </div>

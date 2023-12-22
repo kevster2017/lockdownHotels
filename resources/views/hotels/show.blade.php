@@ -70,6 +70,7 @@
                     <input type="hidden" name="userId" value="{{ Auth()->User()->id }}">
                     <input type="hidden" name="email" value="{{ Auth()->User()->email }}">
                     <input type="hidden" name="price" value="{{ $hotel->price}}">
+                    <input type="hidden" name="stars" value="{{ $hotel->stars}}">
                     <input type="hidden" name="currency" value="{{ 'Sterling' }}">
                     <input type="hidden" name="image" value="{{ $hotel->image }}">
                     <input type="hidden" name="address" value="{{ $hotel->address }}">

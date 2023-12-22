@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('roomType');
             $table->string('holidayType');
             $table->integer('price');
+            $table->integer('stars');
             $table->string('feat1')->default("None");
             $table->string('feat2')->default("None");
             $table->string('feat3')->default("None");
