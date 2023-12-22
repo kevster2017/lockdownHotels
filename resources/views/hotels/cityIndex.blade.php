@@ -37,6 +37,7 @@
                                         <a href="{{ route('hotels.show', $hotel->id) }}">
                                             <h5 class="card-title">{{ $hotel->name}}</h5>
                                         </a>
+                                        <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
 
                                         <p class="card-text">Room Type: {{ $hotel->roomType}}</p>
                                         <p class="card-text">Town: {{ $hotel->town }}</p>
