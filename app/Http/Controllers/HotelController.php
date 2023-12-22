@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hotel;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 class HotelController extends Controller
@@ -128,6 +127,7 @@ class HotelController extends Controller
             'accomType' => 'required',
             'roomType' => 'required',
             'holidayType' => 'required',
+            'stars' => 'required',
             'feat1' => 'required',
             'feat2' => 'required',
             'feat3' => 'required',
@@ -177,6 +177,7 @@ class HotelController extends Controller
         $hotel->postCode = $request->postCode;
         $hotel->accomType = $request->accomType;
         $hotel->roomType = $request->roomType;
+        $hotel->stars = $request->stars;
         $hotel->feat1 = $request->feat1;
         $hotel->feat2 = $request->feat2;
         $hotel->feat3 = $request->feat3;
@@ -233,6 +234,7 @@ class HotelController extends Controller
             'accomType' => 'required',
             'roomType' => 'required',
             'holidayType' => 'required',
+            'stars' => 'required',
             'feat1' => 'required',
             'feat2' => 'required',
             'feat3' => 'required',
@@ -294,6 +296,9 @@ class HotelController extends Controller
         }
         if (!empty($request->input('holidayType'))) {
             $hotel->holidayType = $request->holidayType;
+        }
+        if (!empty($request->input('stars'))) {
+            $hotel->stars = $request->stars;
         }
         if (!empty($request->input('feat1'))) {
             $hotel->feat1 = $request->feat1;
