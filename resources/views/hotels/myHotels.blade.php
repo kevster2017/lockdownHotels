@@ -22,10 +22,10 @@
         <div class="col-sm-8 mx-auto">
 
             <!-- List group-->
-            <ul class="list-group" id="indexCard">
+            <ul class="list-group">
 
                 <!-- list group item-->
-                <div class="cardStyle">
+                <div class="card text-bg-light mb-3" id="cardStyle">
                     <li class="list-group-item">
 
                         <div class="my-2">
