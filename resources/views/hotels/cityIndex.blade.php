@@ -21,8 +21,8 @@
         <div class="col-sm-8 mx-auto">
 
             <!-- List group-->
-            <ul class="list-group" id="indexCard">
-                <div class="cardStyle">
+            <ul class="list-group">
+                <div class="card text-bg-light mb-3" id="cardStyle">
                     <!-- list group item-->
                     <li class="list-group-item">
 

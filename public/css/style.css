@@ -352,13 +352,13 @@ ul {
     padding-top: 3%;
 }
 
-.cardStyle {
-   border: 1px solid #999;
-   border-radius: 10px;
+#cardStyle {
+   border: 1px solid #dddbdb;
+   border-radius: 3px;
   
 }
 
-.cardStyle:hover {
+#cardStyle:hover {
     box-shadow: 10px 10px 5px 0px rgba(93, 91, 91, 0.75);
 }
 
@@ -368,3 +368,5 @@ ul {
     padding: 3%;
     background-color: rgb(237, 236, 236);
 }
+
+
