@@ -16,7 +16,7 @@ The application was developed using Laravel 10 and Bootstrap 5.3
 
 ## Features
 * Authentication - Registration and Login
-* Data Input Validation
+* Data Input Validation - Frontend and Backend
 * Error messages
 * Image Upload
 * Middleware
