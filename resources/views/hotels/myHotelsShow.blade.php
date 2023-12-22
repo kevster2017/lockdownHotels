@@ -2,9 +2,23 @@
 
 @section('content')
 
+<!-- Page Content -->
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('myHotels') }}">My Properties</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Your property at {{ $hotel->name }}</li>
+        </ol>
+    </nav>
+</div>
 
-<div class="container mt-3">
-    <div class="card mb-3">
+<div class="container text-center mt-5">
+    <h1>{{ $hotel->name }}</h1>
+</div>
+
+<div class="container mt-5">
+    <div class="card text-bg-light mb-3">
         <div class="row justify-content-center">
             <div class="col-sm-4">
                 <img src="/storage/{{ $hotel->image }}" class="img-fluid rounded-start" alt="Hotel Image">
@@ -31,7 +45,7 @@
 
 <div class="container mt-3">
 
-    <div class="card">
+    <div class="card text-bg-light mb-3">
         <h5 class="card-header" id="divLeft">Description</h5>
         <div class="card-body">
             <p class="card-text" id="divLeft"> {{ $hotel->description }}</p>
@@ -40,7 +54,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card">
+    <div class="card text-bg-light mb-3">
         <h5 class="card-header" id="divLeft">Room Options</h5>
         <div class="card-body" id="divLeft">
             <div class="row">
@@ -60,7 +74,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card">
+    <div class="card text-bg-light mb-3">
         <h5 class="card-header" id="divLeft">Room Features</h5>
         <div class="card-body" id="divLeft">
             <div class="row">
@@ -82,7 +96,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card">
+    <div class="card text-bg-light mb-3">
         <h5 class="card-header" id="divLeft">Room Upgrades</h5>
         <div class="card-body" id="divLeft">
             <div class="row">
@@ -104,7 +118,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card">
+    <div class="card text-bg-light mb-3">
         <h5 class="card-header" id="divLeft">Room Packages</h5>
         <div class="card-body" id="divLeft">
             <div class="row">
