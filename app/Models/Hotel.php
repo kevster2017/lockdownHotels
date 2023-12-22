@@ -21,6 +21,7 @@ class Hotel extends Model
         'accomType',
         'roomType',
         'holidayType',
+        'stars',
         'feat1',
         'feat2',
         'feat3',
