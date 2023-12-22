@@ -31,7 +31,7 @@
 
 <body>
     <div class="app mb-3">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-md">
             <div class="container-fluid d-flex align-items-center">
                 <div class="logo">
                     <a class="navbar-brand" href="{{ url('/home') }}">
