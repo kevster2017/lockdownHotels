@@ -41,13 +41,16 @@
                     <a href="{{ route('bookings.show', $booking->id) }}">
                       <h5 class="card-title">{{ $booking->name}}</h5>
                     </a>
-                    <p class="card-text">Booking ID: {{ $booking->id}}</p>
-                    <p class="card-text">Country: {{ $booking->country }}</p>
-                    <p class="card-text">Check-in: {{ date('d-m-Y', strtotime($booking->checkInDate));  }}
-                    </p>
-                    <p class="card-text">{{ $booking->numNights }} nights</p>
-                    <p class="card-text">Payment: {{ $booking->payment_method }}</p>
-                    <p class="card-text"><small class="text-muted">Booking Created: {{ date('d-m-Y', strtotime($booking->created_at)); }}</small></p>
+                    @for ($i = 1; $i <= $hotel->stars; $i++)
+                      <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
+                      @endfor
+                      <p class="card-text">Booking ID: {{ $booking->id}}</p>
+                      <p class="card-text">Country: {{ $booking->country }}</p>
+                      <p class="card-text">Check-in: {{ date('d-m-Y', strtotime($booking->checkInDate));  }}
+                      </p>
+                      <p class="card-text">{{ $booking->numNights }} nights</p>
+                      <p class="card-text">Payment: {{ $booking->payment_method }}</p>
+                      <p class="card-text"><small class="text-muted">Booking Created: {{ date('d-m-Y', strtotime($booking->created_at)); }}</small></p>
                   </div>
                 </div>
               </div>
