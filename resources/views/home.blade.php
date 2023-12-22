@@ -73,7 +73,7 @@
 
 
         <div class="col-sm-6 text-center">
-            <img src="Images/Causeway_Circle.png" alt="Causeway" style="width:250px; height:250px; padding-top:25px">
+            <img src="Images/seaside_circle.png" alt="Causeway" style="width:250px; height:250px; padding-top:25px">
             <h2 class="holidayHeading">Seaside Resort</h2>
 
             <p><a class="btn btn-primary" href="{{ route('hotels.seaside') }}">View details &raquo;</a></p>
