@@ -12,11 +12,14 @@
             <div class="col-sm-8">
                 <div class="card-body" id="divLeft">
                     <h2 class="card-title">{{ $hotel->name }}</h2>
-                    <p class="card-text">{{ $hotel->address }}</p>
-                    <p class="card-text">{{ $hotel->town }}</p>
-                    <p class="card-text">{{ $hotel->postCode }}</p>
-                    <p class="card-text">{{ $hotel->country }}</p>
-                    <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $hotel->created_at->DiffForHumans() }}</small></p>
+                    @for ($i = 1; $i <= $hotel->stars; $i++)
+                        <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
+                        @endfor
+                        <p class="card-text">{{ $hotel->address }}</p>
+                        <p class="card-text">{{ $hotel->town }}</p>
+                        <p class="card-text">{{ $hotel->postCode }}</p>
+                        <p class="card-text">{{ $hotel->country }}</p>
+                        <p class="card-text"><small class="text-body-secondary">Hotel Added: {{ $hotel->created_at->DiffForHumans() }}</small></p>
                 </div>
             </div>
         </div>
