@@ -362,3 +362,9 @@ ul {
     box-shadow: 10px 10px 5px 0px rgba(93, 91, 91, 0.75);
 }
 
+#hotelDetails, #featureOptions, #upgradeOptions, #packageOptions{
+    border: 1px solid gray;
+    border-radius: 3%;
+    padding: 3%;
+    background-color: rgb(237, 236, 236);
+}

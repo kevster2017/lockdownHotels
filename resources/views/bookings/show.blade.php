@@ -119,17 +119,17 @@
                     <div class="card-body text-center">
                         <h4>Total Costs</h4>
                         <h5 class="card-title">Hotel Costs: £{{ $booking->price}}</h5>
-                        @if($booking->featuresTotal != 0) 
-                            <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
+                        @if($booking->featuresTotal != 0)
+                        <h5 class="card-title">Feature Costs: £{{ $booking->featuresTotal }}</h5>
                         @endif
-                        @if($booking->upgradeTotal != 0) 
+                        @if($booking->upgradeTotal != 0)
                         <h5 class="card-title">Upgrade Costs: £{{ $booking->upgradeTotal }}</h5>
                         @endif
                         @if($booking->packageTotal != 0)
-                      
+
                         <h5 class="card-title">Package Costs: £{{ $booking->packageTotal }}</h5>
                         @endif
-                       
+
 
                     </div>
                     <div class="card-footer text-center">
@@ -138,8 +138,6 @@
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </div>

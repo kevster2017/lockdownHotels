@@ -28,7 +28,7 @@
 
     <h1 class="text-center py-3">List Your Property</h1>
 
-    <div class="container mb-3">
+    <div class="container mb-3" id="hotelDetails">
         <!-- Form input -->
         <form method="POST" action="{{ route('hotels.store') }}" id="form" class="was-validated" onkeyup="manage()" enctype="multipart/form-data" novalidate>
             @csrf
@@ -205,12 +205,22 @@
                     </div><br>
                 </div>
             </div>
+
+
+            <!--Description-->
+            <div class="col-sm-8 offset-md-2">
+                <label for="description" class="form-label">Description</label><br>
+                <textarea class="form-control" id="description" name="description" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required>{{ old('description') }}</textarea>
+                <div class="invalid-feedback">Enter your room description
+                </div><br>
+            </div>
+
     </div>
 
 
 
     <!--Hotel Options-->
-    <div class="container">
+    <div class="container mt-5" id="featureOptions">
         <h5 for="hotelOptions" class="form-label">Hotel Options</h5><br>
 
         <div class="row mb-3">
@@ -259,7 +269,7 @@
 
     </div>
 
-    <div class="container">
+    <div class="container mt-3" id="upgradeOptions">
         <h5 for="upgradeOptions" class="form-label">Upgrade Options</h5><br>
 
         <div class="row mb-3">
@@ -298,7 +308,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container mt-3" id="packageOptions">
         <h5 for="packageOptions" class="form-label">Package Options</h5><br>
 
         <div class="row mb-3">
@@ -337,18 +347,10 @@
     </div>
 
 
-    <!--Description-->
-    <div class="col-sm-8 offset-md-2">
-        <label for="description" class="form-label">Description</label><br>
-        <textarea class="form-control" id="description" name="description" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required>{{ old('description') }}</textarea>
-        <div class="invalid-feedback">Enter your room description
-        </div><br>
-    </div>
-
 
 
     <!--Terms and Conditions-->
-    <div class="col-md-4 offset-md-4 text-center">
+    <div class="col-md-4 offset-md-4 text-center mt-5">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="agreeTerms" id="agreeTerms" value="{{ 1 }}" onclick='checkBoxCheck("terms")' onchange="activateButton(this)" required>
             <label class="form-check-label" for="agreeTerms">I accept the terms and conditions</label>
