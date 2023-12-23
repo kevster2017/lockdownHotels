@@ -14,7 +14,7 @@
 
 <div class="container mt-3">
     <h1 class="text-center my-5">{{ $hotel->name }}</h1>
-    <div class="card mb-3">
+    <div class="card text-bg-light mb-3">
         <div class="row g-0">
             <div class="col-sm-4">
                 <img src="/storage/{{ $hotel->image }}" class="img-responsive rounded-start" alt="Hotel Image">
@@ -40,7 +40,7 @@
 
 <div class="container mt-3">
 
-    <div class="card  sectionBackground">
+    <div class="card text-bg-light">
         <h5 class="card-header">Description</h5>
         <div class="card-body">
             <p class="card-text"> {{ $hotel->description }}</p>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card">
+    <div class="card text-bg-light">
         <h5 class="card-header">Room Options</h5>
         <div class="card-body">
             <table class="table table-bordered table-hover">
