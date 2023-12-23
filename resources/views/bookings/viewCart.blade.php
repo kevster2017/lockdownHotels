@@ -13,7 +13,7 @@
 </div>
 
 <div class="container mt-3">
-  <div class="card mb-3">
+  <div class="card text-bg-light mb-3">
     <div class="row g-0">
       <div class="col-sm-4">
         <img src="/storage/{{ $cart->image }}" class="img-responsive rounded-start" alt="cart Image">
@@ -38,7 +38,7 @@
 
 
 <div class="container mt-3">
-  <div class="card">
+  <div class="card text-bg-light">
     <h5 class="card-header">Add Extras</h5>
     <div class="card-body">
       <form action="{{ route('cart.update', $cart->id) }}" method="POST">
