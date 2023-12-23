@@ -19,7 +19,7 @@
 </div>
 
 <div class="container mt-3">
-    <div class="card mb-3" style="max-width: 1080px;">
+    <div class="card text-bg-light mb-3" style="max-width: 1080px;">
         <div class="row g-0">
             <div class="col-md-4">
 
@@ -45,7 +45,7 @@
 
 <div class="container mt-3">
 
-    <div class="card">
+    <div class="card text-bg-light">
         <h5 class="card-header" id="divLeft">Booking Details</h5>
         <div class="card-body">
             <p class="card-text" id="divLeft"> {{ $cart->roomType }} room</p>
@@ -58,7 +58,7 @@
 
 <div class="container mt-3">
 
-    <div class="card">
+    <div class="card text-bg-light">
         <h5 class="card-header" id="divLeft">Features Details</h5>
         <div class="card-body">
             @if($cart->selectedFeat1 != "None")
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div class="card mt-3">
+    <div class="card text-bg-light mt-3">
         <h5 class="card-header" id="divLeft">Upgrade Details</h5>
         <div class="card-body">
             @if($cart->upgradeTotal == 0)
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <div class="card mt-3">
+    <div class="card text-bg-light mt-3">
         <h5 class="card-header" id="divLeft">Package Details</h5>
         <div class="card-body">
             @if($cart->packageTotal == 0)
@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <div class="card mt-3">
+    <div class="card text-bg-light mt-3">
         <h5 class="card-header" id="divLeft">Final Total</h5>
         <div class="card-body">
             <h3 class="text-center"><strong>Final Total: £</strong>{{ $cart->finalTotal}}</h3>
@@ -117,7 +117,7 @@
     </div>
 
 
-    <div class="card mt-3">
+    <div class="card text-bg-light mt-3">
         <h5 class="card-header" id="divLeft">Choose your method of payment</h5>
         <div class="card-body">
             <div class="row justify-content-center">
