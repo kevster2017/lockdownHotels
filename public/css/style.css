@@ -26,14 +26,6 @@
     padding-bottom: 10px;
 }
 
-#paymentForm {
-    border: 1px solid;
-    border-radius: 5%;
-    padding: 20px;
-    background-color: rgb(247, 238, 226);
-   
-}
-
 /* Style the breadcrumb list */
 
 ul.breadcrumb {
@@ -368,6 +360,16 @@ ul {
     padding: 3%;
     background-color: rgb(237, 236, 236);
 }
+
+
+#paymentForm {
+    border: 1px solid gray;
+    border-radius: 3%;
+    padding: 3%;
+    background-color: rgb(237, 236, 236);
+   
+}
+
 
 .sectionBackground{
     background-color: rgb(237, 236, 236);
