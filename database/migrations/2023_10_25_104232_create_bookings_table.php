@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('price');
             $table->date('checkInDate');
             $table->integer('numNights');
+            $table->integer('stars');
             $table->string('feat1')->default("None");
             $table->string('feat2')->default("None");
             $table->string('feat3')->default("None");

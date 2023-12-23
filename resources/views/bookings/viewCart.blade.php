@@ -192,7 +192,7 @@
       <h2>Your total extras cost: £<span id="extrasCost">0</span></h2>
       <h2>Your total costs: £<span id="totalCost">0</span></span></h2>
       <!-- Button trigger modal -->
-      <button class="btn btn-primary my-3 me-2" type="submit">Add Extras</button>
+      <button class="btn btn-primary my-3 me-2" type="submit">Continue</button>
       <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal{{ $cart->id }}">
         Cancel Booking
       </button>

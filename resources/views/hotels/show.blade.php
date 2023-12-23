@@ -13,6 +13,7 @@
 </div>
 
 <div class="container mt-3">
+    <h1 class="text-center my-5">{{ $hotel->name }}</h1>
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-sm-4">
@@ -39,7 +40,7 @@
 
 <div class="container mt-3">
 
-    <div class="card">
+    <div class="card  sectionBackground">
         <h5 class="card-header">Description</h5>
         <div class="card-body">
             <p class="card-text"> {{ $hotel->description }}</p>

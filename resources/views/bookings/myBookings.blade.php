@@ -41,7 +41,7 @@
                     <a href="{{ route('bookings.show', $booking->id) }}">
                       <h5 class="card-title">{{ $booking->name}}</h5>
                     </a>
-                    @for ($i = 1; $i <= $hotel->stars; $i++)
+                    @for ($i = 1; $i <= $booking->stars; $i++)
                       <span> <i class="fa-solid fa-star mb-3" style="color:gold"></i></span>
                       @endfor
                       <p class="card-text">Booking ID: {{ $booking->id}}</p>

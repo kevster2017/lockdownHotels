@@ -266,6 +266,7 @@ class BookingController extends Controller
             'accomType' => 'required',
             'roomType' => 'required',
             'holidayType' => 'required',
+            'stars' => 'required|integer',
             'feat1' => 'required',
             'feat2' => 'required',
             'feat3' => 'required',
@@ -317,6 +318,7 @@ class BookingController extends Controller
             $booking->accomType = $request->accomType;
             $booking->roomType = $request->roomType;
             $booking->holidayType = $request->holidayType;
+            $booking->stars = $request->stars;
 
 
             $booking->feat1 = $request->feat1 ?? 0;
