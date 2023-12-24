@@ -200,15 +200,15 @@
                     </div>
 
                     <div class="form-check form-check-inline mb-5">
-                        <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+                        <input class="form-check-input" type="radio" name="accomType" id="hotel" value="Hotel" onclick='checkBoxCheck("accomodationTypeOptions")' {{ old('accomType', $hotel->accomType) == 'Hotel' ? 'checked' : '' }} required>
                         <label class="form-check-label" for="hotel">Hotel</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="accomType" id="apartment" value="Apartment" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+                        <input class="form-check-input" type="radio" name="accomType" id="apartment" value="Apartment" {{ old('accomType', $hotel->accomType) == 'Apartment' ? 'checked' : '' }} onclick='checkBoxCheck("accomodationTypeOptions")' required>
                         <label class="form-check-label" for="apartment">Apartment</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="accomType" id="villa" value="Villa" onclick='checkBoxCheck("accomodationTypeOptions")' required>
+                        <input class="form-check-input" type="radio" name="accomType" id="villa" value="Villa" {{ old('accomType', $hotel->accomType) == 'Villa' ? 'checked' : '' }} onclick='checkBoxCheck("accomodationTypeOptions")' required>
                         <label class="form-check-label" for="villa">Villa</label>
                     </div>
                     <br>
@@ -221,11 +221,11 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' required>
+                        <input class="form-check-input" type="radio" name="currency" id="sterling" value="Sterling" onclick='checkBoxCheck("currencyOptions")' {{ old('currency', $hotel->currency) == 'Sterling' ? 'checked' : '' }} required>
                         <label class="form-check-label" for="sterling">Sterling</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="currency" id="euro" value="Euro" onclick='checkBoxCheck("currencyOptions")' required>
+                        <input class="form-check-input" type="radio" name="currency" id="euro" value="Euro" onclick='checkBoxCheck("currencyOptions")' {{ old('currency', $hotel->currency) == 'Euro' ? 'checked' : '' }} required>
                         <label class="form-check-label" for="euro">Euro</label>
                     </div><br>
                 </div>
@@ -235,7 +235,7 @@
             <!--Description-->
             <div class="col-sm-8 offset-md-2">
                 <label for="description" class="form-label">Description</label><br>
-                <textarea class="form-control" id="description" name="description" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required>{{ old('description') }}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="6" columns="50" placeholder="500 characters max" minlength="1" maxlength="500" required>{{ old('description', $hotel->description) }}</textarea>
                 <div class="invalid-feedback">Enter your room description
                 </div><br>
             </div>
@@ -251,43 +251,43 @@
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="feat1" class="form-label">Feature 1</label>
-                <input type="text" class="form-control" id="feat1" value="{{ old('feat1') }}" name="feat1" placeholder="E.g Add breakfast">
+                <input type="text" class="form-control" id="feat1" value="{{ old('feat1', $hotel->feat1) }}" name="feat1" placeholder="E.g Add breakfast">
             </div>
             <div class="col-sm-4">
                 <label for="feat1Price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="feat1Price" name="feat1Price" value="{{ old('feat1Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" id="feat1Price" name="feat1Price" value="{{ old('feat1Price', $hotel->feat1Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="feat2" class="form-label">Feature 2</label>
-                <input type="text" class="form-control" id="feat2" value="{{ old('feat2') }}" name="feat2">
+                <input type="text" class="form-control" id="feat2" value="{{ old('feat2', $hotel->feat2) }}" name="feat2">
             </div>
             <div class="col-sm-4">
                 <label for="feat2Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="feat2Price" id="feat2Price" value="{{ old('feat2Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="feat2Price" id="feat2Price" value="{{ old('feat2Price', $hotel->feat2Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="feat3" class="form-label">Feature 3</label>
-                <input type="text" class="form-control" id="feat3" value="{{ old('feat3') }}" name="feat3">
+                <input type="text" class="form-control" id="feat3" value="{{ old('feat3', $hotel->feat3) }}" name="feat3">
             </div>
             <div class="col-sm-4">
                 <label for="feat3Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="feat3Price" id="feat3Price" value="{{ old('feat3Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="feat3Price" id="feat3Price" value="{{ old('feat3Price', $hotel->feat3Price) }}" placeholder="E.g 200">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="feat4" class="form-label">Feature 4</label>
-                <input type="text" class="form-control" id="feat4" value="{{ old('feat4') }}" name="feat4">
+                <input type="text" class="form-control" id="feat4" value="{{ old('feat4', $hotel->feat4) }}" name="feat4">
             </div>
             <div class="col-sm-4">
                 <label for="feat4Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="feat4Price" id="feat4Price" value="{{ old('feat4Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="feat4Price" id="feat4Price" value="{{ old('feat4Price', $hotel->feat4Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
@@ -300,33 +300,33 @@
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="upgrade1" class="form-label">Upgrade 1</label>
-                <input type="text" class="form-control" id="upgrade1" value="{{ old('upgrade1') }}" name="upgrade1" placeholder="E.g Penthouse Suite">
+                <input type="text" class="form-control" id="upgrade1" value="{{ old('upgrade1', $hotel->upgrade1) }}" name="upgrade1" placeholder="E.g Penthouse Suite">
             </div>
             <div class="col-sm-4">
                 <label for="upgrade1Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="upgrade1Price" id="upgrade1Price" value="{{ old('upgrade1Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="upgrade1Price" id="upgrade1Price" value="{{ old('upgrade1Price', $hotel->upgrade1Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="upgrade2" class="form-label">Upgrade 2</label>
-                <input type="text" class="form-control" id="upgrade2" value="{{ old('upgrade2') }}" name="upgrade2">
+                <input type="text" class="form-control" id="upgrade2" value="{{ old('upgrade2', $hotel->upgrade2) }}" name="upgrade2">
             </div>
             <div class="col-sm-4">
                 <label for="upgrade2Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="upgrade2Price" id="upgrade2Price" value="{{ old('upgrade2Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="upgrade2Price" id="upgrade2Price" value="{{ old('upgrade2Price', $hotel->upgrade2Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="upgrade3" class="form-label">Upgrade 3</label>
-                <input type="text" class="form-control" id="upgrade3" value="{{ old('upgrade3') }}" name="upgrade3">
+                <input type="text" class="form-control" id="upgrade3" value="{{ old('upgrade3', $hotel->upgrade3) }}" name="upgrade3">
             </div>
             <div class="col-sm-4">
                 <label for="upgrade3Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="upgrade3Price" id="upgrade3Price" value="{{ old('upgrade3Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="upgrade3Price" id="upgrade3Price" value="{{ old('upgrade3Price', $hotel->upgrade3Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
