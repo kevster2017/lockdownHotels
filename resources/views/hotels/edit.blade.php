@@ -339,33 +339,33 @@
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="package1" class="form-label">Package 1</label>
-                <input type="text" class="form-control" id="package1" value="{{ old('package1') }}" name="package1" placeholder="E.g., Bridal Package">
+                <input type="text" class="form-control" id="package1" value="{{ old('package1', $hotel->package1) }}" name="package1" placeholder="E.g., Bridal Package">
             </div>
             <div class="col-sm-4">
                 <label for="package1Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="package1Price" id="package1Price" value="{{ old('package1Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="package1Price" id="package1Price" value="{{ old('package1Price', $hotel->package1Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="package2" class="form-label">Package 2</label>
-                <input type="text" class="form-control" id="package2" value="{{ old('package2') }}" name="package2">
+                <input type="text" class="form-control" id="package2" value="{{ old('package2', $hotel->package2) }}" name="package2">
             </div>
             <div class="col-sm-4">
                 <label for="package2Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="package2Price" id="package2Price" value="{{ old('package2Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="package2Price" id="package2Price" value="{{ old('package2Price', $hotel->package2Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-sm-8">
                 <label for="package3" class="form-label">Package 3</label>
-                <input type="text" class="form-control" id="package3" value="{{ old('package3') }}" name="package3">
+                <input type="text" class="form-control" id="package3" value="{{ old('package3', $hotel->package3) }}" name="package3">
             </div>
             <div class="col-sm-4">
                 <label for="package3Price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="package3Price" id="package3Price" value="{{ old('package3Price') }}" placeholder="E.g 200">
+                <input type="text" class="form-control" name="package3Price" id="package3Price" value="{{ old('package3Price', $hotel->package3Price) }}" placeholder="E.g 200">
             </div>
         </div>
 
