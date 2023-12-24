@@ -34,10 +34,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(
 /* Hotel routes */
 Route::get("/hotels", [HotelController::class, 'index'])->name('hotels.index');
 Route::get("/hotels/create", [HotelController::class, 'create'])->name('hotels.create')->middleware('auth');
-Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store');
+Route::post("/hotels", [HotelController::class, 'store'])->name('hotels.store')->middleware('auth');
 
-Route::get("/hotels/{id}/edit", [HotelController::class, 'edit'])->name('hotels.edit');
-Route::put("/hotels/{id}", [HotelController::class, 'update'])->name('hotels.update');
+Route::get("/hotels/{id}/edit", [HotelController::class, 'edit'])->name('hotels.edit')->middleware('auth');
+Route::put("/hotels/{id}", [HotelController::class, 'update'])->name('hotels.update')->middleware('auth');
 Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('hotels.destroy')->middleware('auth');
 
 Route::get("/hotels/show/{id}", [HotelController::class, 'show'])->name('hotels.show');
@@ -48,44 +48,44 @@ Route::get('/hotels/seaside', [HotelController::class, 'seasideIndex'])->name('h
 Route::get('/hotels/country', [HotelController::class, 'countryIndex'])->name('hotels.country');
 
 Route::get('/hotels/myHotels', [HotelController::class, 'myHotels'])->name('myHotels')->middleware('auth');
-Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow'])->name('hotels.myHotelsShow');
+Route::get('/hotels/myHotelsShow/{id}', [HotelController::class, 'myHotelsShow'])->name('hotels.myHotelsShow')->middleware('auth');
 
 
 /* Booking routes */
 Route::get("/bookings", [BookingController::class, 'index']);
-Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create');
+Route::get("/bookings/create", [BookingController::class, 'create'])->name('bookings.create')->middleware('auth');
 Route::get("/bookings/myBookings", [BookingController::class, 'myBookings'])->name('myBookings')->middleware('auth');
 
-Route::post("/bookings/store", [BookingController::class, 'store'])->name('bookings.store');
+Route::post("/bookings/store", [BookingController::class, 'store'])->name('bookings.store')->middleware('auth');
 
-Route::get("/bookings/{id}/edit", [BookingController::class, 'edit'])->name('bookings.edit');
-Route::put("/bookings/{id}", [BookingController::class, 'update'])->name('bookings.update');
+Route::get("/bookings/{id}/edit", [BookingController::class, 'edit'])->name('bookings.edit')->middleware('auth');
+Route::put("/bookings/{id}", [BookingController::class, 'update'])->name('bookings.update')->middleware('auth');
 Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy')->middleware('auth');
 
-Route::get("/bookings/show/{id}", [BookingController::class, 'show'])->name('bookings.show');
+Route::get("/bookings/show/{id}", [BookingController::class, 'show'])->name('bookings.show')->middleware('auth');
 
-Route::get("/bookings/review", [BookingController::class, 'review'])->name('bookings.review');
-Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bookings.payment');
-Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment');
-Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete');
+Route::get("/bookings/review", [BookingController::class, 'review'])->name('bookings.review')->middleware('auth');
+Route::get("/bookings/payment", [BookingController::class, 'payment'])->name('bookings.payment')->middleware('auth');
+Route::get("/bookings/addonPayment", [BookingController::class, 'addonPayment'])->name('bookings.addonPayment')->middleware('auth');
+Route::get("/bookings/paymentComplete", [BookingController::class, 'paymentComplete'])->name('bookings.paymentComplete')->middleware('auth');
 
 /* Cart routes */
 Route::post("/add_to_cart", [BookingController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::get("/bookings/viewCart", [BookingController::class, 'viewCart'])->middleware('auth')->name("viewCart");
-Route::put("/update_cart/{id}", [BookingController::class, 'updateCart'])->name('cart.update');
-Route::delete("/removeCart/{id}", [BookingController::class, 'removeCart'])->name('delete.cart');
+Route::put("/update_cart/{id}", [BookingController::class, 'updateCart'])->name('cart.update')->middleware('auth');
+Route::delete("/removeCart/{id}", [BookingController::class, 'removeCart'])->name('delete.cart')->middleware('auth');
 
 
 /* PayPal routes */
 
-Route::get('bookings/paypal', [PayPalController::class, 'index'])->name('bookings.paypal');
-Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+Route::get('bookings/paypal', [PayPalController::class, 'index'])->name('bookings.paypal')->middleware('auth');
+Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment')->middleware('auth');
 Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
-Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
+Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel')->middleware('auth');
 
 /* Stripe Payment routes */
-Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe');
-Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+Route::get('/bookings/stripe', [StripeController::class, 'stripe'])->name('bookings.stripe')->middleware('auth');
+Route::post('/bookings/stripe', [StripeController::class, 'stripePost'])->name('stripe.post')->middleware('auth');
 
 /* Contact Routes */
 
@@ -98,7 +98,7 @@ Route::get("/contact/create", [ContactController::class, 'create'])->name('conta
 Route::post("/contact/store", [ContactController::class, 'store'])->name('contact.store')->middleware('auth');
 
 Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('auth');
-Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('contact.show');
+Route::get("/contact/show/{id}", [ContactController::class, 'show'])->name('contact.show')->middleware('auth');
 
 Route::get('/contact/contactComplete', function () {
     return view('contactComplete');
