@@ -12,13 +12,6 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -242,151 +235,6 @@ class BookingController extends Controller
         return view('/bookings/myBookings', ['bookings' => $bookings]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-
-
-    public function store(Request $request, Booking $booking)
-    {
-
-        /* Validate user input */
-        $request->validate([
-            'hotel_Id' => 'required',
-            'hotelName' => 'required',
-            'price' => 'required|integer',
-            'checkInDate' => 'required|date',
-            'name' => 'required',
-            'email' => 'required|email',
-            'image' => 'required|url',
-            'address' => 'required',
-            'town' => 'required',
-            'country' => 'required',
-            'postCode' => 'required', 'min:6', 'max:9',
-            'accomType' => 'required',
-            'roomType' => 'required',
-            'holidayType' => 'required',
-            'stars' => 'required|integer',
-            'feat1' => 'required',
-            'feat2' => 'required',
-            'feat3' => 'required',
-            'feat4' => 'required',
-            'feat1Price' => 'required|integer',
-            'feat2Price' => 'required|integer',
-            'feat3Price' => 'required|integer',
-            'feat4Price' => 'required|integer',
-            'upgrade1' => 'required',
-            'upgrade2' => 'required',
-            'upgrade3' => 'required',
-            'upgrade1Price' => 'required|integer',
-            'upgrade2Price' => 'required|integer',
-            'upgrade3Price' => 'required|integer',
-            'package1' => 'required',
-            'package2' => 'required',
-            'package3' => 'required',
-            'package1Price' => 'required|integer',
-            'package2Price' => 'required|integer',
-            'package3Price' => 'required|integer',
-            'packageTotal' => 'required|integer',
-            'upgradeTotal' => 'required|integer',
-            'currency' => 'required',
-            'numNights' => 'required|integer',
-
-
-        ]);
-
-        $hotel_Id = $request->hotel_Id;
-
-        $hotel = Hotel::where('id', $hotel_Id)->first();
-
-        if ($hotel->numRooms < 1) {
-            return back()->with('error', 'No rooms available');
-        } else {
-
-            $booking->userId = auth()->user()->id;
-            $booking->hotel_Id = $request->hotel_Id;
-            $booking->hotelName = $request->hotelName;
-            $booking->pricePN =  $request->price;
-            $booking->checkInDate = Carbon::createFromFormat('Y-m-d', $request->checkInDate);
-            $booking->name =  $request->name;
-            $booking->email =  $request->email;
-            $booking->image = $request->image;
-            $booking->address = $request->address;
-            $booking->town = $request->town;
-            $booking->country = $request->country;
-            $booking->postCode = $request->postCode;
-            $booking->accomType = $request->accomType;
-            $booking->roomType = $request->roomType;
-            $booking->holidayType = $request->holidayType;
-            $booking->stars = $request->stars;
-
-
-            $booking->feat1 = $request->feat1 ?? 0;
-            $booking->feat2 = $request->feat2 ?? 0;
-            $booking->feat3 = $request->feat3 ?? 0;
-            $booking->feat4 = $request->feat4 ?? 0;
-
-
-
-            $booking->feat1Price = $request->feat1Price;
-            $booking->feat2Price = $request->feat2Price;
-            $booking->feat3Price = $request->feat3Price;
-            $booking->feat4Price = $request->feat4Price;
-            $booking->featuresTotal = $booking->feat1 + $booking->feat2 + $booking->feat3 + $booking->feat4;
-
-            $booking->upgrade1 = $request->upgrade1 ?? 0;
-            $booking->upgrade2 = $request->upgrade2 ?? 0;
-            $booking->upgrade3 = $request->upgrade3 ?? 0;
-
-
-            $booking->upgrade1Price = $request->upgrade1Price;
-            $booking->upgrade2Price = $request->upgrade2Price;
-            $booking->upgrade3Price = $request->upgrade3Price;
-
-
-            $booking->upgradeTotal = $booking->upgrade1 + $booking->upgrade2 + $booking->upgrade3;
-            $booking->extrasTotal = $booking->featuresTotal + $booking->packageTotal + $booking->upgradeTotal;
-
-            $booking->package1 = $request->package1 ?? 0;
-            $booking->package2 = $request->package2 ?? 0;
-            $booking->package3 = $request->package3 ?? 0;
-
-
-            $booking->package1Price = $request->package1Price;
-            $booking->package2Price = $request->package2Price;
-            $booking->package3Price = $request->package3Price;
-
-            $booking->featuresTotal = ($request->feat1 + $request->feat2 + $request->feat3 + $request->feat4) * $request->numNights;
-            $booking->packageTotal = $request->packageTotal * $request->numNights;
-            $booking->upgradeTotal = $request->upgradeTotal * $request->numNights;
-            $booking->extrasTotal = $booking->featuresTotal + $booking->packageTotal + $booking->upgradeTotal;
-            $booking->currency = $request->currency;
-            $booking->numNights = $request->numNights;
-
-            $hotelPrice = $booking->pricePN * $request->numNights;
-
-
-            $booking->total = $hotelPrice + $booking->extrasTotal;
-            $booking->payment_method = $request->payment_method;
-
-            //dd($featPrice);
-
-            // dd($booking);
-            $hotel->numRooms -= 1;
-            dd($hotel->numRooms);
-            $hotel->save();
-            $booking->save();
-
-            $payment = Booking::where('id', $booking->id)->first();
-            // dd($payment);
-
-            return view('bookings/stripe', [
-                'payment' => $payment
-            ])->with('success', 'Booking updated');
-        }
-    }
-
-
 
     /**
      * Display the specified resource.
@@ -407,13 +255,7 @@ class BookingController extends Controller
         return view('bookings.edit', compact('booking'))->with('info', 'Please contact the hotel using the form below to amend your booking');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
