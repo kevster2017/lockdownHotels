@@ -51,7 +51,7 @@
 
                     <!--Select Address-->
                     <label for="address" class="form-label">Enter Address</label>
-                    <input type="text" class="form-control" name="address" value="{{ old('address') }}" id="address" placeholder="Address" minlength="6" maxlength="100" required>
+                    <input type="text" class="form-control" name="address" value="{{ old('address', $hotel->address) }}" id="address" placeholder="Address" minlength="6" maxlength="100" required>
                     @error('address')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
 
                     <!-- Enter Town -->
                     <label for="town" class="form-label">Enter Town</label>
-                    <input type="text" class="form-control" name="town" value="{{ old('town') }}" id="town" placeholder="Town" minlength="3" maxlength="100" required>
+                    <input type="text" class="form-control" name="town" value="{{ old('town', $hotel->town) }}" id="town" placeholder="Town" minlength="3" maxlength="100" required>
                     @error('town')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
 
                     <!-- Enter Country-->
                     <label for="country" class="form-label">Enter Country</label>
-                    <input type="text" class="form-control" name="country" value="{{ old('country') }}" id="country" placeholder="Country" minlength="6" maxlength="100" required>
+                    <input type="text" class="form-control" name="country" value="{{ old('country', $hotel->country) }}" id="country" placeholder="Country" minlength="6" maxlength="100" required>
                     @error('country')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
 
                     <!--Select Postcode-->
                     <label for="postCode" class="form-label">Enter Postcode</label>
-                    <input type="text" class="form-control" name="postCode" value="{{ old('postCode') }}" id="postCode" placeholder="Postcode" minlength="6" maxlength="8" required>
+                    <input type="text" class="form-control" name="postCode" value="{{ old('postCode', $hotel->postCode) }}" id="postCode" placeholder="Postcode" minlength="6" maxlength="8" required>
                     <div class="invalid-feedback">Enter the postcode of your property</div><br>
 
                 </div> <!-- End Col 1 -->
@@ -108,7 +108,7 @@
                     <!--Price per night-->
 
                     <label for="pricePerNight" class="form-label">Price Per Night</label>
-                    <input type="text" class="form-control" name="price" id="pricePerNight" placeholder="Room price per night" pattern="[0-9]+" minlength="2" maxlength="7" value="{{ old('price') }}" required>
+                    <input type="text" class="form-control" name="price" id="pricePerNight" placeholder="Room price per night" pattern="[0-9]+" minlength="2" maxlength="7" value="{{ old('price', $hotel->price) }}" required>
                     <div class="invalid-feedback">Enter the room price per night</div><br>
 
 
@@ -116,32 +116,43 @@
 
                     <label for="numRooms" class="form-label">Number of rooms</label>
 
-                    <input type="text" class="form-control" name="numRooms" id="numRooms" value="{{ old('numRooms') }}" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
+                    <input type="text" class="form-control" name="numRooms" id="numRooms" value="{{ old('numRooms', $hotel->numRooms) }}" placeholder="Number of rooms" pattern="[0-9]+" minlength="1" maxlength="3" required>
                     <div class="invalid-feedback">Enter the number of rooms</div><br>
 
 
                     <!-- Holiday Type -->
                     <label for="holidayType" class="form-label">Select Holiday Type</label>
 
-                    <select class="form-select @error('holidayType') is-invalid @enderror" name="holidayType" id="holidayType" aria-label="Default select example" required>
+                    <select class="form-select @error('holidayType') is-invalid @enderror" name="holidayType" id="holidayType" aria-label="Default select example" value="{{ old('holidayType', $hotel->holidayType) }}">
 
-                        <option selected="City">City Break</option>
-                        <option value="Seaside">Seaside Resort</option>
-                        <option value="Country">Country Escape</option>
+                        @if($hotel->holidayType == "City Break")
+                        <option selected="City Break">{{ $hotel->holidayType}}</option>
+                        <option value="Seaside Resort">Seaside Resort</option>
+                        <option value="Country Escape">Country Escape</option>
+                        @elseif($hotel->holidayType == "Seaside Resort")
+                        <option selected="Seaside Resort">{{ $hotel->holidayType}}</option>
+                        <option value="City Break">City Break</option>
+                        <option value="Country Escape">Country Escape</option>
+                        @else
+                        <option selected="Country Escape">{{ $hotel->holidayType}}</option>
+                        <option value="City Break">City Break</option>
+                        <option value="Seaside Resort">Seaside Resort</option>
 
+                        @endif
                     </select> @error('holidayType')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span> @enderror
 
 
-                    <br><br>
+                    <br>
                     <!-- Star Rating -->
                     <label for="stars" class="form-label">Select Star Rating</label>
 
-                    <select class="form-select @error('stars') is-invalid @enderror" name="stars" id="stars" aria-label="Default select example" required>
+                    <select class="form-select @error('stars') is-invalid @enderror" name="stars" id="stars" aria-label="Default select example" value="{{ old('stars', $hotel->stars) }}" required>
 
-                        <option selected="1">One</option>
+                        <option selected="{{ $hotel->stars }}">{{ $hotel->stars }}</option>
+                        <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                         <option value="4">Four</option>
@@ -165,19 +176,19 @@
                     <label for="roomType" class="form-label">Room Type</label>
                     <div class="Room Type mb-5">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input room-type" type="radio" name="roomType" id="single" value="Single" onclick='checkBoxCheck("roomTypeOptions")' required>
+                            <input class="form-check-input room-type" type="radio" name="roomType" id="single" value="Single" onclick='checkBoxCheck("roomTypeOptions")' {{ old('roomType', $hotel->roomType) == 'Single' ? 'checked' : '' }} required>
                             <label class="form-check-label" for="single">Single</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input room-type" type="radio" name="roomType" id="double" value="Double" onclick='checkBoxCheck("roomTypeOptions")' required>
+                            <input class="form-check-input" type="radio" name="roomType" id="double" value="Double" onclick='checkBoxCheck("roomTypeOptions")' {{ old('roomType', $hotel->roomType) == 'Double' ? 'checked' : '' }} required>
                             <label class="form-check-label" for="double">Double</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="roomType" id="twin" value="Twin" onclick='checkBoxCheck("roomTypeOptions")' required>
+                            <input class="form-check-input" type="radio" name="roomType" id="twin" value="Twin" onclick='checkBoxCheck("roomTypeOptions")' {{ old('roomType', $hotel->roomType) == 'Twin' ? 'checked' : '' }} required>
                             <label class="form-check-label" for="twin">Twin</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="roomType" id="family" value="Family" onclick='checkBoxCheck("roomTypeOptions")' required>
+                            <input class="form-check-input" type="radio" name="roomType" id="family" value="Family" onclick='checkBoxCheck("roomTypeOptions")' {{ old('roomType', $hotel->roomType) == 'Family' ? 'checked' : '' }} required>
                             <label class="form-check-label" for="family">Family room</label>
                         </div>
                     </div>
