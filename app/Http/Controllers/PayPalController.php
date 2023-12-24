@@ -146,6 +146,7 @@ class PayPalController extends Controller
                 $bookings->price = $cart->price;
                 $bookings->checkInDate = $cart->checkInDate;
                 $bookings->numNights = $cart->numNights;
+                $bookings->stars = $cart->stars;
                 $bookings->feat1 = $cart->feat1;
                 $bookings->feat2 = $cart->feat2;
                 $bookings->feat3 = $cart->feat3;
